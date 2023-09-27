@@ -78,16 +78,17 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // config.ApiKeyPrefix.Add("Ocp-Apim-Subscription-Key", "Bearer");
 
-            var apiInstance = new CancellationReasonsApi(config);
+            var apiInstance = new AvailabilityApi(config);
+            var schoolCrmId = F0EDC50F-ED22-DE11-B821-0014221C4264;  // string | ID (CRM) of school
 
             try
             {
-                List<TourCancellationReasonDto> result = apiInstance.ApiV1CancellationReasonsGet();
-                Debug.WriteLine(result);
+                // Deletes school customized regular (day of week) availability
+                apiInstance.ApiV1SchoolsSchoolCrmIdAvailabilityDelete(schoolCrmId);
             }
             catch (ApiException e)
             {
-                Debug.Print("Exception when calling CancellationReasonsApi.ApiV1CancellationReasonsGet: " + e.Message );
+                Debug.Print("Exception when calling AvailabilityApi.ApiV1SchoolsSchoolCrmIdAvailabilityDelete: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -104,42 +105,53 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*CancellationReasonsApi* | [**ApiV1CancellationReasonsGet**](docs/CancellationReasonsApi.md#apiv1cancellationreasonsget) | **GET** /api/v1/cancellation-reasons | 
-*GuidesApi* | [**ApiV1GuidesGet**](docs/GuidesApi.md#apiv1guidesget) | **GET** /api/v1/Guides | 
-*ScheduleApi* | [**ApiV1ScheduleSchoolIdGet**](docs/ScheduleApi.md#apiv1scheduleschoolidget) | **GET** /api/v1/Schedule/{schoolId} | 
-*SchoolTourAvailabilityApi* | [**ApiV1SchoolTourAvailabilityDefaultAvailabilitySchoolIdGet**](docs/SchoolTourAvailabilityApi.md#apiv1schooltouravailabilitydefaultavailabilityschoolidget) | **GET** /api/v1/SchoolTourAvailability/default-availability/{schoolId} | 
-*SchoolTourAvailabilityApi* | [**ApiV1SchoolTourAvailabilityDeleteBatchDelete**](docs/SchoolTourAvailabilityApi.md#apiv1schooltouravailabilitydeletebatchdelete) | **DELETE** /api/v1/SchoolTourAvailability/delete-batch | 
-*SchoolTourAvailabilityApi* | [**ApiV1SchoolTourAvailabilityIdDelete**](docs/SchoolTourAvailabilityApi.md#apiv1schooltouravailabilityiddelete) | **DELETE** /api/v1/SchoolTourAvailability/{id} | 
-*SchoolTourAvailabilityApi* | [**ApiV1SchoolTourAvailabilityIdPut**](docs/SchoolTourAvailabilityApi.md#apiv1schooltouravailabilityidput) | **PUT** /api/v1/SchoolTourAvailability/{id} | 
-*SchoolTourAvailabilityApi* | [**ApiV1SchoolTourAvailabilityIncludeBatchPost**](docs/SchoolTourAvailabilityApi.md#apiv1schooltouravailabilityincludebatchpost) | **POST** /api/v1/SchoolTourAvailability/include-batch | 
-*SchoolTourAvailabilityApi* | [**ApiV1SchoolTourAvailabilityIncludeSinglePost**](docs/SchoolTourAvailabilityApi.md#apiv1schooltouravailabilityincludesinglepost) | **POST** /api/v1/SchoolTourAvailability/include-single | 
-*SchoolTourAvailabilityApi* | [**ApiV1SchoolTourAvailabilitySchoolIdGet**](docs/SchoolTourAvailabilityApi.md#apiv1schooltouravailabilityschoolidget) | **GET** /api/v1/SchoolTourAvailability/{schoolId} | 
-*SchoolTourAvailabilityApi* | [**ApiV1SchoolTourAvailabilityUpdateBatchPut**](docs/SchoolTourAvailabilityApi.md#apiv1schooltouravailabilityupdatebatchput) | **PUT** /api/v1/SchoolTourAvailability/update-batch | 
-*SettingsApi* | [**ApiV1SettingsIdPut**](docs/SettingsApi.md#apiv1settingsidput) | **PUT** /api/v1/Settings/{id} | 
-*SettingsApi* | [**ApiV1SettingsPost**](docs/SettingsApi.md#apiv1settingspost) | **POST** /api/v1/Settings | 
-*SettingsApi* | [**ApiV1SettingsSchoolIdGet**](docs/SettingsApi.md#apiv1settingsschoolidget) | **GET** /api/v1/Settings/{schoolId} | 
-*ToursApi* | [**ApiV1ToursGet**](docs/ToursApi.md#apiv1toursget) | **GET** /api/v1/Tours | 
-*ToursApi* | [**ApiV1ToursIdGet**](docs/ToursApi.md#apiv1toursidget) | **GET** /api/v1/Tours/{id} | 
-*ToursApi* | [**ApiV1ToursIdPut**](docs/ToursApi.md#apiv1toursidput) | **PUT** /api/v1/Tours/{id} | 
-*ToursApi* | [**ApiV1ToursPost**](docs/ToursApi.md#apiv1tourspost) | **POST** /api/v1/Tours | 
+*AvailabilityApi* | [**ApiV1SchoolsSchoolCrmIdAvailabilityDelete**](docs/AvailabilityApi.md#apiv1schoolsschoolcrmidavailabilitydelete) | **DELETE** /api/v1/schools/{schoolCrmId}/availability | Deletes school customized regular (day of week) availability
+*AvailabilityApi* | [**ApiV1SchoolsSchoolCrmIdAvailabilityGet**](docs/AvailabilityApi.md#apiv1schoolsschoolcrmidavailabilityget) | **GET** /api/v1/schools/{schoolCrmId}/availability | Gets school regular (day of week) availability
+*AvailabilityApi* | [**ApiV1SchoolsSchoolCrmIdAvailabilityPut**](docs/AvailabilityApi.md#apiv1schoolsschoolcrmidavailabilityput) | **PUT** /api/v1/schools/{schoolCrmId}/availability | Saves school regular (day of week) availability
+*CancellationReasonsApi* | [**ApiV1CancellationReasonsGet**](docs/CancellationReasonsApi.md#apiv1cancellationreasonsget) | **GET** /api/v1/cancellation-reasons | Gets cancellation reasons
+*DateAvailabilitiesApi* | [**ApiV1SchoolsSchoolCrmIdDateAvailabilitiesDateDelete**](docs/DateAvailabilitiesApi.md#apiv1schoolsschoolcrmiddateavailabilitiesdatedelete) | **DELETE** /api/v1/schools/{schoolCrmId}/date-availabilities/{date} | Deletes school customized date availability
+*DateAvailabilitiesApi* | [**ApiV1SchoolsSchoolCrmIdDateAvailabilitiesDateGet**](docs/DateAvailabilitiesApi.md#apiv1schoolsschoolcrmiddateavailabilitiesdateget) | **GET** /api/v1/schools/{schoolCrmId}/date-availabilities/{date} | Gets school availability for a date
+*DateAvailabilitiesApi* | [**ApiV1SchoolsSchoolCrmIdDateAvailabilitiesDatePut**](docs/DateAvailabilitiesApi.md#apiv1schoolsschoolcrmiddateavailabilitiesdateput) | **PUT** /api/v1/schools/{schoolCrmId}/date-availabilities/{date} | Saves school date custom availability
+*DefaultAvailabilityApi* | [**ApiV1DefaultAvailabilityTourDurationGet**](docs/DefaultAvailabilityApi.md#apiv1defaultavailabilitytourdurationget) | **GET** /api/v1/default-availability/{tourDuration} | Gets default availability for specified tourDuration
+*GuidesApi* | [**ApiV1SchoolsSchoolCrmIdGuidesGet**](docs/GuidesApi.md#apiv1schoolsschoolcrmidguidesget) | **GET** /api/v1/schools/{schoolCrmId}/guides | Gets school tour guides
+*SchedulesApi* | [**ApiV1SchoolsSchoolCrmIdSchedulesGet**](docs/SchedulesApi.md#apiv1schoolsschoolcrmidschedulesget) | **GET** /api/v1/schools/{schoolCrmId}/schedules | Gets school day schedules
+*SettingsApi* | [**ApiV1SchoolsSchoolCrmIdSettingsDelete**](docs/SettingsApi.md#apiv1schoolsschoolcrmidsettingsdelete) | **DELETE** /api/v1/schools/{schoolCrmId}/settings | Deletes school customized tour settings
+*SettingsApi* | [**ApiV1SchoolsSchoolCrmIdSettingsGet**](docs/SettingsApi.md#apiv1schoolsschoolcrmidsettingsget) | **GET** /api/v1/schools/{schoolCrmId}/settings | Gets school tour settings
+*SettingsApi* | [**ApiV1SchoolsSchoolCrmIdSettingsPut**](docs/SettingsApi.md#apiv1schoolsschoolcrmidsettingsput) | **PUT** /api/v1/schools/{schoolCrmId}/settings | Saves school tour settings
+*TestsApi* | [**ApiTestsLoggingGet**](docs/TestsApi.md#apitestsloggingget) | **GET** /api/tests/logging | Calls log statements for each log level
+*TestsApi* | [**ApiTestsUnhandledExceptionsGet**](docs/TestsApi.md#apitestsunhandledexceptionsget) | **GET** /api/tests/unhandled-exceptions | Throws an unhandled exception
+*ToursApi* | [**ApiV1SchoolsSchoolCrmIdToursGet**](docs/ToursApi.md#apiv1schoolsschoolcrmidtoursget) | **GET** /api/v1/schools/{schoolCrmId}/tours | Gets school tours
+*ToursApi* | [**ApiV1SchoolsSchoolCrmIdToursIdGet**](docs/ToursApi.md#apiv1schoolsschoolcrmidtoursidget) | **GET** /api/v1/schools/{schoolCrmId}/tours/{id} | Gets school tour
+*ToursApi* | [**ApiV1SchoolsSchoolCrmIdToursIdPut**](docs/ToursApi.md#apiv1schoolsschoolcrmidtoursidput) | **PUT** /api/v1/schools/{schoolCrmId}/tours/{id} | Saves school tour
+*ToursApi* | [**ApiV1SchoolsSchoolCrmIdToursPost**](docs/ToursApi.md#apiv1schoolsschoolcrmidtourspost) | **POST** /api/v1/schools/{schoolCrmId}/tours | Creates school tour
 
 
 <a name="documentation-for-models"></a>
 ## Documentation for Models
 
+ - [Model.AvailabilityBlockDto](docs/AvailabilityBlockDto.md)
+ - [Model.AvailabilityDto](docs/AvailabilityDto.md)
+ - [Model.AvailabilityInputDto](docs/AvailabilityInputDto.md)
+ - [Model.DateAvailabilityBlockDto](docs/DateAvailabilityBlockDto.md)
+ - [Model.DateAvailabilityDto](docs/DateAvailabilityDto.md)
+ - [Model.DateAvailabilityInputDto](docs/DateAvailabilityInputDto.md)
  - [Model.DayOfWeek](docs/DayOfWeek.md)
  - [Model.FollowUpTimeFrame](docs/FollowUpTimeFrame.md)
+ - [Model.ListSortDirection](docs/ListSortDirection.md)
  - [Model.ProblemDetails](docs/ProblemDetails.md)
  - [Model.ScheduleDto](docs/ScheduleDto.md)
  - [Model.ScheduleItemDto](docs/ScheduleItemDto.md)
- - [Model.SchoolTourAvailabilityDto](docs/SchoolTourAvailabilityDto.md)
+ - [Model.ScheduleItemTourTypeDto](docs/ScheduleItemTourTypeDto.md)
  - [Model.TourCancellationReasonDto](docs/TourCancellationReasonDto.md)
  - [Model.TourDto](docs/TourDto.md)
  - [Model.TourDtoPaginationDto](docs/TourDtoPaginationDto.md)
  - [Model.TourGuideDto](docs/TourGuideDto.md)
+ - [Model.TourInputDto](docs/TourInputDto.md)
  - [Model.TourSettingsDto](docs/TourSettingsDto.md)
+ - [Model.TourSettingsInputDto](docs/TourSettingsInputDto.md)
+ - [Model.TourSort](docs/TourSort.md)
  - [Model.TourStatus](docs/TourStatus.md)
- - [Model.TourTypes](docs/TourTypes.md)
+ - [Model.TourType](docs/TourType.md)
 
 
 <a name="documentation-for-authorization"></a>

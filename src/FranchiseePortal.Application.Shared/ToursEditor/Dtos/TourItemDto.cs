@@ -18,20 +18,24 @@ namespace FranchiseePortal.ToursEditor.Dtos
 
         public TourItemLeadDto Lead { get; set; }
 
-        public DateTime TourStartDate { get; set; }
+        public DateTime StartDateTime { get; set; }
 
-        public DateTime TourEndDate { get; set; }
-
-        public string SchoolTimeZone { get; set; }
+        public DateTime EndDateTime { get; set; }
 
         public TourStatus Status { get; set; }
 
-        public TourTypes Type { get; set; }
+        public TourType Type { get; set; }
         
         public FollowUpTimeFrame? FollowUpTimeFrame { get; set; }
 
         public DateTime CreatedOn { get; set; }
 
         public DateTime? Viewed { get; set; }
+
+        /// <summary>
+        /// The default sort is "newest first" (Not viewed tours), then by Tour Date (ascending order/soonest first)
+        /// When tour is marked as Viewed, the green dot is removed and the tour sorts under the by tour date sorting
+        /// </summary>
+        public bool IsViewed { get { return Viewed != null; } }
     }
 }

@@ -31,52 +31,39 @@ namespace FranchiseePortal.ToursWebApiClient.Model
     [DataContract(Name = "ScheduleItemDto")]
     public partial class ScheduleItemDto : IEquatable<ScheduleItemDto>, IValidatableObject
     {
-
-        /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name = "type", EmitDefaultValue = false)]
-        public TourTypes? Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ScheduleItemDto" /> class.
         /// </summary>
-        /// <param name="type">type.</param>
-        /// <param name="startDateTime">startDateTime.</param>
-        /// <param name="endDateTime">endDateTime.</param>
-        /// <param name="attendeeCount">attendeeCount.</param>
-        /// <param name="slotsAvailable">slotsAvailable.</param>
-        public ScheduleItemDto(TourTypes? type = default(TourTypes?), DateTime startDateTime = default(DateTime), DateTime endDateTime = default(DateTime), int attendeeCount = default(int), int slotsAvailable = default(int))
+        /// <param name="startDateTime">Start date and time of tour.</param>
+        /// <param name="endDateTime">Ending date and time of tour.</param>
+        /// <param name="tourTypes">An aggregation over Goddard.ToursWebApi.Dtos.ScheduleItemTourTypeDto.SlotsAvailable   and Goddard.ToursWebApi.Dtos.ScheduleItemTourTypeDto.AttendeeCount, per TourType.</param>
+        public ScheduleItemDto(DateTime startDateTime = default(DateTime), DateTime endDateTime = default(DateTime), List<ScheduleItemTourTypeDto> tourTypes = default(List<ScheduleItemTourTypeDto>))
         {
-            this.Type = type;
             this.StartDateTime = startDateTime;
             this.EndDateTime = endDateTime;
-            this.AttendeeCount = attendeeCount;
-            this.SlotsAvailable = slotsAvailable;
+            this.TourTypes = tourTypes;
         }
 
         /// <summary>
-        /// Gets or Sets StartDateTime
+        /// Start date and time of tour
         /// </summary>
+        /// <value>Start date and time of tour</value>
         [DataMember(Name = "startDateTime", EmitDefaultValue = false)]
         public DateTime StartDateTime { get; set; }
 
         /// <summary>
-        /// Gets or Sets EndDateTime
+        /// Ending date and time of tour
         /// </summary>
+        /// <value>Ending date and time of tour</value>
         [DataMember(Name = "endDateTime", EmitDefaultValue = false)]
         public DateTime EndDateTime { get; set; }
 
         /// <summary>
-        /// Gets or Sets AttendeeCount
+        /// An aggregation over Goddard.ToursWebApi.Dtos.ScheduleItemTourTypeDto.SlotsAvailable   and Goddard.ToursWebApi.Dtos.ScheduleItemTourTypeDto.AttendeeCount, per TourType
         /// </summary>
-        [DataMember(Name = "attendeeCount", EmitDefaultValue = false)]
-        public int AttendeeCount { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SlotsAvailable
-        /// </summary>
-        [DataMember(Name = "slotsAvailable", EmitDefaultValue = false)]
-        public int SlotsAvailable { get; set; }
+        /// <value>An aggregation over Goddard.ToursWebApi.Dtos.ScheduleItemTourTypeDto.SlotsAvailable   and Goddard.ToursWebApi.Dtos.ScheduleItemTourTypeDto.AttendeeCount, per TourType</value>
+        [DataMember(Name = "tourTypes", EmitDefaultValue = true)]
+        public List<ScheduleItemTourTypeDto> TourTypes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -86,11 +73,9 @@ namespace FranchiseePortal.ToursWebApiClient.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ScheduleItemDto {\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  StartDateTime: ").Append(StartDateTime).Append("\n");
             sb.Append("  EndDateTime: ").Append(EndDateTime).Append("\n");
-            sb.Append("  AttendeeCount: ").Append(AttendeeCount).Append("\n");
-            sb.Append("  SlotsAvailable: ").Append(SlotsAvailable).Append("\n");
+            sb.Append("  TourTypes: ").Append(TourTypes).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -127,10 +112,6 @@ namespace FranchiseePortal.ToursWebApiClient.Model
             }
             return 
                 (
-                    this.Type == input.Type ||
-                    this.Type.Equals(input.Type)
-                ) && 
-                (
                     this.StartDateTime == input.StartDateTime ||
                     (this.StartDateTime != null &&
                     this.StartDateTime.Equals(input.StartDateTime))
@@ -141,12 +122,10 @@ namespace FranchiseePortal.ToursWebApiClient.Model
                     this.EndDateTime.Equals(input.EndDateTime))
                 ) && 
                 (
-                    this.AttendeeCount == input.AttendeeCount ||
-                    this.AttendeeCount.Equals(input.AttendeeCount)
-                ) && 
-                (
-                    this.SlotsAvailable == input.SlotsAvailable ||
-                    this.SlotsAvailable.Equals(input.SlotsAvailable)
+                    this.TourTypes == input.TourTypes ||
+                    this.TourTypes != null &&
+                    input.TourTypes != null &&
+                    this.TourTypes.SequenceEqual(input.TourTypes)
                 );
         }
 
@@ -159,7 +138,6 @@ namespace FranchiseePortal.ToursWebApiClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 if (this.StartDateTime != null)
                 {
                     hashCode = (hashCode * 59) + this.StartDateTime.GetHashCode();
@@ -168,8 +146,10 @@ namespace FranchiseePortal.ToursWebApiClient.Model
                 {
                     hashCode = (hashCode * 59) + this.EndDateTime.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.AttendeeCount.GetHashCode();
-                hashCode = (hashCode * 59) + this.SlotsAvailable.GetHashCode();
+                if (this.TourTypes != null)
+                {
+                    hashCode = (hashCode * 59) + this.TourTypes.GetHashCode();
+                }
                 return hashCode;
             }
         }

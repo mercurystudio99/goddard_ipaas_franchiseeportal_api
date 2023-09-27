@@ -23,7 +23,6 @@ namespace FranchiseePortal.Migrations.Seed.Host
                 new ApplicationLanguage(tenantId, "de", "Deutsch", "famfamfam-flags de"),
                 new ApplicationLanguage(tenantId, "it", "Italiano", "famfamfam-flags it"),
                 new ApplicationLanguage(tenantId, "fr", "Français", "famfamfam-flags fr"),
-                new ApplicationLanguage(tenantId, "pt-BR", "Português (Brasil)", "famfamfam-flags br"),
                 new ApplicationLanguage(tenantId, "tr", "Türkçe", "famfamfam-flags tr"),
                 new ApplicationLanguage(tenantId, "ru", "Pусский", "famfamfam-flags ru"),
                 new ApplicationLanguage(tenantId, "zh-Hans", "简体中文", "famfamfam-flags cn"),

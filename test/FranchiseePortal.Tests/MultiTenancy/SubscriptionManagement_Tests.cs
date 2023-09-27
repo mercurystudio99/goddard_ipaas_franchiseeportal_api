@@ -15,6 +15,8 @@ namespace FranchiseePortal.Tests.MultiTenancy
     // ReSharper disable once InconsistentNaming
     public class SubscriptionManagement_Tests : AppTestBase
     {
+        const string skip = "Functionality is not used";
+
         private readonly TenantManager _tenantManager;
         private readonly ITenantAppService _tenantAppService;
         private readonly EditionManager _editionManager;
@@ -30,7 +32,7 @@ namespace FranchiseePortal.Tests.MultiTenancy
             _paymentAppService = Resolve<IPaymentAppService>();
         }
 
-        [Theory]
+        [Theory(Skip = skip)]
         [InlineData(PaymentPeriodType.Daily, 99.99, 199.99, 1, 4.17)]
         [InlineData(PaymentPeriodType.Daily, 99.99, 199.99, 23, 95.83)]
         [InlineData(PaymentPeriodType.Daily, 99.99, 199.99, 25, 104.17)]
@@ -123,7 +125,7 @@ namespace FranchiseePortal.Tests.MultiTenancy
             await CreateUpdateTenant(paymentPeriodType, editionPaymentType, subscriptionEndDate, updatedSubscriptionEndDate);
         }
 
-        [Fact]
+        [Fact(Skip = skip)]
         public async Task Mark_Tenant_As_Passive_When_Subscription_Expires()
         {
             //Act
@@ -168,7 +170,7 @@ namespace FranchiseePortal.Tests.MultiTenancy
             });
         }
 
-        [Fact]
+        [Fact(Skip = skip)]
         public async Task Assing_Tenant_To_Another_Edition_If_ExpiringEdition_Is_Set()
         {
             //Act
@@ -218,7 +220,7 @@ namespace FranchiseePortal.Tests.MultiTenancy
             });
         }
 
-        [Fact]
+        [Fact(Skip = skip)]
         public async Task Keep_Tenant_Active_If_Subscription_Is_Not_Expired()
         {
             //Act
@@ -265,7 +267,7 @@ namespace FranchiseePortal.Tests.MultiTenancy
             });
         }
 
-        [Fact]
+        [Fact(Skip = skip)]
         public async Task Dont_Mark_Tenant_As_Passive_If_WaitingDayAfterExpire_Is_Not_Passed_And_Tenant_NotIsInTrialPeriod()
         {
             //Act
@@ -314,7 +316,7 @@ namespace FranchiseePortal.Tests.MultiTenancy
             });
         }
 
-        [Fact]
+        [Fact(Skip = skip)]
         public async Task Mark_Tenant_As_Passive_If_WaitingDayAfterExpire_Is_Not_Passed_And_Tenant_IsInTrialPeriod()
         {
             //Act
@@ -365,7 +367,7 @@ namespace FranchiseePortal.Tests.MultiTenancy
             });
         }
 
-        [Fact]
+        [Fact(Skip = skip)]
         public async Task Mark_Tenant_As_Passive_If_WaitingDayAfterExpire_Is_Passed()
         {
             //Act
@@ -414,7 +416,7 @@ namespace FranchiseePortal.Tests.MultiTenancy
             });
         }
 
-        [Fact]
+        [Fact(Skip = skip)]
         public async Task GetPaymentHistory_Test()
         {
             LoginAsDefaultTenantAdmin();

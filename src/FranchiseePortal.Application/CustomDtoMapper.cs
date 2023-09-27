@@ -52,6 +52,7 @@ using FranchiseePortal.ToursEditor.Dtos;
 using FranchiseePortal.ToursWebApiClient.Model;
 using FranchiseePortal.LeadsEditor.Dtos;
 using FranchiseePortal.ToursSettingsEditor.Dtos;
+using FranchiseePortal.Application.Shared.LeadsEditor.Models;
 
 namespace FranchiseePortal
 {
@@ -114,7 +115,6 @@ namespace FranchiseePortal
             configuration.CreateMap<Permission, FlatPermissionWithLevelDto>();
 
             //Language
-            configuration.CreateMap<ApplicationLanguage, ApplicationLanguageEditDto>();
             configuration.CreateMap<ApplicationLanguage, ApplicationLanguageListDto>();
             configuration.CreateMap<NotificationDefinition, NotificationSubscriptionWithDisplayNameDto>();
             configuration.CreateMap<ApplicationLanguage, ApplicationLanguageEditDto>()
@@ -194,12 +194,29 @@ namespace FranchiseePortal
         internal static void CreateToursMappings(IMapperConfigurationExpression configuration)
         {
             configuration.CreateMap<ChildLead, TourItemLeadChildDto>();
-            configuration.CreateMap<LeadDto, TourItemLeadDto>();
+            configuration.CreateMap<LeadDto, TourItemLeadDto>()
+                .ForMember(x => x.LevelOfInterest, opt => opt.Ignore());
+            configuration.CreateMap<LeadFindResult, LeadFindDto>()
+                .IncludeMembers(x => x.LeadFindResultDto);
+            configuration.CreateMap<LeadDto, LeadFindDto>()
+                .ForMember(x => x.HasUpcomingTour, opt => opt.Ignore());
+
             configuration.CreateMap<TourDto, TourItemDto>()
                 // Leads get mapped from Leads API
                 .ForMember(x => x.Lead, opt => opt.Ignore());
 
-            configuration.CreateMap<TourSettingsDto, AppTourSettingsDto>();
+            configuration.CreateMap<TourDto, TourInputDto>();
+
+            configuration.CreateMap<TourSettingsDto, AppTourSettingsDto>()
+                // Retrieved from app settings
+                .ForMember(x => x.AllowedTourDurationOptionsInMinutes, opt => opt.Ignore())
+                .ForMember(x => x.OnlineOptions, opt => opt.Ignore());
+
+            configuration.CreateMap<TourSettingsDto, TourSettingsInputDto>();
+
+            // Only need source properties because our code maps to pre-populated target DTO
+            configuration.CreateMap<SaveOnlineTourSettingsInput, TourSettingsInputDto>(
+                MemberList.Source);
         }
     }
 }

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\common.props"></Import>
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <AssemblyName>FranchiseePortal.Application</AssemblyName>
     <PackageId>FranchiseePortal.Application</PackageId>
@@ -16,9 +16,10 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Abp.EntityFrameworkCore.EFPlus" Version="6.5.0" />
+    <PackageReference Include="Ardalis.GuardClauses" Version="4.0.1" />
     <PackageReference Include="NPOI" Version="2.5.4" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.33" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\api\FranchiseePortal.AuthorizationWebApiClient\src\FranchiseePortal.AuthorizationWebApiClient\FranchiseePortal.AuthorizationWebApiClient.csproj" />

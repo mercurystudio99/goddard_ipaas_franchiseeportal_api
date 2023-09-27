@@ -1,4 +1,5 @@
 # FranchiseePortal.LeadsWebApiClient.Model.FranchiseLead
+Input for franchise lead
 
 ## Properties
 
@@ -18,7 +19,7 @@ Name | Type | Description | Notes
 **GaMedium** | **string** |  | [optional] 
 **GaSource** | **string** |  | [optional] 
 **GRecaptchaResponse** | **string** |  | 
-**Liquidity** | **int** |  | 
+**Liquidity** | **int?** |  | [optional] 
 **LeadMarketsofInterest** | **List&lt;int&gt;** |  | [optional] 
 **OtherMarketsofInterest** | **string** |  | [optional] 
 

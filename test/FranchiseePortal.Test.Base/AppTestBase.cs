@@ -29,6 +29,9 @@ namespace FranchiseePortal.Test.Base
     {
         protected AppTestBase()
         {
+            // Reset static in-memory configuration collection before each test
+            TestAppConfigurationAccessor.InMemoryCollection.Clear();
+
             SeedTestData();
             LoginAsDefaultTenantAdmin();
         }

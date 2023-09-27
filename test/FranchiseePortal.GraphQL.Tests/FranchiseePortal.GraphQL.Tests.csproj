@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\common.props"></Import>
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <AssemblyName>FranchiseePortal.GraphQL.Tests</AssemblyName>
     <PackageId>FranchiseePortal.GraphQL.Tests</PackageId>
@@ -12,6 +12,11 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\..\src\FranchiseePortal.Web.Host\log4net.config" Link="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\FranchiseePortal.GraphQL\FranchiseePortal.GraphQL.csproj" />
     <ProjectReference Include="..\FranchiseePortal.Test.Base\FranchiseePortal.Test.Base.csproj" />

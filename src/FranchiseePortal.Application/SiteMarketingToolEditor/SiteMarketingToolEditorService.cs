@@ -27,14 +27,18 @@ namespace FranchiseePortal.SiteMarketingToolEditor
             {
                 var json = await _siteMarketingToolApi.ApiV1DcpSitemarketingtoolGetAsync(baseSiteMarketingToolPath, pageName);
 
-                html = HtmlDocumentHelper.PreparePageForIframeRendering(json, _appConfiguration["App:PageBaseUrl"]);                
+                html = HtmlDocumentHelper.PreparePageForIframeRendering(json, _appConfiguration["App:PageBaseUrl"]);
             }
             catch (ContentWebApiClient.Client.ApiException ex)
             {
-                if (ex.ErrorCode != (int)System.Net.HttpStatusCode.NotFound)
+                if (ex.ErrorCode == (int)System.Net.HttpStatusCode.NotFound)
+                {
+                    Logger.Error(ex.Message, ex);
+                }
+                else
                 {
                     throw;
-                }                
+                }
             }
 
             return new GetSitePageOutput()

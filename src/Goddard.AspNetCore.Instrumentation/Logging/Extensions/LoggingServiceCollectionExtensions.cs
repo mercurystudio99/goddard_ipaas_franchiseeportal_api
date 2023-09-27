@@ -23,8 +23,11 @@ namespace Goddard.AspNetCore.Logging.Extensions
             services.Configure<GoddardHttpLoggingOptions>(
                 configuration.GetSection(GoddardHttpLoggingOptions.DEFAULT_CONFIGURATION_SECTION));
 
-            services.AddApplicationInsightsTelemetry();
-
+            if(!string.IsNullOrEmpty(configuration["ApplicationInsights:ConnectionString"]))
+            {
+                services.AddApplicationInsightsTelemetry();
+            }
+            
             // User Story 16452: Add centralized logging to Application Insights to Tours API
             // Each API should standardize their error response contract - Should follow the  RFC 7807 specification
             // Add services for ProblemDetailsMiddleware

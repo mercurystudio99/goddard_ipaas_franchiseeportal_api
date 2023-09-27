@@ -35,10 +35,14 @@ namespace FranchiseePortal.ToursWebApiClient.Model
         /// Initializes a new instance of the <see cref="TourGuideDto" /> class.
         /// </summary>
         /// <param name="id">id.</param>
+        /// <param name="firstName">firstName.</param>
+        /// <param name="lastName">lastName.</param>
         /// <param name="name">name.</param>
-        public TourGuideDto(string id = default(string), string name = default(string))
+        public TourGuideDto(string id = default(string), string firstName = default(string), string lastName = default(string), string name = default(string))
         {
             this.Id = id;
+            this.FirstName = firstName;
+            this.LastName = lastName;
             this.Name = name;
         }
 
@@ -47,6 +51,18 @@ namespace FranchiseePortal.ToursWebApiClient.Model
         /// </summary>
         [DataMember(Name = "id", EmitDefaultValue = true)]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or Sets FirstName
+        /// </summary>
+        [DataMember(Name = "firstName", EmitDefaultValue = true)]
+        public string FirstName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LastName
+        /// </summary>
+        [DataMember(Name = "lastName", EmitDefaultValue = true)]
+        public string LastName { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
@@ -63,6 +79,8 @@ namespace FranchiseePortal.ToursWebApiClient.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class TourGuideDto {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  FirstName: ").Append(FirstName).Append("\n");
+            sb.Append("  LastName: ").Append(LastName).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -105,6 +123,16 @@ namespace FranchiseePortal.ToursWebApiClient.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.FirstName == input.FirstName ||
+                    (this.FirstName != null &&
+                    this.FirstName.Equals(input.FirstName))
+                ) && 
+                (
+                    this.LastName == input.LastName ||
+                    (this.LastName != null &&
+                    this.LastName.Equals(input.LastName))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -123,6 +151,14 @@ namespace FranchiseePortal.ToursWebApiClient.Model
                 if (this.Id != null)
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
+                if (this.FirstName != null)
+                {
+                    hashCode = (hashCode * 59) + this.FirstName.GetHashCode();
+                }
+                if (this.LastName != null)
+                {
+                    hashCode = (hashCode * 59) + this.LastName.GetHashCode();
                 }
                 if (this.Name != null)
                 {

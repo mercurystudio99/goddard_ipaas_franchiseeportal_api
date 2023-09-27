@@ -5,511 +5,30 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/v1/cancellation-reasons": {
-      "get": {
+    "/api/v1/schools/{schoolCrmId}/availability": {
+      "delete": {
         "tags": [
-          "CancellationReasons"
+          "Availability"
         ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/TourCancellationReasonDto"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/TourCancellationReasonDto"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/TourCancellationReasonDto"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/Guides": {
-      "get": {
-        "tags": [
-          "Guides"
-        ],
+        "summary": "Deletes school customized regular (day of week) availability",
         "parameters": [
           {
-            "name": "schoolId",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/TourGuideDto"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/TourGuideDto"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/TourGuideDto"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        }
-      }
-    },
-    "/api/v1/Schedule/{schoolId}": {
-      "get": {
-        "tags": [
-          "Schedule"
-        ],
-        "parameters": [
-          {
-            "name": "schoolId",
+            "name": "schoolCrmId",
             "in": "path",
+            "description": "ID (CRM) of school",
             "required": true,
             "schema": {
               "type": "string"
-            }
-          },
-          {
-            "name": "startDate",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "endDate",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
+            },
+            "example": "F0EDC50F-ED22-DE11-B821-0014221C4264"
           }
         ],
         "responses": {
           "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ScheduleDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ScheduleDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ScheduleDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server Error"
-          }
-        }
-      }
-    },
-    "/api/v1/SchoolTourAvailability/{schoolId}": {
-      "get": {
-        "tags": [
-          "SchoolTourAvailability"
-        ],
-        "parameters": [
-          {
-            "name": "schoolId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/SchoolTourAvailabilityDto"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/SchoolTourAvailabilityDto"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/SchoolTourAvailabilityDto"
-                  }
-                }
-              }
-            }
+            "description": "Returns school tour settings"
           },
           "404": {
-            "description": "Not Found",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server Error"
-          }
-        }
-      }
-    },
-    "/api/v1/SchoolTourAvailability/default-availability/{schoolId}": {
-      "get": {
-        "tags": [
-          "SchoolTourAvailability"
-        ],
-        "parameters": [
-          {
-            "name": "schoolId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/SchoolTourAvailabilityDto"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/SchoolTourAvailabilityDto"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/SchoolTourAvailabilityDto"
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server Error"
-          }
-        }
-      }
-    },
-    "/api/v1/SchoolTourAvailability/include-single": {
-      "post": {
-        "tags": [
-          "SchoolTourAvailability"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SchoolTourAvailabilityDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SchoolTourAvailabilityDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/SchoolTourAvailabilityDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server Error"
-          }
-        }
-      }
-    },
-    "/api/v1/SchoolTourAvailability/include-batch": {
-      "post": {
-        "tags": [
-          "SchoolTourAvailability"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/SchoolTourAvailabilityDto"
-                }
-              }
-            },
-            "text/json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/SchoolTourAvailabilityDto"
-                }
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/SchoolTourAvailabilityDto"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server Error"
-          }
-        }
-      }
-    },
-    "/api/v1/SchoolTourAvailability/{id}": {
-      "put": {
-        "tags": [
-          "SchoolTourAvailability"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SchoolTourAvailabilityDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SchoolTourAvailabilityDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/SchoolTourAvailabilityDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "404": {
-            "description": "Not Found",
+            "description": "School not found",
             "content": {
               "text/plain": {
                 "schema": {
@@ -530,26 +49,46 @@
           }
         }
       },
-      "delete": {
+      "get": {
         "tags": [
-          "SchoolTourAvailability"
+          "Availability"
         ],
+        "summary": "Gets school regular (day of week) availability",
         "parameters": [
           {
-            "name": "id",
+            "name": "schoolCrmId",
             "in": "path",
+            "description": "ID (CRM) of school",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "F0EDC50F-ED22-DE11-B821-0014221C4264"
           }
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Returns school regular availability",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvailabilityDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvailabilityDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvailabilityDto"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Not Found",
+            "description": "School not found",
             "content": {
               "text/plain": {
                 "schema": {
@@ -569,47 +108,87 @@
             }
           }
         }
-      }
-    },
-    "/api/v1/SchoolTourAvailability/update-batch": {
+      },
       "put": {
         "tags": [
-          "SchoolTourAvailability"
+          "Availability"
+        ],
+        "summary": "Saves school regular (day of week) availability",
+        "parameters": [
+          {
+            "name": "schoolCrmId",
+            "in": "path",
+            "description": "ID (CRM) of school",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "F0EDC50F-ED22-DE11-B821-0014221C4264"
+          }
         ],
         "requestBody": {
+          "description": "input",
           "content": {
             "application/json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/SchoolTourAvailabilityDto"
-                }
+                "$ref": "#/components/schemas/AvailabilityInputDto"
               }
             },
             "text/json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/SchoolTourAvailabilityDto"
-                }
+                "$ref": "#/components/schemas/AvailabilityInputDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/SchoolTourAvailabilityDto"
-                }
+                "$ref": "#/components/schemas/AvailabilityInputDto"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Returns saved school regular availability",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvailabilityDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvailabilityDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvailabilityDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Request is invalid",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Not Found",
+            "description": "School not found",
             "content": {
               "text/plain": {
                 "schema": {
@@ -631,45 +210,260 @@
         }
       }
     },
-    "/api/v1/SchoolTourAvailability/delete-batch": {
+    "/api/v1/cancellation-reasons": {
+      "get": {
+        "tags": [
+          "CancellationReasons"
+        ],
+        "summary": "Gets cancellation reasons",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TourCancellationReasonDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TourCancellationReasonDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TourCancellationReasonDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/schools/{schoolCrmId}/date-availabilities/{date}": {
       "delete": {
         "tags": [
-          "SchoolTourAvailability"
+          "DateAvailabilities"
+        ],
+        "summary": "Deletes school customized date availability",
+        "parameters": [
+          {
+            "name": "schoolCrmId",
+            "in": "path",
+            "description": "ID (CRM) of school",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "F0EDC50F-ED22-DE11-B821-0014221C4264"
+          },
+          {
+            "name": "date",
+            "in": "path",
+            "description": "Date",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns school tour settings"
+          },
+          "404": {
+            "description": "School not found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "DateAvailabilities"
+        ],
+        "summary": "Gets school availability for a date",
+        "description": "If DateAvailability record does not exist will return regular availability for day of week\r\nof specified date",
+        "parameters": [
+          {
+            "name": "schoolCrmId",
+            "in": "path",
+            "description": "ID (CRM) of school",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "F0EDC50F-ED22-DE11-B821-0014221C4264"
+          },
+          {
+            "name": "date",
+            "in": "path",
+            "description": "Date",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns date availability",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DateAvailabilityDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DateAvailabilityDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DateAvailabilityDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "School not found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "DateAvailabilities"
+        ],
+        "summary": "Saves school date custom availability",
+        "parameters": [
+          {
+            "name": "schoolCrmId",
+            "in": "path",
+            "description": "ID (CRM) of school",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "F0EDC50F-ED22-DE11-B821-0014221C4264"
+          },
+          {
+            "name": "date",
+            "in": "path",
+            "description": "Date",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          }
         ],
         "requestBody": {
+          "description": "input",
           "content": {
             "application/json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/SchoolTourAvailabilityDto"
-                }
+                "$ref": "#/components/schemas/DateAvailabilityInputDto"
               }
             },
             "text/json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/SchoolTourAvailabilityDto"
-                }
+                "$ref": "#/components/schemas/DateAvailabilityInputDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/SchoolTourAvailabilityDto"
-                }
+                "$ref": "#/components/schemas/DateAvailabilityInputDto"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Returns date availability",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DateAvailabilityDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DateAvailabilityDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DateAvailabilityDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Request is invalid",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Not Found",
+            "description": "School not found",
             "content": {
               "text/plain": {
                 "schema": {
@@ -691,24 +485,295 @@
         }
       }
     },
-    "/api/v1/Settings/{schoolId}": {
+    "/api/v1/default-availability/{tourDuration}": {
+      "get": {
+        "tags": [
+          "DefaultAvailability"
+        ],
+        "summary": "Gets default availability for specified tourDuration",
+        "parameters": [
+          {
+            "name": "tourDuration",
+            "in": "path",
+            "description": "Default tour duration (30 or 60)",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 30
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvailabilityDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvailabilityDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvailabilityDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/schools/{schoolCrmId}/guides": {
+      "get": {
+        "tags": [
+          "Guides"
+        ],
+        "summary": "Gets school tour guides",
+        "parameters": [
+          {
+            "name": "schoolCrmId",
+            "in": "path",
+            "description": "ID (CRM) of school",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "F0EDC50F-ED22-DE11-B821-0014221C4264"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns school tour guides",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TourGuideDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TourGuideDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TourGuideDto"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "schoolCrmId is invalid",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "School not found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/schools/{schoolCrmId}/schedules": {
+      "get": {
+        "tags": [
+          "Schedules"
+        ],
+        "summary": "Gets school day schedules",
+        "parameters": [
+          {
+            "name": "schoolCrmId",
+            "in": "path",
+            "description": "ID (CRM) of school",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "F0EDC50F-ED22-DE11-B821-0014221C4264"
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "Start date",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "End date",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns day schedules",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ScheduleDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ScheduleDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ScheduleDto"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "School ID not found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/schools/{schoolCrmId}/settings": {
+      "delete": {
+        "tags": [
+          "Settings"
+        ],
+        "summary": "Deletes school customized tour settings",
+        "parameters": [
+          {
+            "name": "schoolCrmId",
+            "in": "path",
+            "description": "ID (CRM) of school",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "F0EDC50F-ED22-DE11-B821-0014221C4264"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "School not found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
       "get": {
         "tags": [
           "Settings"
         ],
+        "summary": "Gets school tour settings",
         "parameters": [
           {
-            "name": "schoolId",
+            "name": "schoolCrmId",
             "in": "path",
+            "description": "ID (CRM) of school",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "F0EDC50F-ED22-DE11-B821-0014221C4264"
           }
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Returns school tour settings",
             "content": {
               "text/plain": {
                 "schema": {
@@ -728,7 +793,7 @@
             }
           },
           "404": {
-            "description": "Not Found",
+            "description": "School not found",
             "content": {
               "text/plain": {
                 "schema": {
@@ -748,96 +813,50 @@
             }
           }
         }
-      }
-    },
-    "/api/v1/Settings": {
-      "post": {
-        "tags": [
-          "Settings"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TourSettingsDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TourSettingsDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/TourSettingsDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/TourSettingsDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TourSettingsDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TourSettingsDto"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/Settings/{id}": {
+      },
       "put": {
         "tags": [
           "Settings"
         ],
+        "summary": "Saves school tour settings",
         "parameters": [
           {
-            "name": "id",
+            "name": "schoolCrmId",
             "in": "path",
+            "description": "ID (CRM) of school",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "F0EDC50F-ED22-DE11-B821-0014221C4264"
           }
         ],
         "requestBody": {
+          "description": "",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TourSettingsDto"
+                "$ref": "#/components/schemas/TourSettingsInputDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/TourSettingsDto"
+                "$ref": "#/components/schemas/TourSettingsInputDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/TourSettingsDto"
+                "$ref": "#/components/schemas/TourSettingsInputDto"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Returns school tour settings"
           },
-          "404": {
-            "description": "Not Found",
+          "400": {
+            "description": "Request is invalid",
             "content": {
               "text/plain": {
                 "schema": {
@@ -855,65 +874,191 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "School not found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request conflicts with business requirements"
           }
         }
       }
     },
-    "/api/v1/Tours": {
+    "/api/tests/logging": {
+      "get": {
+        "tags": [
+          "Tests"
+        ],
+        "summary": "Calls log statements for each log level",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/tests/unhandled-exceptions": {
+      "get": {
+        "tags": [
+          "Tests"
+        ],
+        "summary": "Throws an unhandled exception",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/schools/{schoolCrmId}/tours": {
       "get": {
         "tags": [
           "Tours"
         ],
+        "summary": "Gets school tours",
         "parameters": [
           {
-            "name": "SchoolId",
-            "in": "query",
+            "name": "schoolCrmId",
+            "in": "path",
+            "description": "ID (CRM) of school",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "F0EDC50F-ED22-DE11-B821-0014221C4264"
           },
           {
-            "name": "Status",
+            "name": "Statuses",
             "in": "query",
             "schema": {
-              "$ref": "#/components/schemas/TourStatus"
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/TourStatus"
+              }
             }
           },
           {
-            "name": "StartDate",
+            "name": "StartDateTime",
             "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "EndDate",
-            "in": "query",
+            "description": "Gets or sets optional start UTC date and time query filter",
             "schema": {
               "type": "string",
               "format": "date-time"
             }
           },
           {
-            "name": "Type",
+            "name": "EndDateTime",
             "in": "query",
+            "description": "Gets or sets optional end UTC date and time query filter",
             "schema": {
-              "$ref": "#/components/schemas/TourTypes"
+              "type": "string",
+              "format": "date-time"
             }
           },
           {
-            "name": "GuideName",
+            "name": "Types",
             "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/TourType"
+              }
+            }
+          },
+          {
+            "name": "GuideIds",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "LeadIds",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "Lead.Name",
+            "in": "query",
+            "description": "Name to filter by",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "Lead.MaximumPreferredStartDate",
+            "in": "query",
+            "description": "Maximum preferred start date",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "Lead.MinimumPreferredStartDate",
+            "in": "query",
+            "description": "Minimum preferred start date",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "Lead.ProgramsOfInterest",
+            "in": "query",
+            "description": "Programs of interest",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "Sort",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/TourSort"
+            }
+          },
+          {
+            "name": "SortDirection",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/ListSortDirection"
             }
           },
           {
             "name": "Page",
             "in": "query",
             "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
               "type": "integer",
               "format": "int32"
             }
@@ -929,7 +1074,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Returns school tours",
             "content": {
               "text/plain": {
                 "schema": {
@@ -948,8 +1093,8 @@
               }
             }
           },
-          "400": {
-            "description": "Bad Request",
+          "404": {
+            "description": "School not found",
             "content": {
               "text/plain": {
                 "schema": {
@@ -974,28 +1119,42 @@
         "tags": [
           "Tours"
         ],
+        "summary": "Creates school tour",
+        "parameters": [
+          {
+            "name": "schoolCrmId",
+            "in": "path",
+            "description": "ID (CRM) of school",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "F0EDC50F-ED22-DE11-B821-0014221C4264"
+          }
+        ],
         "requestBody": {
+          "description": "",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TourDto"
+                "$ref": "#/components/schemas/TourInputDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/TourDto"
+                "$ref": "#/components/schemas/TourInputDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/TourDto"
+                "$ref": "#/components/schemas/TourInputDto"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Returns school tours",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1015,7 +1174,27 @@
             }
           },
           "400": {
-            "description": "Bad Request",
+            "description": "Request is invalid",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "School not found",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1037,24 +1216,37 @@
         }
       }
     },
-    "/api/v1/Tours/{id}": {
+    "/api/v1/schools/{schoolCrmId}/tours/{id}": {
       "get": {
         "tags": [
           "Tours"
         ],
+        "summary": "Gets school tour",
         "parameters": [
           {
-            "name": "id",
+            "name": "schoolCrmId",
             "in": "path",
+            "description": "ID (CRM) of school",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "F0EDC50F-ED22-DE11-B821-0014221C4264"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of tour",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "45A6F328-55E4-409C-BB89-2E5B0B29632D"
           }
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Returns school tours",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1074,7 +1266,7 @@
             }
           },
           "404": {
-            "description": "Not Found",
+            "description": "Tour not found",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1092,6 +1284,9 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "schoolId is invalid"
           }
         }
       },
@@ -1099,41 +1294,55 @@
         "tags": [
           "Tours"
         ],
+        "summary": "Saves school tour",
         "parameters": [
           {
-            "name": "id",
+            "name": "schoolCrmId",
             "in": "path",
+            "description": "ID (CRM) of school",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "F0EDC50F-ED22-DE11-B821-0014221C4264"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of tour",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "45A6F328-55E4-409C-BB89-2E5B0B29632D"
           }
         ],
         "requestBody": {
+          "description": "",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TourDto"
+                "$ref": "#/components/schemas/TourInputDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/TourDto"
+                "$ref": "#/components/schemas/TourInputDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/TourDto"
+                "$ref": "#/components/schemas/TourInputDto"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Returns school tours"
           },
           "404": {
-            "description": "Not Found",
+            "description": "School or tour not found",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1151,6 +1360,9 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Request is invalid"
           }
         }
       }
@@ -1158,6 +1370,116 @@
   },
   "components": {
     "schemas": {
+      "AvailabilityBlockDto": {
+        "type": "object",
+        "properties": {
+          "dayOfWeek": {
+            "$ref": "#/components/schemas/DayOfWeek"
+          },
+          "startTime": {
+            "type": "string",
+            "description": "Gets or sets start time of availability block",
+            "format": "date-time"
+          },
+          "endTime": {
+            "type": "string",
+            "description": "Gets or sets end time of availability block",
+            "format": "date-time"
+          },
+          "tourTypes": {
+            "$ref": "#/components/schemas/TourTypes"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Availability block DTO"
+      },
+      "AvailabilityDto": {
+        "type": "object",
+        "properties": {
+          "blocks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AvailabilityBlockDto"
+            },
+            "nullable": true
+          },
+          "isSystemDefault": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AvailabilityInputDto": {
+        "type": "object",
+        "properties": {
+          "blocks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AvailabilityBlockDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DateAvailabilityBlockDto": {
+        "type": "object",
+        "properties": {
+          "startTime": {
+            "type": "string",
+            "description": "Gets or sets start time of availability block",
+            "format": "date-time"
+          },
+          "endTime": {
+            "type": "string",
+            "description": "Gets or sets end time of availability block",
+            "format": "date-time"
+          },
+          "tourTypes": {
+            "$ref": "#/components/schemas/TourTypes"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Date specific availability block DTO"
+      },
+      "DateAvailabilityDto": {
+        "type": "object",
+        "properties": {
+          "blocks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DateAvailabilityBlockDto"
+            },
+            "nullable": true
+          },
+          "isAllDayBlocked": {
+            "type": "boolean"
+          },
+          "date": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Date availability output DTO"
+      },
+      "DateAvailabilityInputDto": {
+        "type": "object",
+        "properties": {
+          "blocks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DateAvailabilityBlockDto"
+            },
+            "nullable": true
+          },
+          "isAllDayBlocked": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Date availability input DTO"
+      },
       "DayOfWeek": {
         "enum": [
           "Sunday",
@@ -1176,6 +1498,13 @@
           "SixMonths",
           "TwelveMonths",
           "None"
+        ],
+        "type": "string"
+      },
+      "ListSortDirection": {
+        "enum": [
+          "Ascending",
+          "Descending"
         ],
         "type": "string"
       },
@@ -1204,21 +1533,24 @@
             "nullable": true
           }
         },
-        "additionalProperties": { }
+        "additionalProperties": {}
       },
       "ScheduleDto": {
         "type": "object",
         "properties": {
-          "schoolId": {
-            "type": "string",
-            "nullable": true
-          },
-          "availability": {
+          "items": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ScheduleItemDto"
             },
             "nullable": true
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isAllDayBlocked": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -1226,64 +1558,46 @@
       "ScheduleItemDto": {
         "type": "object",
         "properties": {
-          "type": {
-            "$ref": "#/components/schemas/TourTypes"
-          },
           "startDateTime": {
             "type": "string",
+            "description": "Start date and time of tour",
             "format": "date-time"
           },
           "endDateTime": {
             "type": "string",
-            "format": "date-time"
-          },
-          "attendeeCount": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "slotsAvailable": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "SchoolTourAvailabilityDto": {
-        "required": [
-          "dayOfWeek",
-          "endTime",
-          "schoolId",
-          "startTime",
-          "tourTypes"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "nullable": true
-          },
-          "schoolId": {
-            "type": "string"
-          },
-          "dayOfWeek": {
-            "$ref": "#/components/schemas/DayOfWeek"
-          },
-          "startTime": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "endTime": {
-            "type": "string",
+            "description": "Ending date and time of tour",
             "format": "date-time"
           },
           "tourTypes": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TourTypes"
-            }
+              "$ref": "#/components/schemas/ScheduleItemTourTypeDto"
+            },
+            "description": "An aggregation over Goddard.ToursWebApi.Dtos.ScheduleItemTourTypeDto.SlotsAvailable \r\nand Goddard.ToursWebApi.Dtos.ScheduleItemTourTypeDto.AttendeeCount, per TourType",
+            "nullable": true
           }
         },
         "additionalProperties": false
+      },
+      "ScheduleItemTourTypeDto": {
+        "type": "object",
+        "properties": {
+          "attendeeCount": {
+            "type": "integer",
+            "description": "Attendees count for schedule item",
+            "format": "int32"
+          },
+          "slotsAvailable": {
+            "type": "integer",
+            "description": "Available slots for schedule (by default -1 to denote unlimited slots)",
+            "format": "int32"
+          },
+          "tourType": {
+            "$ref": "#/components/schemas/TourType"
+          }
+        },
+        "additionalProperties": false,
+        "description": "DTO for info per tour type on a Goddard.ToursWebApi.Dtos.ScheduleItemDto"
       },
       "TourCancellationReasonDto": {
         "type": "object",
@@ -1308,54 +1622,46 @@
       },
       "TourDto": {
         "required": [
+          "endDateTime",
           "leadId",
           "schoolId",
-          "tourEndDate",
-          "tourStartDate"
+          "startDateTime"
         ],
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "nullable": true
-          },
           "leadId": {
+            "minLength": 1,
             "type": "string"
           },
           "notes": {
             "type": "string",
+            "description": "Notes",
             "nullable": true
           },
-          "tourStartDate": {
+          "startDateTime": {
             "type": "string",
+            "description": "Tour start UTC date and time",
             "format": "date-time"
           },
-          "tourEndDate": {
+          "endDateTime": {
             "type": "string",
-            "format": "date-time"
-          },
-          "createdOn": {
-            "type": "string",
+            "description": "Tour end UTC date and time",
             "format": "date-time"
           },
           "type": {
-            "$ref": "#/components/schemas/TourTypes"
-          },
-          "schoolId": {
-            "type": "string"
+            "$ref": "#/components/schemas/TourType"
           },
           "status": {
             "$ref": "#/components/schemas/TourStatus"
           },
           "guideId": {
             "type": "string",
+            "description": "Faculty ID of guide assigned to this tour",
             "nullable": true
-          },
-          "guide": {
-            "$ref": "#/components/schemas/TourGuideDto"
           },
           "classRoom": {
             "type": "string",
+            "description": "Tour class room",
             "nullable": true
           },
           "followUpTimeFrame": {
@@ -1363,19 +1669,34 @@
           },
           "cancellationReasonId": {
             "type": "string",
-            "nullable": true
-          },
-          "schoolTimeZone": {
-            "type": "string",
+            "description": "Cancellation reason ID of this tour",
             "nullable": true
           },
           "viewed": {
             "type": "string",
+            "description": "Date in UTC when the user viewed tour's details in FBP",
             "format": "date-time",
             "nullable": true
+          },
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdOn": {
+            "type": "string",
+            "description": "Tour creation date in UTC",
+            "format": "date-time"
+          },
+          "schoolId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "guide": {
+            "$ref": "#/components/schemas/TourGuideDto"
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "Output DTO for /tours endpoints"
       },
       "TourDtoPaginationDto": {
         "type": "object",
@@ -1401,6 +1722,14 @@
             "type": "string",
             "nullable": true
           },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
           "name": {
             "type": "string",
             "nullable": true
@@ -1408,51 +1737,153 @@
         },
         "additionalProperties": false
       },
-      "TourSettingsDto": {
+      "TourInputDto": {
         "required": [
-          "defaultTourGuide",
-          "maxOpenHouseParticipants",
-          "schoolId"
+          "endDateTime",
+          "leadId",
+          "startDateTime"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "leadId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "notes": {
             "type": "string",
+            "description": "Notes",
             "nullable": true
           },
-          "schoolId": {
-            "type": "string"
+          "startDateTime": {
+            "type": "string",
+            "description": "Tour start UTC date and time",
+            "format": "date-time"
           },
-          "maxOpenHouseParticipants": {
-            "type": "integer",
-            "format": "int32"
+          "endDateTime": {
+            "type": "string",
+            "description": "Tour end UTC date and time",
+            "format": "date-time"
           },
-          "defaultTourDuration": {
-            "type": "integer",
-            "format": "int32"
+          "type": {
+            "$ref": "#/components/schemas/TourType"
           },
-          "defaultTourGuide": {
-            "type": "string"
+          "status": {
+            "$ref": "#/components/schemas/TourStatus"
+          },
+          "guideId": {
+            "type": "string",
+            "description": "Faculty ID of guide assigned to this tour",
+            "nullable": true
+          },
+          "classRoom": {
+            "type": "string",
+            "description": "Tour class room",
+            "nullable": true
+          },
+          "followUpTimeFrame": {
+            "$ref": "#/components/schemas/FollowUpTimeFrame"
+          },
+          "cancellationReasonId": {
+            "type": "string",
+            "description": "Cancellation reason ID of this tour",
+            "nullable": true
+          },
+          "viewed": {
+            "type": "string",
+            "description": "Date in UTC when the user viewed tour's details in FBP",
+            "format": "date-time",
+            "nullable": true
           }
         },
         "additionalProperties": false
       },
+      "TourSettingsDto": {
+        "type": "object",
+        "properties": {
+          "defaultTourDuration": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "defaultTourGuideId": {
+            "type": "string",
+            "description": "Gets or sets default tour guide ID",
+            "nullable": true
+          },
+          "maxOpenHouseParticipants": {
+            "maximum": 5,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          },
+          "schoolId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TourSettingsInputDto": {
+        "type": "object",
+        "properties": {
+          "defaultTourDuration": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "defaultTourGuideId": {
+            "type": "string",
+            "description": "Gets or sets default tour guide ID",
+            "nullable": true
+          },
+          "maxOpenHouseParticipants": {
+            "maximum": 5,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TourSort": {
+        "enum": [
+          "Default",
+          "StartDateTime",
+          "Type",
+          "LeadFirstName",
+          "LeadLastName",
+          "TourGuide"
+        ],
+        "type": "string"
+      },
       "TourStatus": {
         "enum": [
+          "Unconfirmed",
           "Scheduled",
           "Completed",
           "NoShow",
           "Cancelled"
         ],
-        "type": "string"
+        "type": "string",
+        "description": "These values are mapped from TDB.TourStatus table"
       },
-      "TourTypes": {
+      "TourType": {
         "enum": [
           "InPerson",
-          "Online",
-          "Virtual"
+          "Online"
         ],
-        "type": "string"
+        "type": "string",
+        "description": "Tour type"
+      },
+      "TourTypes": {
+        "type": "array",
+        "items": {
+          "enum": [
+            "InPerson",
+            "Online"
+          ],
+          "type": "string"
+        },
+        "description": "Tour types",
+        "format": "int32"
       }
     },
     "securitySchemes": {
@@ -1465,7 +1896,7 @@
   },
   "security": [
     {
-      "ApiKeyAuth": [ ]
+      "ApiKeyAuth": []
     }
   ]
 }

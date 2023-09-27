@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **HomePhone** | **string** |  | [optional] 
 **WorkPhone** | **string** |  | [optional] 
 **PrimaryPhone** | **string** |  | [optional] [readonly] 
-**SchoolParentLeadId** | **long?** |  | [optional] 
+**SchoolParentLeadId** | **long?** | Id of the School Parent Lead | [optional] 
 **SchoolId** | **long** |  | 
 **FirstName** | **string** |  | 
 **LastName** | **string** |  | 

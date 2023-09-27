@@ -1,7 +1,7 @@
 ﻿using Abp.Application.Features;
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
-using Abp.UI;
+using FranchiseePortal.Extensions;
 using FranchiseePortal.Features;
 using FranchiseePortal.LeadsEditor.Dtos;
 using FranchiseePortal.LeadsWebApiClient.Api;
@@ -16,7 +16,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-
 namespace FranchiseePortal.ToursEditor
 {
     [RequiresFeature(AppFeatures.TourFeature)]
@@ -28,8 +27,7 @@ namespace FranchiseePortal.ToursEditor
         private readonly IGuidesApi _guidesClient;
         private readonly ISchoolParentLeadsApi _leadsClient;
         private readonly ISchoolsApi _schoolsApi;
-        private readonly IScheduleApi _scheduleApi;
-        private readonly ISchoolTourAvailabilityApi _availabilityApi;
+        private readonly ISchedulesApi _schedulesApi;
         #endregion
 
         //========================================================================================
@@ -40,15 +38,13 @@ namespace FranchiseePortal.ToursEditor
             ISchoolParentLeadsApi leadsClient,
             ISchoolsApi schoolsApi,
             IGuidesApi guidesApi,
-            IScheduleApi scheduleApi,
-            ISchoolTourAvailabilityApi availabilityApi)
+            ISchedulesApi schedulesApi)
         {
             _toursClient = toursClient;
             _leadsClient = leadsClient;
             _schoolsApi = schoolsApi;
             _guidesClient = guidesApi;
-            _scheduleApi = scheduleApi;
-            _availabilityApi = availabilityApi;
+            _schedulesApi = schedulesApi;
         }
 
         #endregion
@@ -57,67 +53,94 @@ namespace FranchiseePortal.ToursEditor
 
         #region Endpoints
 
+        /// <summary>
+        /// Gets school tours
+        /// </summary>
+        /// <param name="input">Tours parameters that can be searched</param>
+        /// <param name="cancellationToken"></param>
+        /// <returns>School tours</returns>
+        /// <response code="200">Returns school tours</response>
+        /// <response code="400">schoolId is invalid</response>
+        /// <response code="404">School not found</response>
         [HttpGet]
-        public async Task<PagedResultDto<TourItemDto>> FindTours(FindToursInput input)
+        public async Task<PagedResultDto<TourItemDto>> FindTours(
+            FindToursInput input,
+            CancellationToken cancellationToken = default)
         {
             if (!await AuthorizeForSchoolAsync(input.SchoolId))
             {
                 throw new AbpAuthorizationException("User is not authorized to modify school");
             }
 
-            // Fetch tours data
-            var toursSearchResult = await _toursClient.ApiV1ToursGetAsync(input.SchoolId, input.Status, input.StartDate, input.EndDate, input.Type, input.GuideName);
+            //need to know source for sorting to send appropiate column names to each Tours or Leads API
+            var school = await _schoolsApi.ApiV1SchoolsIdGetAsync(
+                input.SchoolId,
+                cancellationToken: cancellationToken);
 
-            List<LeadDto> leads = new List<LeadDto>();
-            if (input.HasAdvancedLeadFilters())
-            {
-                var school = await _schoolsApi.ApiV1SchoolsIdGetAsync(input.SchoolId);
+            // Fetch tours, filtered, sorted, and paged for all criteria
+            var toursSearchResult = await _toursClient.ApiV1SchoolsSchoolCrmIdToursGetAsync(
+                schoolCrmId: input.SchoolId,
+                statuses: input.Statuses,
+                startDateTime: input.StartDateTime,
+                endDateTime: input.EndDateTime,
+                types: input.Types,
+                guideIds: input.GuideIds,
+                leadName: input.LeadName,
+                leadMaximumPreferredStartDate: input.LeadEndDate,
+                leadMinimumPreferredStartDate: input.LeadStartDate,
+                leadProgramsOfInterest: input.ProgramsOfInterest,
+                page: input.Page,
+                pageSize: input.PageSize,
+                sort: GetTourSort(input),
+                sortDirection: input.GetSortDirection(),
+                cancellationToken: cancellationToken);
 
-                // Fetch leads data using advanced filters only (empty query)
-                leads = (await _leadsClient.ApiV1SchoolLeadsGetAsync(
-                    long.Parse(school.FmsId), null, input.LeadName, input.ChildAge,
-                    input.LeadStartDate, input.LeadEndDate, input.ProgramsOfInterest,
-                    1, int.MaxValue)).Items;
-            }
-            else
-            {
-                var leadIds = toursSearchResult.Items
-                    .Select(x => x.LeadId)
-                    .Distinct()
-                    .ToList();
-
-                leads = (await _leadsClient.ApiV1SchoolLeadsQueryByIdsPostAsync(leadIds))
-                    .ToList();
-
-                if (leadIds.Count > leads.Count)
-                {
-                    Logger.WarnFormat("Expected {expected}, but received {actual} leads",
-                            leadIds.Count,
-                            leads.Count);
-                }
-            }
+            // Fetch leads
+            var leads = await _leadsClient.ApiV1SchoolLeadsQueryByIdsPostAsync(
+                toursSearchResult.Items.Select(x => x.LeadId.ToString()).ToList(),
+                cancellationToken: cancellationToken);
 
             // Join tours and leads on lead ID and map to TourDto
-            var items = toursSearchResult.Items.Join(
-                leads,
-                outer => outer.LeadId,
-                inner => inner.SchoolParentLeadId.ToString(),
-                (tour, lead) => CreateTourItemDto(tour, lead))
+            var dtos = toursSearchResult
+                .Items
+                .Join(
+                    leads,
+                    outer => outer.LeadId,
+                    inner => inner.SchoolParentLeadId,
+                    CreateTourItemDto)
                 .ToList();
 
-            var result = new PagedResultDto<TourItemDto>(toursSearchResult.Total, items);
+            var result = new PagedResultDto<TourItemDto>(toursSearchResult.Total, dtos);
             return result;
         }
 
         [HttpGet]
-        public async Task<List<TourGuideDto>> GetSchoolGuides(string crmId)
+        public async Task<TourItemDto> GetTour(string schoolId, string id)
         {
-            if (!await AuthorizeForSchoolAsync(crmId))
+            if (!await AuthorizeForSchoolAsync(schoolId))
+            {
+                throw new AbpAuthorizationException("User is not authorized to modify school");
+            }
+
+            // Fetch tour and lead data
+            var tour = await _toursClient.ApiV1SchoolsSchoolCrmIdToursIdGetAsync(schoolId, id);
+            var lead = await _leadsClient.ApiV1SchoolLeadsIdGetAsync(tour.LeadId);
+
+            // map to TourDto
+            var result = CreateTourItemDto(tour, lead);
+
+            return result;
+        }
+
+        [HttpGet]
+        public async Task<List<TourGuideDto>> GetSchoolGuides(string schoolId)
+        {
+            if (!await AuthorizeForSchoolAsync(schoolId))
             {
                 throw new AbpAuthorizationException("User is not authorized to access school");
             }
 
-            var result = await _guidesClient.ApiV1GuidesGetAsync(crmId);
+            var result = await _guidesClient.ApiV1SchoolsSchoolCrmIdGuidesGetAsync(schoolId);
 
             return result;
         }
@@ -129,30 +152,34 @@ namespace FranchiseePortal.ToursEditor
                 throw new AbpAuthorizationException("User is not authorized to modify school");
             }
 
-            var tour = CreateTourInput.CreateTourDto(tourDto);
+            var apiInputDto = CreateTourInput.CreateApiTourInputDto(tourDto);
 
-            var result = await _toursClient.ApiV1ToursPostAsync(tour);
+            await _toursClient.ApiV1SchoolsSchoolCrmIdToursPostAsync(
+                tourDto.SchoolId,
+                apiInputDto);
 
             //Update lead
             await UpdateLead(tourDto.Lead.GuidId, CreateLeadInput.CreateLeadUpdateRequest(tourDto.Lead));
         }
 
-        public async Task UpdateTour(string id, UpdateTourInput tourDto)
+        public async Task UpdateTour(string id, UpdateTourInput input)
         {
-            if (!await AuthorizeForSchoolAsync(tourDto.SchoolId))
+            if (!await AuthorizeForSchoolAsync(input.SchoolId))
             {
                 throw new AbpAuthorizationException("User is not authorized to modify school");
             }
 
             //Update lead
-            await UpdateLead(tourDto.Lead.GuidId, UpdateLeadInput.CreateLeadUpdateRequest(tourDto.Lead));
+            await UpdateLead(input.Lead.GuidId, UpdateLeadInput.CreateLeadUpdateRequest(input.Lead));
 
-            var tour = await _toursClient.ApiV1ToursIdGetAsync(id);
+            var tour = await _toursClient.ApiV1SchoolsSchoolCrmIdToursIdGetAsync(input.SchoolId, id);
 
-            UpdateTourInput.UpdateTourFields(tourDto, tour);
+            var apiInput = ObjectMapper.Map<TourInputDto>(tour);
+
+            UpdateTourInput.UpdateTourFields(input, apiInput);
 
             //Update Tour
-            await _toursClient.ApiV1ToursIdPutAsync(id, tour);
+            await _toursClient.ApiV1SchoolsSchoolCrmIdToursIdPutAsync(input.SchoolId, id, apiInput);
         }
 
         private async Task UpdateLead(Guid guidId, ApiV1SchoolLeadsIdTourPutRequest leadUpdate)
@@ -160,80 +187,31 @@ namespace FranchiseePortal.ToursEditor
             await _leadsClient.ApiV1SchoolLeadsIdTourPutAsync(guidId, leadUpdate);
         }
 
-        public async Task<ScheduleDto> GetSchedule(string schoolId, DateTime? startDate, DateTime? endDate)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="schoolId"></param>
+        /// <param name="startDate">Start UTC date</param>
+        /// <param name="endDate">End UTC date</param>
+        /// <returns></returns>
+        /// <exception cref="AbpAuthorizationException"></exception>
+        public async Task<IEnumerable<ScheduleDto>> GetSchedules(
+            string schoolId,
+            DateTime startDate,
+            DateTime endDate)
         {
             if (!await AuthorizeForSchoolAsync(schoolId))
             {
                 throw new AbpAuthorizationException("User is not authorized to access school");
             }
 
-            var result = await _scheduleApi.ApiV1ScheduleSchoolIdGetAsync(schoolId, startDate, endDate);
+            var result = await _schedulesApi.ApiV1SchoolsSchoolCrmIdSchedulesGetAsync(
+                schoolId,
+                startDate.ToApiDateOnlyCompatibleDateTime(),
+                endDate.ToApiDateOnlyCompatibleDateTime());
 
             return result;
         }
-
-        [HttpGet]
-        public async Task<List<SchoolTourAvailabilityDto>> GetSchoolTourAvailabilities(string schoolId, CancellationToken cancellationToken = default)
-        {
-            if (!await AuthorizeForSchoolAsync(schoolId))
-            {
-                throw new AbpAuthorizationException("User is not authorized to access school");
-            }
-
-            var result = await _availabilityApi.ApiV1SchoolTourAvailabilitySchoolIdGetAsync(schoolId, cancellationToken: cancellationToken);
-
-            return result;
-        }
-
-        [HttpGet]
-        public async Task<List<SchoolTourAvailabilityDto>> GetSchoolDefaultTourAvailabilities(string schoolId, CancellationToken cancellationToken = default)
-        {
-            if (!await AuthorizeForSchoolAsync(schoolId))
-            {
-                throw new AbpAuthorizationException("User is not authorized to access school");
-            }
-
-            var result = await _availabilityApi.ApiV1SchoolTourAvailabilityDefaultAvailabilitySchoolIdGetAsync(schoolId);
-
-            return result;
-        }
-
-
-        public async Task SaveSchoolTourAvailabilitySettings(string schoolId, List<SchoolTourAvailabilityDto> tourAvailabilities, CancellationToken cancellationToken = default)
-        {
-            if (!await AuthorizeForSchoolAsync(schoolId))
-            {
-                throw new AbpAuthorizationException("User is not authorized to access school");
-            }
-
-            var newTourAvailabilities = tourAvailabilities.Where(t => string.IsNullOrEmpty(t.Id)).ToList();
-            var updateTourAvailabilities = tourAvailabilities.Where(t => !string.IsNullOrEmpty(t.Id)).ToList();
-
-            //Create new ones
-            if (newTourAvailabilities.Any())
-            {
-                await _availabilityApi.ApiV1SchoolTourAvailabilityIncludeBatchPostAsync(newTourAvailabilities, cancellationToken: cancellationToken);
-            }
-
-            //Update
-            if (updateTourAvailabilities.Any())
-            {
-                await _availabilityApi.ApiV1SchoolTourAvailabilityUpdateBatchPutAsync(updateTourAvailabilities, cancellationToken: cancellationToken);
-            }
-        }
-
-        [HttpDelete]
-        public async Task DeleteSchoolTourAvailabilitySettings(string schoolId, [FromBody]List<SchoolTourAvailabilityDto> tourAvailabilities, CancellationToken cancellationToken = default)
-        {
-            if (!await AuthorizeForSchoolAsync(schoolId))
-            {
-                throw new AbpAuthorizationException("User is not authorized to access school");
-            }
-
-            await _availabilityApi.ApiV1SchoolTourAvailabilityDeleteBatchDeleteAsync(tourAvailabilities, cancellationToken: cancellationToken);
-        }
-
-
         #endregion
 
         //========================================================================================
@@ -246,6 +224,35 @@ namespace FranchiseePortal.ToursEditor
 
             return dto;
         }
-    }
 
+        private TourSort GetTourSort(FindToursInput input)
+        {
+
+            var sortField = input.GetSortField();
+
+            if (sortField.Contains(FindToursInput.DEFAULT_SORTING, StringComparison.OrdinalIgnoreCase))
+            {
+                return TourSort.Default;
+            }
+            else
+            {
+                switch (sortField)
+                {
+                    case "StartDateTime":
+                        return TourSort.StartDateTime;
+                    case "Type":
+                        return TourSort.Type;
+                    case "Guide.Name":
+                        return TourSort.TourGuide;
+                    case "Lead.FirstName":
+                        return TourSort.LeadFirstName;
+                    case "Lead.LastName":
+                        return TourSort.LeadLastName;
+                    default:
+                        throw new NotImplementedException($"{sortField} is not implemented");
+                }
+            }
+
+        }
+    }
 }

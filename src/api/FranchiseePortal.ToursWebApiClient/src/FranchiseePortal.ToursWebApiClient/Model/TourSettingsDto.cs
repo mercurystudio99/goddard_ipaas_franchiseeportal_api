@@ -34,52 +34,17 @@ namespace FranchiseePortal.ToursWebApiClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TourSettingsDto" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected TourSettingsDto() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TourSettingsDto" /> class.
-        /// </summary>
-        /// <param name="id">id.</param>
-        /// <param name="schoolId">schoolId (required).</param>
-        /// <param name="maxOpenHouseParticipants">maxOpenHouseParticipants (required).</param>
         /// <param name="defaultTourDuration">defaultTourDuration.</param>
-        /// <param name="defaultTourGuide">defaultTourGuide (required).</param>
-        public TourSettingsDto(string id = default(string), string schoolId = default(string), int maxOpenHouseParticipants = default(int), int defaultTourDuration = default(int), string defaultTourGuide = default(string))
+        /// <param name="defaultTourGuideId">Gets or sets default tour guide ID.</param>
+        /// <param name="maxOpenHouseParticipants">maxOpenHouseParticipants.</param>
+        /// <param name="schoolId">schoolId.</param>
+        public TourSettingsDto(int defaultTourDuration = default(int), string defaultTourGuideId = default(string), int maxOpenHouseParticipants = default(int), string schoolId = default(string))
         {
-            // to ensure "schoolId" is required (not null)
-            if (schoolId == null)
-            {
-                throw new ArgumentNullException("schoolId is a required property for TourSettingsDto and cannot be null");
-            }
-            this.SchoolId = schoolId;
-            this.MaxOpenHouseParticipants = maxOpenHouseParticipants;
-            // to ensure "defaultTourGuide" is required (not null)
-            if (defaultTourGuide == null)
-            {
-                throw new ArgumentNullException("defaultTourGuide is a required property for TourSettingsDto and cannot be null");
-            }
-            this.DefaultTourGuide = defaultTourGuide;
-            this.Id = id;
             this.DefaultTourDuration = defaultTourDuration;
+            this.DefaultTourGuideId = defaultTourGuideId;
+            this.MaxOpenHouseParticipants = maxOpenHouseParticipants;
+            this.SchoolId = schoolId;
         }
-
-        /// <summary>
-        /// Gets or Sets Id
-        /// </summary>
-        [DataMember(Name = "id", EmitDefaultValue = true)]
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SchoolId
-        /// </summary>
-        [DataMember(Name = "schoolId", IsRequired = true, EmitDefaultValue = false)]
-        public string SchoolId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MaxOpenHouseParticipants
-        /// </summary>
-        [DataMember(Name = "maxOpenHouseParticipants", IsRequired = true, EmitDefaultValue = false)]
-        public int MaxOpenHouseParticipants { get; set; }
 
         /// <summary>
         /// Gets or Sets DefaultTourDuration
@@ -88,10 +53,23 @@ namespace FranchiseePortal.ToursWebApiClient.Model
         public int DefaultTourDuration { get; set; }
 
         /// <summary>
-        /// Gets or Sets DefaultTourGuide
+        /// Gets or sets default tour guide ID
         /// </summary>
-        [DataMember(Name = "defaultTourGuide", IsRequired = true, EmitDefaultValue = false)]
-        public string DefaultTourGuide { get; set; }
+        /// <value>Gets or sets default tour guide ID</value>
+        [DataMember(Name = "defaultTourGuideId", EmitDefaultValue = true)]
+        public string DefaultTourGuideId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets MaxOpenHouseParticipants
+        /// </summary>
+        [DataMember(Name = "maxOpenHouseParticipants", EmitDefaultValue = false)]
+        public int MaxOpenHouseParticipants { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SchoolId
+        /// </summary>
+        [DataMember(Name = "schoolId", EmitDefaultValue = true)]
+        public string SchoolId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -101,11 +79,10 @@ namespace FranchiseePortal.ToursWebApiClient.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class TourSettingsDto {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  SchoolId: ").Append(SchoolId).Append("\n");
-            sb.Append("  MaxOpenHouseParticipants: ").Append(MaxOpenHouseParticipants).Append("\n");
             sb.Append("  DefaultTourDuration: ").Append(DefaultTourDuration).Append("\n");
-            sb.Append("  DefaultTourGuide: ").Append(DefaultTourGuide).Append("\n");
+            sb.Append("  DefaultTourGuideId: ").Append(DefaultTourGuideId).Append("\n");
+            sb.Append("  MaxOpenHouseParticipants: ").Append(MaxOpenHouseParticipants).Append("\n");
+            sb.Append("  SchoolId: ").Append(SchoolId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -142,27 +119,22 @@ namespace FranchiseePortal.ToursWebApiClient.Model
             }
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.DefaultTourDuration == input.DefaultTourDuration ||
+                    this.DefaultTourDuration.Equals(input.DefaultTourDuration)
                 ) && 
                 (
-                    this.SchoolId == input.SchoolId ||
-                    (this.SchoolId != null &&
-                    this.SchoolId.Equals(input.SchoolId))
+                    this.DefaultTourGuideId == input.DefaultTourGuideId ||
+                    (this.DefaultTourGuideId != null &&
+                    this.DefaultTourGuideId.Equals(input.DefaultTourGuideId))
                 ) && 
                 (
                     this.MaxOpenHouseParticipants == input.MaxOpenHouseParticipants ||
                     this.MaxOpenHouseParticipants.Equals(input.MaxOpenHouseParticipants)
                 ) && 
                 (
-                    this.DefaultTourDuration == input.DefaultTourDuration ||
-                    this.DefaultTourDuration.Equals(input.DefaultTourDuration)
-                ) && 
-                (
-                    this.DefaultTourGuide == input.DefaultTourGuide ||
-                    (this.DefaultTourGuide != null &&
-                    this.DefaultTourGuide.Equals(input.DefaultTourGuide))
+                    this.SchoolId == input.SchoolId ||
+                    (this.SchoolId != null &&
+                    this.SchoolId.Equals(input.SchoolId))
                 );
         }
 
@@ -175,19 +147,15 @@ namespace FranchiseePortal.ToursWebApiClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
+                hashCode = (hashCode * 59) + this.DefaultTourDuration.GetHashCode();
+                if (this.DefaultTourGuideId != null)
                 {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                    hashCode = (hashCode * 59) + this.DefaultTourGuideId.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.MaxOpenHouseParticipants.GetHashCode();
                 if (this.SchoolId != null)
                 {
                     hashCode = (hashCode * 59) + this.SchoolId.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.MaxOpenHouseParticipants.GetHashCode();
-                hashCode = (hashCode * 59) + this.DefaultTourDuration.GetHashCode();
-                if (this.DefaultTourGuide != null)
-                {
-                    hashCode = (hashCode * 59) + this.DefaultTourGuide.GetHashCode();
                 }
                 return hashCode;
             }
@@ -200,6 +168,18 @@ namespace FranchiseePortal.ToursWebApiClient.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
+            // MaxOpenHouseParticipants (int) maximum
+            if (this.MaxOpenHouseParticipants > (int)5)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for MaxOpenHouseParticipants, must be a value less than or equal to 5.", new [] { "MaxOpenHouseParticipants" });
+            }
+
+            // MaxOpenHouseParticipants (int) minimum
+            if (this.MaxOpenHouseParticipants < (int)1)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for MaxOpenHouseParticipants, must be a value greater than or equal to 1.", new [] { "MaxOpenHouseParticipants" });
+            }
+
             yield break;
         }
     }

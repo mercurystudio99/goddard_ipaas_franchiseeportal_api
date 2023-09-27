@@ -26,7 +26,7 @@ using OpenAPIDateConverter = FranchiseePortal.LeadsWebApiClient.Client.OpenAPIDa
 namespace FranchiseePortal.LeadsWebApiClient.Model
 {
     /// <summary>
-    /// ApiV1FranchiseLeadsPostRequest
+    /// Input for franchise lead
     /// </summary>
     [DataContract(Name = "_api_v1_franchise_leads_post_request")]
     public partial class ApiV1FranchiseLeadsPostRequest : IEquatable<ApiV1FranchiseLeadsPostRequest>, IValidatableObject
@@ -59,10 +59,10 @@ namespace FranchiseePortal.LeadsWebApiClient.Model
         /// <param name="gaMedium">gaMedium.</param>
         /// <param name="gaSource">gaSource.</param>
         /// <param name="gRecaptchaResponse">gRecaptchaResponse (required).</param>
-        /// <param name="liquidity">liquidity (required).</param>
+        /// <param name="liquidity">liquidity.</param>
         /// <param name="leadMarketsofInterest">leadMarketsofInterest.</param>
         /// <param name="otherMarketsofInterest">otherMarketsofInterest.</param>
-        public ApiV1FranchiseLeadsPostRequest(string firstName = default(string), string lastName = default(string), string email = default(string), string phone = default(string), string zip = default(string), string comments = default(string), ContactPreferences? userOptedIn = default(ContactPreferences?), string ipAddress = default(string), string gaCampaign = default(string), string gaClientID = default(string), string gaLandingPage = default(string), string gaMedium = default(string), string gaSource = default(string), string gRecaptchaResponse = default(string), int liquidity = default(int), List<int> leadMarketsofInterest = default(List<int>), string otherMarketsofInterest = default(string))
+        public ApiV1FranchiseLeadsPostRequest(string firstName = default(string), string lastName = default(string), string email = default(string), string phone = default(string), string zip = default(string), string comments = default(string), ContactPreferences? userOptedIn = default(ContactPreferences?), string ipAddress = default(string), string gaCampaign = default(string), string gaClientID = default(string), string gaLandingPage = default(string), string gaMedium = default(string), string gaSource = default(string), string gRecaptchaResponse = default(string), int? liquidity = default(int?), List<int> leadMarketsofInterest = default(List<int>), string otherMarketsofInterest = default(string))
         {
             // to ensure "firstName" is required (not null)
             if (firstName == null)
@@ -100,7 +100,6 @@ namespace FranchiseePortal.LeadsWebApiClient.Model
                 throw new ArgumentNullException("gRecaptchaResponse is a required property for ApiV1FranchiseLeadsPostRequest and cannot be null");
             }
             this.GRecaptchaResponse = gRecaptchaResponse;
-            this.Liquidity = liquidity;
             this.Comments = comments;
             this.UserOptedIn = userOptedIn;
             this.IpAddress = ipAddress;
@@ -109,6 +108,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Model
             this.GaLandingPage = gaLandingPage;
             this.GaMedium = gaMedium;
             this.GaSource = gaSource;
+            this.Liquidity = liquidity;
             this.LeadMarketsofInterest = leadMarketsofInterest;
             this.OtherMarketsofInterest = otherMarketsofInterest;
         }
@@ -194,8 +194,8 @@ namespace FranchiseePortal.LeadsWebApiClient.Model
         /// <summary>
         /// Gets or Sets Liquidity
         /// </summary>
-        [DataMember(Name = "liquidity", IsRequired = true, EmitDefaultValue = false)]
-        public int Liquidity { get; set; }
+        [DataMember(Name = "liquidity", EmitDefaultValue = true)]
+        public int? Liquidity { get; set; }
 
         /// <summary>
         /// Gets or Sets LeadMarketsofInterest
@@ -340,7 +340,8 @@ namespace FranchiseePortal.LeadsWebApiClient.Model
                 ) && 
                 (
                     this.Liquidity == input.Liquidity ||
-                    this.Liquidity.Equals(input.Liquidity)
+                    (this.Liquidity != null &&
+                    this.Liquidity.Equals(input.Liquidity))
                 ) && 
                 (
                     this.LeadMarketsofInterest == input.LeadMarketsofInterest ||
@@ -417,7 +418,10 @@ namespace FranchiseePortal.LeadsWebApiClient.Model
                 {
                     hashCode = (hashCode * 59) + this.GRecaptchaResponse.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Liquidity.GetHashCode();
+                if (this.Liquidity != null)
+                {
+                    hashCode = (hashCode * 59) + this.Liquidity.GetHashCode();
+                }
                 if (this.LeadMarketsofInterest != null)
                 {
                     hashCode = (hashCode * 59) + this.LeadMarketsofInterest.GetHashCode();

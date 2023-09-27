@@ -26,7 +26,7 @@ using OpenAPIDateConverter = FranchiseePortal.LeadsWebApiClient.Client.OpenAPIDa
 namespace FranchiseePortal.LeadsWebApiClient.Model
 {
     /// <summary>
-    /// TourLeadChildInput
+    /// Input DTO for childrens info captured during tour scheduling
     /// </summary>
     [DataContract(Name = "TourLeadChildInput")]
     public partial class TourLeadChildInput : IEquatable<TourLeadChildInput>, IValidatableObject

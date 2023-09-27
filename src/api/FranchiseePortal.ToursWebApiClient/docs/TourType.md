@@ -1,4 +1,5 @@
 # FranchiseePortal.ToursWebApiClient.Model.TourType
+Tour type
 
 ## Properties
 

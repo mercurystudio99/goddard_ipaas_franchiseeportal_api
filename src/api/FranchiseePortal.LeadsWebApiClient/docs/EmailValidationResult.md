@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **ConfidenceLevel** | **string** |  | [optional] 
 **Status** | **ValidationStatus** |  | [optional] 
 **VerboseOutput** | **string** |  | [optional] 
-**Succeeded** | **bool** |  | [optional] 
+**Succeeded** | **bool** | True if the operation was successful | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -47,7 +47,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Model
         /// </summary>
         /// <param name="homePhone">homePhone.</param>
         /// <param name="workPhone">workPhone.</param>
-        /// <param name="schoolParentLeadId">schoolParentLeadId.</param>
+        /// <param name="schoolParentLeadId">Id of the School Parent Lead.</param>
         /// <param name="schoolId">schoolId (required).</param>
         /// <param name="firstName">firstName (required).</param>
         /// <param name="lastName">lastName (required).</param>
@@ -149,8 +149,9 @@ namespace FranchiseePortal.LeadsWebApiClient.Model
             return false;
         }
         /// <summary>
-        /// Gets or Sets SchoolParentLeadId
+        /// Id of the School Parent Lead
         /// </summary>
+        /// <value>Id of the School Parent Lead</value>
         [DataMember(Name = "schoolParentLeadId", EmitDefaultValue = true)]
         [Obsolete]
         public long? SchoolParentLeadId { get; set; }

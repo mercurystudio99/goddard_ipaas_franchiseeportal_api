@@ -34,25 +34,33 @@ namespace FranchiseePortal.ToursWebApiClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ScheduleDto" /> class.
         /// </summary>
-        /// <param name="schoolId">schoolId.</param>
-        /// <param name="availability">availability.</param>
-        public ScheduleDto(string schoolId = default(string), List<ScheduleItemDto> availability = default(List<ScheduleItemDto>))
+        /// <param name="items">items.</param>
+        /// <param name="date">date.</param>
+        /// <param name="isAllDayBlocked">isAllDayBlocked.</param>
+        public ScheduleDto(List<ScheduleItemDto> items = default(List<ScheduleItemDto>), DateTime date = default(DateTime), bool isAllDayBlocked = default(bool))
         {
-            this.SchoolId = schoolId;
-            this.Availability = availability;
+            this.Items = items;
+            this.Date = date;
+            this.IsAllDayBlocked = isAllDayBlocked;
         }
 
         /// <summary>
-        /// Gets or Sets SchoolId
+        /// Gets or Sets Items
         /// </summary>
-        [DataMember(Name = "schoolId", EmitDefaultValue = true)]
-        public string SchoolId { get; set; }
+        [DataMember(Name = "items", EmitDefaultValue = true)]
+        public List<ScheduleItemDto> Items { get; set; }
 
         /// <summary>
-        /// Gets or Sets Availability
+        /// Gets or Sets Date
         /// </summary>
-        [DataMember(Name = "availability", EmitDefaultValue = true)]
-        public List<ScheduleItemDto> Availability { get; set; }
+        [DataMember(Name = "date", EmitDefaultValue = false)]
+        public DateTime Date { get; set; }
+
+        /// <summary>
+        /// Gets or Sets IsAllDayBlocked
+        /// </summary>
+        [DataMember(Name = "isAllDayBlocked", EmitDefaultValue = true)]
+        public bool IsAllDayBlocked { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -62,8 +70,9 @@ namespace FranchiseePortal.ToursWebApiClient.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ScheduleDto {\n");
-            sb.Append("  SchoolId: ").Append(SchoolId).Append("\n");
-            sb.Append("  Availability: ").Append(Availability).Append("\n");
+            sb.Append("  Items: ").Append(Items).Append("\n");
+            sb.Append("  Date: ").Append(Date).Append("\n");
+            sb.Append("  IsAllDayBlocked: ").Append(IsAllDayBlocked).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -100,15 +109,19 @@ namespace FranchiseePortal.ToursWebApiClient.Model
             }
             return 
                 (
-                    this.SchoolId == input.SchoolId ||
-                    (this.SchoolId != null &&
-                    this.SchoolId.Equals(input.SchoolId))
+                    this.Items == input.Items ||
+                    this.Items != null &&
+                    input.Items != null &&
+                    this.Items.SequenceEqual(input.Items)
                 ) && 
                 (
-                    this.Availability == input.Availability ||
-                    this.Availability != null &&
-                    input.Availability != null &&
-                    this.Availability.SequenceEqual(input.Availability)
+                    this.Date == input.Date ||
+                    (this.Date != null &&
+                    this.Date.Equals(input.Date))
+                ) && 
+                (
+                    this.IsAllDayBlocked == input.IsAllDayBlocked ||
+                    this.IsAllDayBlocked.Equals(input.IsAllDayBlocked)
                 );
         }
 
@@ -121,14 +134,15 @@ namespace FranchiseePortal.ToursWebApiClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.SchoolId != null)
+                if (this.Items != null)
                 {
-                    hashCode = (hashCode * 59) + this.SchoolId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Items.GetHashCode();
                 }
-                if (this.Availability != null)
+                if (this.Date != null)
                 {
-                    hashCode = (hashCode * 59) + this.Availability.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Date.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.IsAllDayBlocked.GetHashCode();
                 return hashCode;
             }
         }

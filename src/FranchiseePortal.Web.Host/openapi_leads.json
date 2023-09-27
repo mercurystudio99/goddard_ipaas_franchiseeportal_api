@@ -29,6 +29,7 @@
                     "$ref": "#/components/schemas/FranchiseLead"
                   }
                 ],
+                "description": "Input for franchise lead",
                 "nullable": true
               }
             },
@@ -39,6 +40,7 @@
                     "$ref": "#/components/schemas/FranchiseLead"
                   }
                 ],
+                "description": "Input for franchise lead",
                 "nullable": true
               }
             },
@@ -49,6 +51,7 @@
                     "$ref": "#/components/schemas/FranchiseLead"
                   }
                 ],
+                "description": "Input for franchise lead",
                 "nullable": true
               }
             }
@@ -66,6 +69,7 @@
         "tags": [
           "SchoolParentLeads"
         ],
+        "summary": "Allow search SchoolParentLead by first name, last name, email or phone",
         "parameters": [
           {
             "name": "q",
@@ -78,25 +82,31 @@
           {
             "name": "SchoolId",
             "in": "query",
+            "description": "ID of school to query leads for",
             "required": true,
             "schema": {
               "type": "integer",
+              "description": "ID of school to query leads for",
               "format": "int64"
             }
           },
           {
             "name": "Name",
             "in": "query",
+            "description": "for searching parent or children first/last name",
             "schema": {
               "type": "string",
+              "description": "for searching parent or children first/last name",
               "nullable": true
             }
           },
           {
             "name": "ChildAge",
             "in": "query",
+            "description": "for searching all childrens ages",
             "schema": {
               "type": "integer",
+              "description": "for searching all childrens ages",
               "format": "int32",
               "nullable": true
             }
@@ -104,8 +114,10 @@
           {
             "name": "StartDate",
             "in": "query",
+            "description": "Filter Preferred Start Date",
             "schema": {
               "type": "string",
+              "description": "Filter Preferred Start Date",
               "format": "date-time",
               "nullable": true
             }
@@ -113,8 +125,10 @@
           {
             "name": "EndDate",
             "in": "query",
+            "description": "Filter Preferred End Date",
             "schema": {
               "type": "string",
+              "description": "Filter Preferred End Date",
               "format": "date-time",
               "nullable": true
             }
@@ -122,11 +136,13 @@
           {
             "name": "ProgramsOfInterest",
             "in": "query",
+            "description": "List of searched programs that the School Parent Leads may be interested in",
             "schema": {
               "type": "array",
               "items": {
                 "type": "string"
               },
+              "description": "List of searched programs that the School Parent Leads may be interested in",
               "nullable": true
             }
           },
@@ -198,25 +214,31 @@
         "tags": [
           "SchoolParentLeads"
         ],
+        "summary": "",
         "parameters": [
           {
             "name": "async",
             "in": "query",
+            "description": "Specify false if operations should be synchronous.  Defaults to true.",
             "schema": {
               "type": "boolean",
+              "description": "Specify false if operations should be synchronous.  Defaults to true.",
               "default": true
             }
           },
           {
             "name": "appName",
             "in": "query",
+            "description": "",
             "schema": {
               "type": "string",
+              "description": "",
               "nullable": true
             }
           }
         ],
         "requestBody": {
+          "description": "",
           "content": {
             "application/json": {
               "schema": {
@@ -225,6 +247,7 @@
                     "$ref": "#/components/schemas/Lead"
                   }
                 ],
+                "description": "",
                 "nullable": true
               }
             },
@@ -235,6 +258,7 @@
                     "$ref": "#/components/schemas/Lead"
                   }
                 ],
+                "description": "",
                 "nullable": true
               }
             },
@@ -245,6 +269,7 @@
                     "$ref": "#/components/schemas/Lead"
                   }
                 ],
+                "description": "",
                 "nullable": true
               }
             }
@@ -299,13 +324,16 @@
         "tags": [
           "SchoolParentLeads"
         ],
+        "summary": "GET api/v1/school-leads/:id\r\n\r\nReturns leads for specified id",
         "parameters": [
           {
             "name": "id",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string",
+              "description": "",
               "nullable": true
             }
           }
@@ -339,13 +367,17 @@
         "tags": [
           "SchoolParentLeads"
         ],
+        "summary": "GET api/v1/school-leads/guid-id/:guid-id\r\n\r\nReturns leads for specified guid id",
+        "description": "We have this endpoint because it should be available to public clients\r\nwhereas M:Goddard.LeadsApi.Controllers.SchoolParentLeadsController.GetById(System.String) \r\nshould only be available for server to server API calls that are authorized",
         "parameters": [
           {
             "name": "guidId",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string",
+              "description": "",
               "format": "uuid"
             }
           }
@@ -379,7 +411,9 @@
         "tags": [
           "SchoolParentLeads"
         ],
+        "summary": "POST api/v1/school-leads/query-by-ids\r\n\r\nReturns leads for query by IDs",
         "requestBody": {
+          "description": "",
           "content": {
             "application/json": {
               "schema": {
@@ -387,6 +421,7 @@
                 "items": {
                   "type": "string"
                 },
+                "description": "",
                 "nullable": true
               }
             },
@@ -396,6 +431,7 @@
                 "items": {
                   "type": "string"
                 },
+                "description": "",
                 "nullable": true
               }
             },
@@ -405,6 +441,7 @@
                 "items": {
                   "type": "string"
                 },
+                "description": "",
                 "nullable": true
               }
             }
@@ -448,25 +485,31 @@
         "tags": [
           "SchoolParentLeads"
         ],
+        "summary": "this endpoint is allow saving new leads without validating captcha",
         "parameters": [
           {
             "name": "async",
             "in": "query",
+            "description": "Specify false if operations should be synchronous.  Defaults to true.",
             "schema": {
               "type": "boolean",
+              "description": "Specify false if operations should be synchronous.  Defaults to true.",
               "default": true
             }
           },
           {
             "name": "appName",
             "in": "query",
+            "description": "",
             "schema": {
               "type": "string",
+              "description": "",
               "nullable": true
             }
           }
         ],
         "requestBody": {
+          "description": "",
           "content": {
             "application/json": {
               "schema": {
@@ -475,6 +518,7 @@
                     "$ref": "#/components/schemas/LeadDtoInternal"
                   }
                 ],
+                "description": "",
                 "nullable": true
               }
             },
@@ -485,6 +529,7 @@
                     "$ref": "#/components/schemas/LeadDtoInternal"
                   }
                 ],
+                "description": "",
                 "nullable": true
               }
             },
@@ -495,6 +540,7 @@
                     "$ref": "#/components/schemas/LeadDtoInternal"
                   }
                 ],
+                "description": "",
                 "nullable": true
               }
             }
@@ -589,6 +635,7 @@
                     "$ref": "#/components/schemas/TourLeadInputDto"
                   }
                 ],
+                "description": "Input DTO for additional lead info captured during tour scheduling",
                 "nullable": true
               }
             },
@@ -599,6 +646,7 @@
                     "$ref": "#/components/schemas/TourLeadInputDto"
                   }
                 ],
+                "description": "Input DTO for additional lead info captured during tour scheduling",
                 "nullable": true
               }
             },
@@ -609,6 +657,7 @@
                     "$ref": "#/components/schemas/TourLeadInputDto"
                   }
                 ],
+                "description": "Input DTO for additional lead info captured during tour scheduling",
                 "nullable": true
               }
             }
@@ -678,17 +727,21 @@
         "tags": [
           "Validation"
         ],
+        "summary": "Returns the ValidationResult based on a given emailAddress",
         "parameters": [
           {
             "name": "appName",
             "in": "query",
+            "description": "",
             "schema": {
               "type": "string",
+              "description": "",
               "nullable": true
             }
           }
         ],
         "requestBody": {
+          "description": "",
           "content": {
             "application/json": {
               "schema": {
@@ -697,6 +750,7 @@
                     "$ref": "#/components/schemas/EmailValidationDto"
                   }
                 ],
+                "description": "",
                 "nullable": true
               }
             },
@@ -707,6 +761,7 @@
                     "$ref": "#/components/schemas/EmailValidationDto"
                   }
                 ],
+                "description": "",
                 "nullable": true
               }
             },
@@ -717,6 +772,7 @@
                     "$ref": "#/components/schemas/EmailValidationDto"
                   }
                 ],
+                "description": "",
                 "nullable": true
               }
             }
@@ -771,17 +827,21 @@
         "tags": [
           "Validation"
         ],
+        "summary": "Returns the ValidationResult based on a given phoneNumber",
         "parameters": [
           {
             "name": "appName",
             "in": "query",
+            "description": "",
             "schema": {
               "type": "string",
+              "description": "",
               "nullable": true
             }
           }
         ],
         "requestBody": {
+          "description": "",
           "content": {
             "application/json": {
               "schema": {
@@ -790,6 +850,7 @@
                     "$ref": "#/components/schemas/PhoneNumberValidationDto"
                   }
                 ],
+                "description": "",
                 "nullable": true
               }
             },
@@ -800,6 +861,7 @@
                     "$ref": "#/components/schemas/PhoneNumberValidationDto"
                   }
                 ],
+                "description": "",
                 "nullable": true
               }
             },
@@ -810,6 +872,7 @@
                     "$ref": "#/components/schemas/PhoneNumberValidationDto"
                   }
                 ],
+                "description": "",
                 "nullable": true
               }
             }
@@ -877,7 +940,6 @@
           "firstName",
           "g-recaptcha-response",
           "lastName",
-          "liquidity",
           "phone",
           "zip"
         ],
@@ -907,7 +969,8 @@
               {
                 "$ref": "#/components/schemas/ContactPreferences"
               }
-            ]
+            ],
+            "description": ""
           },
           "ipAddress": {
             "type": "string",
@@ -938,7 +1001,8 @@
           },
           "liquidity": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "leadMarketsofInterest": {
             "type": "array",
@@ -953,7 +1017,8 @@
             "nullable": true
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "Input for franchise lead"
       },
       "ReferredBy": {
         "enum": [
@@ -975,7 +1040,8 @@
           "Other",
           "EmployeeFamily"
         ],
-        "type": "string"
+        "type": "string",
+        "description": "Referred by types"
       },
       "ChildLead": {
         "required": [
@@ -1019,6 +1085,7 @@
         "properties": {
           "schoolId": {
             "type": "integer",
+            "description": "ID of school associated to lead",
             "format": "int64"
           },
           "firstName": {
@@ -1110,7 +1177,9 @@
           },
           "createdOn": {
             "type": "string",
-            "format": "date-time"
+            "description": "",
+            "format": "date-time",
+            "nullable": true
           },
           "guidId": {
             "type": "string",
@@ -1118,10 +1187,12 @@
           },
           "tourQuestions": {
             "type": "string",
+            "description": "Additional questions when scheduling tour",
             "nullable": true
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "Lead output DTO for sending lead summary info in responses"
       },
       "LeadDtoPaginationDto": {
         "type": "object",
@@ -1198,6 +1269,7 @@
           },
           "schoolParentLeadId": {
             "type": "integer",
+            "description": "Id of the School Parent Lead",
             "format": "int64",
             "nullable": true,
             "deprecated": true
@@ -1290,7 +1362,8 @@
             "type": "string"
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "Lead input DTO which extends validation"
       },
       "LeadDtoInternal": {
         "required": [
@@ -1322,6 +1395,7 @@
           },
           "schoolParentLeadId": {
             "type": "integer",
+            "description": "Id of the School Parent Lead",
             "format": "int64",
             "nullable": true,
             "deprecated": true
@@ -1411,7 +1485,8 @@
             "nullable": true
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "LeadDtoInternal Dto allow saving Parent leads removing the captcha validation."
       },
       "TourLeadChildInput": {
         "required": [
@@ -1427,7 +1502,8 @@
             "type": "string"
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "Input DTO for childrens info captured during tour scheduling"
       },
       "TourLeadInputDto": {
         "type": "object",
@@ -1444,6 +1520,7 @@
             "items": {
               "$ref": "#/components/schemas/DaysOfInterest"
             },
+            "description": "Days of interest selected",
             "nullable": true
           },
           "programsOfInterest": {
@@ -1455,10 +1532,12 @@
           },
           "tourQuestions": {
             "type": "string",
+            "description": "Additional questions when scheduling tour",
             "nullable": true
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "Input DTO for additional lead info captured during tour scheduling"
       },
       "EmailValidationDto": {
         "required": [
@@ -1531,7 +1610,8 @@
             "nullable": true
           },
           "succeeded": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "True if the operation was successful"
           }
         },
         "additionalProperties": false
@@ -1587,7 +1667,8 @@
             ]
           },
           "succeeded": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "True if the operation was successful"
           }
         },
         "additionalProperties": false

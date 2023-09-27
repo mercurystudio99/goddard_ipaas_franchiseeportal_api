@@ -27,67 +27,67 @@ namespace FranchiseePortal.ToursWebApiClient.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// 
+        /// Deletes school customized tour settings
         /// </summary>
         /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="tourSettingsDto"> (optional)</param>
+        /// <param name="schoolCrmId">ID (CRM) of school</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns></returns>
-        void ApiV1SettingsIdPut(string id, TourSettingsDto tourSettingsDto = default(TourSettingsDto), int operationIndex = 0);
+        void ApiV1SchoolsSchoolCrmIdSettingsDelete(string schoolCrmId, int operationIndex = 0);
 
         /// <summary>
-        /// 
+        /// Deletes school customized tour settings
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="tourSettingsDto"> (optional)</param>
+        /// <param name="schoolCrmId">ID (CRM) of school</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiV1SettingsIdPutWithHttpInfo(string id, TourSettingsDto tourSettingsDto = default(TourSettingsDto), int operationIndex = 0);
+        ApiResponse<Object> ApiV1SchoolsSchoolCrmIdSettingsDeleteWithHttpInfo(string schoolCrmId, int operationIndex = 0);
         /// <summary>
-        /// 
+        /// Gets school tour settings
         /// </summary>
         /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tourSettingsDto"> (optional)</param>
+        /// <param name="schoolCrmId">ID (CRM) of school</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TourSettingsDto</returns>
-        TourSettingsDto ApiV1SettingsPost(TourSettingsDto tourSettingsDto = default(TourSettingsDto), int operationIndex = 0);
+        TourSettingsDto ApiV1SchoolsSchoolCrmIdSettingsGet(string schoolCrmId, int operationIndex = 0);
 
         /// <summary>
-        /// 
+        /// Gets school tour settings
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tourSettingsDto"> (optional)</param>
+        /// <param name="schoolCrmId">ID (CRM) of school</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TourSettingsDto</returns>
-        ApiResponse<TourSettingsDto> ApiV1SettingsPostWithHttpInfo(TourSettingsDto tourSettingsDto = default(TourSettingsDto), int operationIndex = 0);
+        ApiResponse<TourSettingsDto> ApiV1SchoolsSchoolCrmIdSettingsGetWithHttpInfo(string schoolCrmId, int operationIndex = 0);
         /// <summary>
-        /// 
+        /// Saves school tour settings
         /// </summary>
         /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="schoolId"></param>
+        /// <param name="schoolCrmId">ID (CRM) of school</param>
+        /// <param name="tourSettingsInputDto"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>TourSettingsDto</returns>
-        TourSettingsDto ApiV1SettingsSchoolIdGet(string schoolId, int operationIndex = 0);
+        /// <returns></returns>
+        void ApiV1SchoolsSchoolCrmIdSettingsPut(string schoolCrmId, TourSettingsInputDto tourSettingsInputDto = default(TourSettingsInputDto), int operationIndex = 0);
 
         /// <summary>
-        /// 
+        /// Saves school tour settings
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="schoolId"></param>
+        /// <param name="schoolCrmId">ID (CRM) of school</param>
+        /// <param name="tourSettingsInputDto"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of TourSettingsDto</returns>
-        ApiResponse<TourSettingsDto> ApiV1SettingsSchoolIdGetWithHttpInfo(string schoolId, int operationIndex = 0);
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> ApiV1SchoolsSchoolCrmIdSettingsPutWithHttpInfo(string schoolCrmId, TourSettingsInputDto tourSettingsInputDto = default(TourSettingsInputDto), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -98,82 +98,82 @@ namespace FranchiseePortal.ToursWebApiClient.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// 
+        /// Deletes school customized tour settings
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="tourSettingsDto"> (optional)</param>
+        /// <param name="schoolCrmId">ID (CRM) of school</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiV1SettingsIdPutAsync(string id, TourSettingsDto tourSettingsDto = default(TourSettingsDto), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task ApiV1SchoolsSchoolCrmIdSettingsDeleteAsync(string schoolCrmId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// 
+        /// Deletes school customized tour settings
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="tourSettingsDto"> (optional)</param>
+        /// <param name="schoolCrmId">ID (CRM) of school</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiV1SettingsIdPutWithHttpInfoAsync(string id, TourSettingsDto tourSettingsDto = default(TourSettingsDto), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Object>> ApiV1SchoolsSchoolCrmIdSettingsDeleteWithHttpInfoAsync(string schoolCrmId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// 
+        /// Gets school tour settings
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tourSettingsDto"> (optional)</param>
+        /// <param name="schoolCrmId">ID (CRM) of school</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TourSettingsDto</returns>
-        System.Threading.Tasks.Task<TourSettingsDto> ApiV1SettingsPostAsync(TourSettingsDto tourSettingsDto = default(TourSettingsDto), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TourSettingsDto> ApiV1SchoolsSchoolCrmIdSettingsGetAsync(string schoolCrmId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// 
+        /// Gets school tour settings
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tourSettingsDto"> (optional)</param>
+        /// <param name="schoolCrmId">ID (CRM) of school</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TourSettingsDto)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TourSettingsDto>> ApiV1SettingsPostWithHttpInfoAsync(TourSettingsDto tourSettingsDto = default(TourSettingsDto), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TourSettingsDto>> ApiV1SchoolsSchoolCrmIdSettingsGetWithHttpInfoAsync(string schoolCrmId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// 
+        /// Saves school tour settings
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="schoolId"></param>
+        /// <param name="schoolCrmId">ID (CRM) of school</param>
+        /// <param name="tourSettingsInputDto"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of TourSettingsDto</returns>
-        System.Threading.Tasks.Task<TourSettingsDto> ApiV1SettingsSchoolIdGetAsync(string schoolId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task ApiV1SchoolsSchoolCrmIdSettingsPutAsync(string schoolCrmId, TourSettingsInputDto tourSettingsInputDto = default(TourSettingsInputDto), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// 
+        /// Saves school tour settings
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="schoolId"></param>
+        /// <param name="schoolCrmId">ID (CRM) of school</param>
+        /// <param name="tourSettingsInputDto"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (TourSettingsDto)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TourSettingsDto>> ApiV1SettingsSchoolIdGetWithHttpInfoAsync(string schoolId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> ApiV1SchoolsSchoolCrmIdSettingsPutWithHttpInfoAsync(string schoolCrmId, TourSettingsInputDto tourSettingsInputDto = default(TourSettingsInputDto), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -295,40 +295,35 @@ namespace FranchiseePortal.ToursWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// Deletes school customized tour settings 
         /// </summary>
         /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="tourSettingsDto"> (optional)</param>
+        /// <param name="schoolCrmId">ID (CRM) of school</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns></returns>
-        public void ApiV1SettingsIdPut(string id, TourSettingsDto tourSettingsDto = default(TourSettingsDto), int operationIndex = 0)
+        public void ApiV1SchoolsSchoolCrmIdSettingsDelete(string schoolCrmId, int operationIndex = 0)
         {
-            ApiV1SettingsIdPutWithHttpInfo(id, tourSettingsDto);
+            ApiV1SchoolsSchoolCrmIdSettingsDeleteWithHttpInfo(schoolCrmId);
         }
 
         /// <summary>
-        ///  
+        /// Deletes school customized tour settings 
         /// </summary>
         /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="tourSettingsDto"> (optional)</param>
+        /// <param name="schoolCrmId">ID (CRM) of school</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public FranchiseePortal.ToursWebApiClient.Client.ApiResponse<Object> ApiV1SettingsIdPutWithHttpInfo(string id, TourSettingsDto tourSettingsDto = default(TourSettingsDto), int operationIndex = 0)
+        public FranchiseePortal.ToursWebApiClient.Client.ApiResponse<Object> ApiV1SchoolsSchoolCrmIdSettingsDeleteWithHttpInfo(string schoolCrmId, int operationIndex = 0)
         {
-            // verify the required parameter 'id' is set
-            if (id == null)
+            // verify the required parameter 'schoolCrmId' is set
+            if (schoolCrmId == null)
             {
-                throw new FranchiseePortal.ToursWebApiClient.Client.ApiException(400, "Missing required parameter 'id' when calling SettingsApi->ApiV1SettingsIdPut");
+                throw new FranchiseePortal.ToursWebApiClient.Client.ApiException(400, "Missing required parameter 'schoolCrmId' when calling SettingsApi->ApiV1SchoolsSchoolCrmIdSettingsDelete");
             }
 
             FranchiseePortal.ToursWebApiClient.Client.RequestOptions localVarRequestOptions = new FranchiseePortal.ToursWebApiClient.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json",
-                "text/json",
-                "application/_*+json"
             };
 
             // to determine the Accept header
@@ -350,10 +345,9 @@ namespace FranchiseePortal.ToursWebApiClient.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("id", FranchiseePortal.ToursWebApiClient.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.Data = tourSettingsDto;
+            localVarRequestOptions.PathParameters.Add("schoolCrmId", FranchiseePortal.ToursWebApiClient.Client.ClientUtils.ParameterToString(schoolCrmId)); // path parameter
 
-            localVarRequestOptions.Operation = "SettingsApi.ApiV1SettingsIdPut";
+            localVarRequestOptions.Operation = "SettingsApi.ApiV1SchoolsSchoolCrmIdSettingsDelete";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (ApiKeyAuth) required
@@ -363,10 +357,10 @@ namespace FranchiseePortal.ToursWebApiClient.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Put<Object>("/api/v1/Settings/{id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Delete<Object>("/api/v1/schools/{schoolCrmId}/settings", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ApiV1SettingsIdPut", localVarResponse);
+                Exception _exception = this.ExceptionFactory("ApiV1SchoolsSchoolCrmIdSettingsDelete", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -377,43 +371,38 @@ namespace FranchiseePortal.ToursWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// Deletes school customized tour settings 
         /// </summary>
         /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="tourSettingsDto"> (optional)</param>
+        /// <param name="schoolCrmId">ID (CRM) of school</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiV1SettingsIdPutAsync(string id, TourSettingsDto tourSettingsDto = default(TourSettingsDto), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task ApiV1SchoolsSchoolCrmIdSettingsDeleteAsync(string schoolCrmId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            await ApiV1SettingsIdPutWithHttpInfoAsync(id, tourSettingsDto, operationIndex, cancellationToken).ConfigureAwait(false);
+            await ApiV1SchoolsSchoolCrmIdSettingsDeleteWithHttpInfoAsync(schoolCrmId, operationIndex, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
-        ///  
+        /// Deletes school customized tour settings 
         /// </summary>
         /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="tourSettingsDto"> (optional)</param>
+        /// <param name="schoolCrmId">ID (CRM) of school</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<FranchiseePortal.ToursWebApiClient.Client.ApiResponse<Object>> ApiV1SettingsIdPutWithHttpInfoAsync(string id, TourSettingsDto tourSettingsDto = default(TourSettingsDto), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<FranchiseePortal.ToursWebApiClient.Client.ApiResponse<Object>> ApiV1SchoolsSchoolCrmIdSettingsDeleteWithHttpInfoAsync(string schoolCrmId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            // verify the required parameter 'id' is set
-            if (id == null)
+            // verify the required parameter 'schoolCrmId' is set
+            if (schoolCrmId == null)
             {
-                throw new FranchiseePortal.ToursWebApiClient.Client.ApiException(400, "Missing required parameter 'id' when calling SettingsApi->ApiV1SettingsIdPut");
+                throw new FranchiseePortal.ToursWebApiClient.Client.ApiException(400, "Missing required parameter 'schoolCrmId' when calling SettingsApi->ApiV1SchoolsSchoolCrmIdSettingsDelete");
             }
 
 
             FranchiseePortal.ToursWebApiClient.Client.RequestOptions localVarRequestOptions = new FranchiseePortal.ToursWebApiClient.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json", 
-                "text/json", 
-                "application/_*+json"
             };
 
             // to determine the Accept header
@@ -435,10 +424,9 @@ namespace FranchiseePortal.ToursWebApiClient.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("id", FranchiseePortal.ToursWebApiClient.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.Data = tourSettingsDto;
+            localVarRequestOptions.PathParameters.Add("schoolCrmId", FranchiseePortal.ToursWebApiClient.Client.ClientUtils.ParameterToString(schoolCrmId)); // path parameter
 
-            localVarRequestOptions.Operation = "SettingsApi.ApiV1SettingsIdPut";
+            localVarRequestOptions.Operation = "SettingsApi.ApiV1SchoolsSchoolCrmIdSettingsDelete";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (ApiKeyAuth) required
@@ -448,11 +436,11 @@ namespace FranchiseePortal.ToursWebApiClient.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PutAsync<Object>("/api/v1/Settings/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/api/v1/schools/{schoolCrmId}/settings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ApiV1SettingsIdPut", localVarResponse);
+                Exception _exception = this.ExceptionFactory("ApiV1SchoolsSchoolCrmIdSettingsDelete", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -463,27 +451,192 @@ namespace FranchiseePortal.ToursWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// Gets school tour settings 
         /// </summary>
         /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tourSettingsDto"> (optional)</param>
+        /// <param name="schoolCrmId">ID (CRM) of school</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TourSettingsDto</returns>
-        public TourSettingsDto ApiV1SettingsPost(TourSettingsDto tourSettingsDto = default(TourSettingsDto), int operationIndex = 0)
+        public TourSettingsDto ApiV1SchoolsSchoolCrmIdSettingsGet(string schoolCrmId, int operationIndex = 0)
         {
-            FranchiseePortal.ToursWebApiClient.Client.ApiResponse<TourSettingsDto> localVarResponse = ApiV1SettingsPostWithHttpInfo(tourSettingsDto);
+            FranchiseePortal.ToursWebApiClient.Client.ApiResponse<TourSettingsDto> localVarResponse = ApiV1SchoolsSchoolCrmIdSettingsGetWithHttpInfo(schoolCrmId);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        ///  
+        /// Gets school tour settings 
         /// </summary>
         /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tourSettingsDto"> (optional)</param>
+        /// <param name="schoolCrmId">ID (CRM) of school</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TourSettingsDto</returns>
-        public FranchiseePortal.ToursWebApiClient.Client.ApiResponse<TourSettingsDto> ApiV1SettingsPostWithHttpInfo(TourSettingsDto tourSettingsDto = default(TourSettingsDto), int operationIndex = 0)
+        public FranchiseePortal.ToursWebApiClient.Client.ApiResponse<TourSettingsDto> ApiV1SchoolsSchoolCrmIdSettingsGetWithHttpInfo(string schoolCrmId, int operationIndex = 0)
         {
+            // verify the required parameter 'schoolCrmId' is set
+            if (schoolCrmId == null)
+            {
+                throw new FranchiseePortal.ToursWebApiClient.Client.ApiException(400, "Missing required parameter 'schoolCrmId' when calling SettingsApi->ApiV1SchoolsSchoolCrmIdSettingsGet");
+            }
+
+            FranchiseePortal.ToursWebApiClient.Client.RequestOptions localVarRequestOptions = new FranchiseePortal.ToursWebApiClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = FranchiseePortal.ToursWebApiClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = FranchiseePortal.ToursWebApiClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("schoolCrmId", FranchiseePortal.ToursWebApiClient.Client.ClientUtils.ParameterToString(schoolCrmId)); // path parameter
+
+            localVarRequestOptions.Operation = "SettingsApi.ApiV1SchoolsSchoolCrmIdSettingsGet";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Ocp-Apim-Subscription-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Ocp-Apim-Subscription-Key", this.Configuration.GetApiKeyWithPrefix("Ocp-Apim-Subscription-Key"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<TourSettingsDto>("/api/v1/schools/{schoolCrmId}/settings", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ApiV1SchoolsSchoolCrmIdSettingsGet", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Gets school tour settings 
+        /// </summary>
+        /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="schoolCrmId">ID (CRM) of school</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TourSettingsDto</returns>
+        public async System.Threading.Tasks.Task<TourSettingsDto> ApiV1SchoolsSchoolCrmIdSettingsGetAsync(string schoolCrmId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            FranchiseePortal.ToursWebApiClient.Client.ApiResponse<TourSettingsDto> localVarResponse = await ApiV1SchoolsSchoolCrmIdSettingsGetWithHttpInfoAsync(schoolCrmId, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Gets school tour settings 
+        /// </summary>
+        /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="schoolCrmId">ID (CRM) of school</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TourSettingsDto)</returns>
+        public async System.Threading.Tasks.Task<FranchiseePortal.ToursWebApiClient.Client.ApiResponse<TourSettingsDto>> ApiV1SchoolsSchoolCrmIdSettingsGetWithHttpInfoAsync(string schoolCrmId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'schoolCrmId' is set
+            if (schoolCrmId == null)
+            {
+                throw new FranchiseePortal.ToursWebApiClient.Client.ApiException(400, "Missing required parameter 'schoolCrmId' when calling SettingsApi->ApiV1SchoolsSchoolCrmIdSettingsGet");
+            }
+
+
+            FranchiseePortal.ToursWebApiClient.Client.RequestOptions localVarRequestOptions = new FranchiseePortal.ToursWebApiClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = FranchiseePortal.ToursWebApiClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = FranchiseePortal.ToursWebApiClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("schoolCrmId", FranchiseePortal.ToursWebApiClient.Client.ClientUtils.ParameterToString(schoolCrmId)); // path parameter
+
+            localVarRequestOptions.Operation = "SettingsApi.ApiV1SchoolsSchoolCrmIdSettingsGet";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Ocp-Apim-Subscription-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Ocp-Apim-Subscription-Key", this.Configuration.GetApiKeyWithPrefix("Ocp-Apim-Subscription-Key"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<TourSettingsDto>("/api/v1/schools/{schoolCrmId}/settings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ApiV1SchoolsSchoolCrmIdSettingsGet", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Saves school tour settings 
+        /// </summary>
+        /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="schoolCrmId">ID (CRM) of school</param>
+        /// <param name="tourSettingsInputDto"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns></returns>
+        public void ApiV1SchoolsSchoolCrmIdSettingsPut(string schoolCrmId, TourSettingsInputDto tourSettingsInputDto = default(TourSettingsInputDto), int operationIndex = 0)
+        {
+            ApiV1SchoolsSchoolCrmIdSettingsPutWithHttpInfo(schoolCrmId, tourSettingsInputDto);
+        }
+
+        /// <summary>
+        /// Saves school tour settings 
+        /// </summary>
+        /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="schoolCrmId">ID (CRM) of school</param>
+        /// <param name="tourSettingsInputDto"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public FranchiseePortal.ToursWebApiClient.Client.ApiResponse<Object> ApiV1SchoolsSchoolCrmIdSettingsPutWithHttpInfo(string schoolCrmId, TourSettingsInputDto tourSettingsInputDto = default(TourSettingsInputDto), int operationIndex = 0)
+        {
+            // verify the required parameter 'schoolCrmId' is set
+            if (schoolCrmId == null)
+            {
+                throw new FranchiseePortal.ToursWebApiClient.Client.ApiException(400, "Missing required parameter 'schoolCrmId' when calling SettingsApi->ApiV1SchoolsSchoolCrmIdSettingsPut");
+            }
+
             FranchiseePortal.ToursWebApiClient.Client.RequestOptions localVarRequestOptions = new FranchiseePortal.ToursWebApiClient.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -511,9 +664,10 @@ namespace FranchiseePortal.ToursWebApiClient.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.Data = tourSettingsDto;
+            localVarRequestOptions.PathParameters.Add("schoolCrmId", FranchiseePortal.ToursWebApiClient.Client.ClientUtils.ParameterToString(schoolCrmId)); // path parameter
+            localVarRequestOptions.Data = tourSettingsInputDto;
 
-            localVarRequestOptions.Operation = "SettingsApi.ApiV1SettingsPost";
+            localVarRequestOptions.Operation = "SettingsApi.ApiV1SchoolsSchoolCrmIdSettingsPut";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (ApiKeyAuth) required
@@ -523,10 +677,10 @@ namespace FranchiseePortal.ToursWebApiClient.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<TourSettingsDto>("/api/v1/Settings", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Put<Object>("/api/v1/schools/{schoolCrmId}/settings", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ApiV1SettingsPost", localVarResponse);
+                Exception _exception = this.ExceptionFactory("ApiV1SchoolsSchoolCrmIdSettingsPut", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -537,29 +691,36 @@ namespace FranchiseePortal.ToursWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// Saves school tour settings 
         /// </summary>
         /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tourSettingsDto"> (optional)</param>
+        /// <param name="schoolCrmId">ID (CRM) of school</param>
+        /// <param name="tourSettingsInputDto"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of TourSettingsDto</returns>
-        public async System.Threading.Tasks.Task<TourSettingsDto> ApiV1SettingsPostAsync(TourSettingsDto tourSettingsDto = default(TourSettingsDto), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task ApiV1SchoolsSchoolCrmIdSettingsPutAsync(string schoolCrmId, TourSettingsInputDto tourSettingsInputDto = default(TourSettingsInputDto), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            FranchiseePortal.ToursWebApiClient.Client.ApiResponse<TourSettingsDto> localVarResponse = await ApiV1SettingsPostWithHttpInfoAsync(tourSettingsDto, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
+            await ApiV1SchoolsSchoolCrmIdSettingsPutWithHttpInfoAsync(schoolCrmId, tourSettingsInputDto, operationIndex, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
-        ///  
+        /// Saves school tour settings 
         /// </summary>
         /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tourSettingsDto"> (optional)</param>
+        /// <param name="schoolCrmId">ID (CRM) of school</param>
+        /// <param name="tourSettingsInputDto"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (TourSettingsDto)</returns>
-        public async System.Threading.Tasks.Task<FranchiseePortal.ToursWebApiClient.Client.ApiResponse<TourSettingsDto>> ApiV1SettingsPostWithHttpInfoAsync(TourSettingsDto tourSettingsDto = default(TourSettingsDto), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<FranchiseePortal.ToursWebApiClient.Client.ApiResponse<Object>> ApiV1SchoolsSchoolCrmIdSettingsPutWithHttpInfoAsync(string schoolCrmId, TourSettingsInputDto tourSettingsInputDto = default(TourSettingsInputDto), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'schoolCrmId' is set
+            if (schoolCrmId == null)
+            {
+                throw new FranchiseePortal.ToursWebApiClient.Client.ApiException(400, "Missing required parameter 'schoolCrmId' when calling SettingsApi->ApiV1SchoolsSchoolCrmIdSettingsPut");
+            }
+
 
             FranchiseePortal.ToursWebApiClient.Client.RequestOptions localVarRequestOptions = new FranchiseePortal.ToursWebApiClient.Client.RequestOptions();
 
@@ -588,9 +749,10 @@ namespace FranchiseePortal.ToursWebApiClient.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.Data = tourSettingsDto;
+            localVarRequestOptions.PathParameters.Add("schoolCrmId", FranchiseePortal.ToursWebApiClient.Client.ClientUtils.ParameterToString(schoolCrmId)); // path parameter
+            localVarRequestOptions.Data = tourSettingsInputDto;
 
-            localVarRequestOptions.Operation = "SettingsApi.ApiV1SettingsPost";
+            localVarRequestOptions.Operation = "SettingsApi.ApiV1SchoolsSchoolCrmIdSettingsPut";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (ApiKeyAuth) required
@@ -600,169 +762,11 @@ namespace FranchiseePortal.ToursWebApiClient.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<TourSettingsDto>("/api/v1/Settings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PutAsync<Object>("/api/v1/schools/{schoolCrmId}/settings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ApiV1SettingsPost", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="schoolId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>TourSettingsDto</returns>
-        public TourSettingsDto ApiV1SettingsSchoolIdGet(string schoolId, int operationIndex = 0)
-        {
-            FranchiseePortal.ToursWebApiClient.Client.ApiResponse<TourSettingsDto> localVarResponse = ApiV1SettingsSchoolIdGetWithHttpInfo(schoolId);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="schoolId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of TourSettingsDto</returns>
-        public FranchiseePortal.ToursWebApiClient.Client.ApiResponse<TourSettingsDto> ApiV1SettingsSchoolIdGetWithHttpInfo(string schoolId, int operationIndex = 0)
-        {
-            // verify the required parameter 'schoolId' is set
-            if (schoolId == null)
-            {
-                throw new FranchiseePortal.ToursWebApiClient.Client.ApiException(400, "Missing required parameter 'schoolId' when calling SettingsApi->ApiV1SettingsSchoolIdGet");
-            }
-
-            FranchiseePortal.ToursWebApiClient.Client.RequestOptions localVarRequestOptions = new FranchiseePortal.ToursWebApiClient.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = FranchiseePortal.ToursWebApiClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = FranchiseePortal.ToursWebApiClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("schoolId", FranchiseePortal.ToursWebApiClient.Client.ClientUtils.ParameterToString(schoolId)); // path parameter
-
-            localVarRequestOptions.Operation = "SettingsApi.ApiV1SettingsSchoolIdGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-            // authentication (ApiKeyAuth) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Ocp-Apim-Subscription-Key")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("Ocp-Apim-Subscription-Key", this.Configuration.GetApiKeyWithPrefix("Ocp-Apim-Subscription-Key"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<TourSettingsDto>("/api/v1/Settings/{schoolId}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiV1SettingsSchoolIdGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="schoolId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of TourSettingsDto</returns>
-        public async System.Threading.Tasks.Task<TourSettingsDto> ApiV1SettingsSchoolIdGetAsync(string schoolId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            FranchiseePortal.ToursWebApiClient.Client.ApiResponse<TourSettingsDto> localVarResponse = await ApiV1SettingsSchoolIdGetWithHttpInfoAsync(schoolId, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="schoolId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (TourSettingsDto)</returns>
-        public async System.Threading.Tasks.Task<FranchiseePortal.ToursWebApiClient.Client.ApiResponse<TourSettingsDto>> ApiV1SettingsSchoolIdGetWithHttpInfoAsync(string schoolId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'schoolId' is set
-            if (schoolId == null)
-            {
-                throw new FranchiseePortal.ToursWebApiClient.Client.ApiException(400, "Missing required parameter 'schoolId' when calling SettingsApi->ApiV1SettingsSchoolIdGet");
-            }
-
-
-            FranchiseePortal.ToursWebApiClient.Client.RequestOptions localVarRequestOptions = new FranchiseePortal.ToursWebApiClient.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = FranchiseePortal.ToursWebApiClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = FranchiseePortal.ToursWebApiClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("schoolId", FranchiseePortal.ToursWebApiClient.Client.ClientUtils.ParameterToString(schoolId)); // path parameter
-
-            localVarRequestOptions.Operation = "SettingsApi.ApiV1SettingsSchoolIdGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-            // authentication (ApiKeyAuth) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Ocp-Apim-Subscription-Key")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("Ocp-Apim-Subscription-Key", this.Configuration.GetApiKeyWithPrefix("Ocp-Apim-Subscription-Key"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<TourSettingsDto>("/api/v1/Settings/{schoolId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiV1SettingsSchoolIdGet", localVarResponse);
+                Exception _exception = this.ExceptionFactory("ApiV1SchoolsSchoolCrmIdSettingsPut", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

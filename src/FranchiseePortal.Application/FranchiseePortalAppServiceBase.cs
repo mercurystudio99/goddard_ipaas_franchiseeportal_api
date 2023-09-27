@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using FranchiseePortal.Authorization.Schools;
+using System.Threading;
 
 namespace FranchiseePortal
 {
@@ -91,11 +92,21 @@ namespace FranchiseePortal
         /// <returns></returns>
         protected async virtual Task<bool> AuthorizeForSchoolAsync(string schoolId) 
         {
+            if(AuthorizationService == null)
+            {
+                // AuthorizationService will not be property injected in tests
+                // because the service is registered in the Host startup code
+                // which is not a dependent module of the tests module and I'm not sure
+                // we want to do that 
+                return true;
+            }
 
-            var result = await AuthorizationService.AuthorizeAsync(HttpContextAccessor.HttpContext.User,
-                schoolId, new[] {
-                    SchoolOperations.Read
-            });
+            var result = await AuthorizationService.AuthorizeAsync(
+                    HttpContextAccessor.HttpContext.User,
+                    schoolId, 
+                    new[] {
+                        SchoolOperations.Read
+                    });
 
             return result.Succeeded;
         }

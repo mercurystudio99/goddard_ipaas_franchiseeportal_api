@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ApiV1GuidesGet**](GuidesApi.md#apiv1guidesget) | **GET** /api/v1/Guides | 
+[**ApiV1SchoolsSchoolCrmIdGuidesGet**](GuidesApi.md#apiv1schoolsschoolcrmidguidesget) | **GET** /api/v1/schools/{schoolCrmId}/guides | Gets school tour guides
 
 
-<a name="apiv1guidesget"></a>
-# **ApiV1GuidesGet**
-> List&lt;TourGuideDto&gt; ApiV1GuidesGet (string schoolId = null)
+<a name="apiv1schoolsschoolcrmidguidesget"></a>
+# **ApiV1SchoolsSchoolCrmIdGuidesGet**
+> List&lt;TourGuideDto&gt; ApiV1SchoolsSchoolCrmIdGuidesGet (string schoolCrmId)
 
-
+Gets school tour guides
 
 ### Example
 ```csharp
@@ -23,7 +23,7 @@ using FranchiseePortal.ToursWebApiClient.Model;
 
 namespace Example
 {
-    public class ApiV1GuidesGetExample
+    public class ApiV1SchoolsSchoolCrmIdGuidesGetExample
     {
         public static void Main()
         {
@@ -35,16 +35,17 @@ namespace Example
             // config.AddApiKeyPrefix("Ocp-Apim-Subscription-Key", "Bearer");
 
             var apiInstance = new GuidesApi(config);
-            var schoolId = "schoolId_example";  // string |  (optional) 
+            var schoolCrmId = F0EDC50F-ED22-DE11-B821-0014221C4264;  // string | ID (CRM) of school
 
             try
             {
-                List<TourGuideDto> result = apiInstance.ApiV1GuidesGet(schoolId);
+                // Gets school tour guides
+                List<TourGuideDto> result = apiInstance.ApiV1SchoolsSchoolCrmIdGuidesGet(schoolCrmId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling GuidesApi.ApiV1GuidesGet: " + e.Message );
+                Debug.Print("Exception when calling GuidesApi.ApiV1SchoolsSchoolCrmIdGuidesGet: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -57,7 +58,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **schoolId** | **string**|  | [optional] 
+ **schoolCrmId** | **string**| ID (CRM) of school | 
 
 ### Return type
 
@@ -76,8 +77,9 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Bad Request |  -  |
+| **200** | Returns school tour guides |  -  |
+| **400** | schoolCrmId is invalid |  -  |
+| **404** | School not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

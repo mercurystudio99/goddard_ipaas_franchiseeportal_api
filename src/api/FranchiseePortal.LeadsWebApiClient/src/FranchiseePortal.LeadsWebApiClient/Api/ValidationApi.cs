@@ -27,7 +27,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// 
+        /// Returns the ValidationResult based on a given emailAddress
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appName"> (optional)</param>
@@ -37,7 +37,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         EmailValidationResult ApiV1ValidationEmailPost(string appName = default(string), ApiV1ValidationEmailPostRequest apiV1ValidationEmailPostRequest = default(ApiV1ValidationEmailPostRequest), int operationIndex = 0);
 
         /// <summary>
-        /// 
+        /// Returns the ValidationResult based on a given emailAddress
         /// </summary>
         /// <remarks>
         /// 
@@ -49,7 +49,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         /// <returns>ApiResponse of EmailValidationResult</returns>
         ApiResponse<EmailValidationResult> ApiV1ValidationEmailPostWithHttpInfo(string appName = default(string), ApiV1ValidationEmailPostRequest apiV1ValidationEmailPostRequest = default(ApiV1ValidationEmailPostRequest), int operationIndex = 0);
         /// <summary>
-        /// 
+        /// Returns the ValidationResult based on a given phoneNumber
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appName"> (optional)</param>
@@ -59,7 +59,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         PhoneValidationResult ApiV1ValidationPhonePost(string appName = default(string), ApiV1ValidationPhonePostRequest apiV1ValidationPhonePostRequest = default(ApiV1ValidationPhonePostRequest), int operationIndex = 0);
 
         /// <summary>
-        /// 
+        /// Returns the ValidationResult based on a given phoneNumber
         /// </summary>
         /// <remarks>
         /// 
@@ -80,7 +80,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// 
+        /// Returns the ValidationResult based on a given emailAddress
         /// </summary>
         /// <remarks>
         /// 
@@ -94,7 +94,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         System.Threading.Tasks.Task<EmailValidationResult> ApiV1ValidationEmailPostAsync(string appName = default(string), ApiV1ValidationEmailPostRequest apiV1ValidationEmailPostRequest = default(ApiV1ValidationEmailPostRequest), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// 
+        /// Returns the ValidationResult based on a given emailAddress
         /// </summary>
         /// <remarks>
         /// 
@@ -107,7 +107,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         /// <returns>Task of ApiResponse (EmailValidationResult)</returns>
         System.Threading.Tasks.Task<ApiResponse<EmailValidationResult>> ApiV1ValidationEmailPostWithHttpInfoAsync(string appName = default(string), ApiV1ValidationEmailPostRequest apiV1ValidationEmailPostRequest = default(ApiV1ValidationEmailPostRequest), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// 
+        /// Returns the ValidationResult based on a given phoneNumber
         /// </summary>
         /// <remarks>
         /// 
@@ -121,7 +121,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         System.Threading.Tasks.Task<PhoneValidationResult> ApiV1ValidationPhonePostAsync(string appName = default(string), ApiV1ValidationPhonePostRequest apiV1ValidationPhonePostRequest = default(ApiV1ValidationPhonePostRequest), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// 
+        /// Returns the ValidationResult based on a given phoneNumber
         /// </summary>
         /// <remarks>
         /// 
@@ -254,7 +254,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// Returns the ValidationResult based on a given emailAddress 
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appName"> (optional)</param>
@@ -268,7 +268,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// Returns the ValidationResult based on a given emailAddress 
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appName"> (optional)</param>
@@ -334,7 +334,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// Returns the ValidationResult based on a given emailAddress 
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appName"> (optional)</param>
@@ -349,7 +349,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// Returns the ValidationResult based on a given emailAddress 
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appName"> (optional)</param>
@@ -418,7 +418,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// Returns the ValidationResult based on a given phoneNumber 
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appName"> (optional)</param>
@@ -432,7 +432,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// Returns the ValidationResult based on a given phoneNumber 
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appName"> (optional)</param>
@@ -498,7 +498,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// Returns the ValidationResult based on a given phoneNumber 
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appName"> (optional)</param>
@@ -513,7 +513,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// Returns the ValidationResult based on a given phoneNumber 
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appName"> (optional)</param>

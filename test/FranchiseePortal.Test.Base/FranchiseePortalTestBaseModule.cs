@@ -23,6 +23,8 @@ using FranchiseePortal.Test.Base.Web;
 using FranchiseePortal.UiCustomization;
 using FranchiseePortal.Url;
 using NSubstitute;
+using FranchiseePortal.Authorization.Schools;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FranchiseePortal.Test.Base
 {
@@ -66,7 +68,7 @@ namespace FranchiseePortal.Test.Base
 
             //Uncomment below line to write change logs for the entities below:
             Configuration.EntityHistory.IsEnabled = true;
-            Configuration.EntityHistory.Selectors.Add("FranchiseePortalEntities", typeof(User), typeof(Tenant));
+            Configuration.EntityHistory.Selectors.Add("FranchiseePortalEntities", typeof(User), typeof(Tenant));           
         }
 
         public override void Initialize()

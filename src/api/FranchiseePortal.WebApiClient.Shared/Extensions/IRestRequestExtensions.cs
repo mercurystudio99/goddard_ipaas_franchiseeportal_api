@@ -16,6 +16,9 @@ namespace FranchiseePortal.WebApiClient.Extensions
         public static IRestRequest AddCorrelation(this IRestRequest request)
         {
             var activity = System.Diagnostics.Activity.Current;
+            if(activity == null) {
+                return request;
+            }
             request.AddHeader(W3CConstants.TraceParentHeader, activity.Id);
             var traceState = activity.TraceStateString;
             if (traceState != null)

@@ -4,17 +4,17 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ApiV1ToursGet**](ToursApi.md#apiv1toursget) | **GET** /api/v1/Tours | 
-[**ApiV1ToursIdGet**](ToursApi.md#apiv1toursidget) | **GET** /api/v1/Tours/{id} | 
-[**ApiV1ToursIdPut**](ToursApi.md#apiv1toursidput) | **PUT** /api/v1/Tours/{id} | 
-[**ApiV1ToursPost**](ToursApi.md#apiv1tourspost) | **POST** /api/v1/Tours | 
+[**ApiV1SchoolsSchoolCrmIdToursGet**](ToursApi.md#apiv1schoolsschoolcrmidtoursget) | **GET** /api/v1/schools/{schoolCrmId}/tours | Gets school tours
+[**ApiV1SchoolsSchoolCrmIdToursIdGet**](ToursApi.md#apiv1schoolsschoolcrmidtoursidget) | **GET** /api/v1/schools/{schoolCrmId}/tours/{id} | Gets school tour
+[**ApiV1SchoolsSchoolCrmIdToursIdPut**](ToursApi.md#apiv1schoolsschoolcrmidtoursidput) | **PUT** /api/v1/schools/{schoolCrmId}/tours/{id} | Saves school tour
+[**ApiV1SchoolsSchoolCrmIdToursPost**](ToursApi.md#apiv1schoolsschoolcrmidtourspost) | **POST** /api/v1/schools/{schoolCrmId}/tours | Creates school tour
 
 
-<a name="apiv1toursget"></a>
-# **ApiV1ToursGet**
-> TourDtoPaginationDto ApiV1ToursGet (string schoolId, TourStatus? status = null, DateTime? startDate = null, DateTime? endDate = null, TourTypes? type = null, string guideName = null, int? page = null, int? pageSize = null)
+<a name="apiv1schoolsschoolcrmidtoursget"></a>
+# **ApiV1SchoolsSchoolCrmIdToursGet**
+> TourDtoPaginationDto ApiV1SchoolsSchoolCrmIdToursGet (string schoolCrmId, List<TourStatus> statuses = null, DateTime? startDateTime = null, DateTime? endDateTime = null, List<TourType> types = null, List<string> guideIds = null, List<string> leadIds = null, string leadName = null, DateTime? leadMaximumPreferredStartDate = null, DateTime? leadMinimumPreferredStartDate = null, List<string> leadProgramsOfInterest = null, TourSort? sort = null, ListSortDirection? sortDirection = null, int? page = null, int? pageSize = null)
 
-
+Gets school tours
 
 ### Example
 ```csharp
@@ -26,7 +26,7 @@ using FranchiseePortal.ToursWebApiClient.Model;
 
 namespace Example
 {
-    public class ApiV1ToursGetExample
+    public class ApiV1SchoolsSchoolCrmIdToursGetExample
     {
         public static void Main()
         {
@@ -38,23 +38,31 @@ namespace Example
             // config.AddApiKeyPrefix("Ocp-Apim-Subscription-Key", "Bearer");
 
             var apiInstance = new ToursApi(config);
-            var schoolId = "schoolId_example";  // string | 
-            var status = (TourStatus) "Scheduled";  // TourStatus? |  (optional) 
-            var startDate = DateTime.Parse("2013-10-20T19:20:30+01:00");  // DateTime? |  (optional) 
-            var endDate = DateTime.Parse("2013-10-20T19:20:30+01:00");  // DateTime? |  (optional) 
-            var type = (TourTypes) "InPerson";  // TourTypes? |  (optional) 
-            var guideName = "guideName_example";  // string |  (optional) 
+            var schoolCrmId = F0EDC50F-ED22-DE11-B821-0014221C4264;  // string | ID (CRM) of school
+            var statuses = new List<TourStatus>(); // List<TourStatus> |  (optional) 
+            var startDateTime = DateTime.Parse("2013-10-20T19:20:30+01:00");  // DateTime? | Gets or sets optional start UTC date and time query filter (optional) 
+            var endDateTime = DateTime.Parse("2013-10-20T19:20:30+01:00");  // DateTime? | Gets or sets optional end UTC date and time query filter (optional) 
+            var types = new List<TourType>(); // List<TourType> |  (optional) 
+            var guideIds = new List<string>(); // List<string> |  (optional) 
+            var leadIds = new List<string>(); // List<string> |  (optional) 
+            var leadName = "leadName_example";  // string | Name to filter by (optional) 
+            var leadMaximumPreferredStartDate = DateTime.Parse("2013-10-20T19:20:30+01:00");  // DateTime? | Maximum preferred start date (optional) 
+            var leadMinimumPreferredStartDate = DateTime.Parse("2013-10-20T19:20:30+01:00");  // DateTime? | Minimum preferred start date (optional) 
+            var leadProgramsOfInterest = new List<string>(); // List<string> | Programs of interest (optional) 
+            var sort = (TourSort) "Default";  // TourSort? |  (optional) 
+            var sortDirection = (ListSortDirection) "Ascending";  // ListSortDirection? |  (optional) 
             var page = 56;  // int? |  (optional) 
             var pageSize = 56;  // int? |  (optional) 
 
             try
             {
-                TourDtoPaginationDto result = apiInstance.ApiV1ToursGet(schoolId, status, startDate, endDate, type, guideName, page, pageSize);
+                // Gets school tours
+                TourDtoPaginationDto result = apiInstance.ApiV1SchoolsSchoolCrmIdToursGet(schoolCrmId, statuses, startDateTime, endDateTime, types, guideIds, leadIds, leadName, leadMaximumPreferredStartDate, leadMinimumPreferredStartDate, leadProgramsOfInterest, sort, sortDirection, page, pageSize);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ToursApi.ApiV1ToursGet: " + e.Message );
+                Debug.Print("Exception when calling ToursApi.ApiV1SchoolsSchoolCrmIdToursGet: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -67,12 +75,19 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **schoolId** | **string**|  | 
- **status** | **TourStatus?**|  | [optional] 
- **startDate** | **DateTime?**|  | [optional] 
- **endDate** | **DateTime?**|  | [optional] 
- **type** | **TourTypes?**|  | [optional] 
- **guideName** | **string**|  | [optional] 
+ **schoolCrmId** | **string**| ID (CRM) of school | 
+ **statuses** | [**List&lt;TourStatus&gt;**](TourStatus.md)|  | [optional] 
+ **startDateTime** | **DateTime?**| Gets or sets optional start UTC date and time query filter | [optional] 
+ **endDateTime** | **DateTime?**| Gets or sets optional end UTC date and time query filter | [optional] 
+ **types** | [**List&lt;TourType&gt;**](TourType.md)|  | [optional] 
+ **guideIds** | [**List&lt;string&gt;**](string.md)|  | [optional] 
+ **leadIds** | [**List&lt;string&gt;**](string.md)|  | [optional] 
+ **leadName** | **string**| Name to filter by | [optional] 
+ **leadMaximumPreferredStartDate** | **DateTime?**| Maximum preferred start date | [optional] 
+ **leadMinimumPreferredStartDate** | **DateTime?**| Minimum preferred start date | [optional] 
+ **leadProgramsOfInterest** | [**List&lt;string&gt;**](string.md)| Programs of interest | [optional] 
+ **sort** | **TourSort?**|  | [optional] 
+ **sortDirection** | **ListSortDirection?**|  | [optional] 
  **page** | **int?**|  | [optional] 
  **pageSize** | **int?**|  | [optional] 
 
@@ -93,16 +108,16 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Bad Request |  -  |
+| **200** | Returns school tours |  -  |
+| **404** | School not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="apiv1toursidget"></a>
-# **ApiV1ToursIdGet**
-> TourDto ApiV1ToursIdGet (string id)
+<a name="apiv1schoolsschoolcrmidtoursidget"></a>
+# **ApiV1SchoolsSchoolCrmIdToursIdGet**
+> TourDto ApiV1SchoolsSchoolCrmIdToursIdGet (string schoolCrmId, string id)
 
-
+Gets school tour
 
 ### Example
 ```csharp
@@ -114,7 +129,7 @@ using FranchiseePortal.ToursWebApiClient.Model;
 
 namespace Example
 {
-    public class ApiV1ToursIdGetExample
+    public class ApiV1SchoolsSchoolCrmIdToursIdGetExample
     {
         public static void Main()
         {
@@ -126,16 +141,18 @@ namespace Example
             // config.AddApiKeyPrefix("Ocp-Apim-Subscription-Key", "Bearer");
 
             var apiInstance = new ToursApi(config);
-            var id = "id_example";  // string | 
+            var schoolCrmId = F0EDC50F-ED22-DE11-B821-0014221C4264;  // string | ID (CRM) of school
+            var id = 45A6F328-55E4-409C-BB89-2E5B0B29632D;  // string | ID of tour
 
             try
             {
-                TourDto result = apiInstance.ApiV1ToursIdGet(id);
+                // Gets school tour
+                TourDto result = apiInstance.ApiV1SchoolsSchoolCrmIdToursIdGet(schoolCrmId, id);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ToursApi.ApiV1ToursIdGet: " + e.Message );
+                Debug.Print("Exception when calling ToursApi.ApiV1SchoolsSchoolCrmIdToursIdGet: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -148,7 +165,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **string**|  | 
+ **schoolCrmId** | **string**| ID (CRM) of school | 
+ **id** | **string**| ID of tour | 
 
 ### Return type
 
@@ -167,16 +185,17 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | Not Found |  -  |
+| **200** | Returns school tours |  -  |
+| **404** | Tour not found |  -  |
+| **400** | schoolId is invalid |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="apiv1toursidput"></a>
-# **ApiV1ToursIdPut**
-> void ApiV1ToursIdPut (string id, TourDto tourDto = null)
+<a name="apiv1schoolsschoolcrmidtoursidput"></a>
+# **ApiV1SchoolsSchoolCrmIdToursIdPut**
+> void ApiV1SchoolsSchoolCrmIdToursIdPut (string schoolCrmId, string id, TourInputDto tourInputDto = null)
 
-
+Saves school tour
 
 ### Example
 ```csharp
@@ -188,7 +207,7 @@ using FranchiseePortal.ToursWebApiClient.Model;
 
 namespace Example
 {
-    public class ApiV1ToursIdPutExample
+    public class ApiV1SchoolsSchoolCrmIdToursIdPutExample
     {
         public static void Main()
         {
@@ -200,16 +219,18 @@ namespace Example
             // config.AddApiKeyPrefix("Ocp-Apim-Subscription-Key", "Bearer");
 
             var apiInstance = new ToursApi(config);
-            var id = "id_example";  // string | 
-            var tourDto = new TourDto(); // TourDto |  (optional) 
+            var schoolCrmId = F0EDC50F-ED22-DE11-B821-0014221C4264;  // string | ID (CRM) of school
+            var id = 45A6F328-55E4-409C-BB89-2E5B0B29632D;  // string | ID of tour
+            var tourInputDto = new TourInputDto(); // TourInputDto |  (optional) 
 
             try
             {
-                apiInstance.ApiV1ToursIdPut(id, tourDto);
+                // Saves school tour
+                apiInstance.ApiV1SchoolsSchoolCrmIdToursIdPut(schoolCrmId, id, tourInputDto);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ToursApi.ApiV1ToursIdPut: " + e.Message );
+                Debug.Print("Exception when calling ToursApi.ApiV1SchoolsSchoolCrmIdToursIdPut: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -222,8 +243,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **string**|  | 
- **tourDto** | [**TourDto**](TourDto.md)|  | [optional] 
+ **schoolCrmId** | **string**| ID (CRM) of school | 
+ **id** | **string**| ID of tour | 
+ **tourInputDto** | [**TourInputDto**](TourInputDto.md)|  | [optional] 
 
 ### Return type
 
@@ -242,16 +264,17 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | Not Found |  -  |
+| **200** | Returns school tours |  -  |
+| **404** | School or tour not found |  -  |
+| **400** | Request is invalid |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="apiv1tourspost"></a>
-# **ApiV1ToursPost**
-> TourDto ApiV1ToursPost (TourDto tourDto = null)
+<a name="apiv1schoolsschoolcrmidtourspost"></a>
+# **ApiV1SchoolsSchoolCrmIdToursPost**
+> TourDto ApiV1SchoolsSchoolCrmIdToursPost (string schoolCrmId, TourInputDto tourInputDto = null)
 
-
+Creates school tour
 
 ### Example
 ```csharp
@@ -263,7 +286,7 @@ using FranchiseePortal.ToursWebApiClient.Model;
 
 namespace Example
 {
-    public class ApiV1ToursPostExample
+    public class ApiV1SchoolsSchoolCrmIdToursPostExample
     {
         public static void Main()
         {
@@ -275,16 +298,18 @@ namespace Example
             // config.AddApiKeyPrefix("Ocp-Apim-Subscription-Key", "Bearer");
 
             var apiInstance = new ToursApi(config);
-            var tourDto = new TourDto(); // TourDto |  (optional) 
+            var schoolCrmId = F0EDC50F-ED22-DE11-B821-0014221C4264;  // string | ID (CRM) of school
+            var tourInputDto = new TourInputDto(); // TourInputDto |  (optional) 
 
             try
             {
-                TourDto result = apiInstance.ApiV1ToursPost(tourDto);
+                // Creates school tour
+                TourDto result = apiInstance.ApiV1SchoolsSchoolCrmIdToursPost(schoolCrmId, tourInputDto);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ToursApi.ApiV1ToursPost: " + e.Message );
+                Debug.Print("Exception when calling ToursApi.ApiV1SchoolsSchoolCrmIdToursPost: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -297,7 +322,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tourDto** | [**TourDto**](TourDto.md)|  | [optional] 
+ **schoolCrmId** | **string**| ID (CRM) of school | 
+ **tourInputDto** | [**TourInputDto**](TourInputDto.md)|  | [optional] 
 
 ### Return type
 
@@ -316,8 +342,9 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Bad Request |  -  |
+| **200** | Returns school tours |  -  |
+| **400** | Request is invalid |  -  |
+| **404** | School not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

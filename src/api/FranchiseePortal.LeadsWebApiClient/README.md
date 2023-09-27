@@ -106,16 +106,16 @@ All URIs are relative to *http://localhost*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *FranchiseLeadsApi* | [**ApiV1FranchiseLeadsPost**](docs/FranchiseLeadsApi.md#apiv1franchiseleadspost) | **POST** /api/v1/franchise-leads | 
-*SchoolParentLeadsApi* | [**ApiV1SchoolLeadsGet**](docs/SchoolParentLeadsApi.md#apiv1schoolleadsget) | **GET** /api/v1/school-leads | 
-*SchoolParentLeadsApi* | [**ApiV1SchoolLeadsGuidIdGuidIdGet**](docs/SchoolParentLeadsApi.md#apiv1schoolleadsguididguididget) | **GET** /api/v1/school-leads/guid-id/{guidId} | 
-*SchoolParentLeadsApi* | [**ApiV1SchoolLeadsIdGet**](docs/SchoolParentLeadsApi.md#apiv1schoolleadsidget) | **GET** /api/v1/school-leads/{id} | 
+*SchoolParentLeadsApi* | [**ApiV1SchoolLeadsGet**](docs/SchoolParentLeadsApi.md#apiv1schoolleadsget) | **GET** /api/v1/school-leads | Allow search SchoolParentLead by first name, last name, email or phone
+*SchoolParentLeadsApi* | [**ApiV1SchoolLeadsGuidIdGuidIdGet**](docs/SchoolParentLeadsApi.md#apiv1schoolleadsguididguididget) | **GET** /api/v1/school-leads/guid-id/{guidId} | GET api/v1/school-leads/guid-id/:guid-id    Returns leads for specified guid id
+*SchoolParentLeadsApi* | [**ApiV1SchoolLeadsIdGet**](docs/SchoolParentLeadsApi.md#apiv1schoolleadsidget) | **GET** /api/v1/school-leads/{id} | GET api/v1/school-leads/:id    Returns leads for specified id
 *SchoolParentLeadsApi* | [**ApiV1SchoolLeadsIdTourPut**](docs/SchoolParentLeadsApi.md#apiv1schoolleadsidtourput) | **PUT** /api/v1/school-leads/{id}/tour | 
-*SchoolParentLeadsApi* | [**ApiV1SchoolLeadsInternalPost**](docs/SchoolParentLeadsApi.md#apiv1schoolleadsinternalpost) | **POST** /api/v1/school-leads/internal | 
+*SchoolParentLeadsApi* | [**ApiV1SchoolLeadsInternalPost**](docs/SchoolParentLeadsApi.md#apiv1schoolleadsinternalpost) | **POST** /api/v1/school-leads/internal | this endpoint is allow saving new leads without validating captcha
 *SchoolParentLeadsApi* | [**ApiV1SchoolLeadsPost**](docs/SchoolParentLeadsApi.md#apiv1schoolleadspost) | **POST** /api/v1/school-leads | 
-*SchoolParentLeadsApi* | [**ApiV1SchoolLeadsQueryByIdsPost**](docs/SchoolParentLeadsApi.md#apiv1schoolleadsquerybyidspost) | **POST** /api/v1/school-leads/query-by-ids | 
+*SchoolParentLeadsApi* | [**ApiV1SchoolLeadsQueryByIdsPost**](docs/SchoolParentLeadsApi.md#apiv1schoolleadsquerybyidspost) | **POST** /api/v1/school-leads/query-by-ids | POST api/v1/school-leads/query-by-ids    Returns leads for query by IDs
 *SimpleLeadsApi* | [**ApiV1SimpleLeadsPost**](docs/SimpleLeadsApi.md#apiv1simpleleadspost) | **POST** /api/v1/simple-leads | 
-*ValidationApi* | [**ApiV1ValidationEmailPost**](docs/ValidationApi.md#apiv1validationemailpost) | **POST** /api/v1/validation/email | 
-*ValidationApi* | [**ApiV1ValidationPhonePost**](docs/ValidationApi.md#apiv1validationphonepost) | **POST** /api/v1/validation/phone | 
+*ValidationApi* | [**ApiV1ValidationEmailPost**](docs/ValidationApi.md#apiv1validationemailpost) | **POST** /api/v1/validation/email | Returns the ValidationResult based on a given emailAddress
+*ValidationApi* | [**ApiV1ValidationPhonePost**](docs/ValidationApi.md#apiv1validationphonepost) | **POST** /api/v1/validation/phone | Returns the ValidationResult based on a given phoneNumber
 
 
 <a name="documentation-for-models"></a>

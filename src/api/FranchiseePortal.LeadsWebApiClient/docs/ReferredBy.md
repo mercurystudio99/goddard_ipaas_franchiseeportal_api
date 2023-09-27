@@ -1,4 +1,5 @@
 # FranchiseePortal.LeadsWebApiClient.Model.ReferredBy
+Referred by types
 
 ## Properties
 

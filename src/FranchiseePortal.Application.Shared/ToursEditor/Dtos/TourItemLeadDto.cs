@@ -1,5 +1,6 @@
 ﻿using FranchiseePortal.LeadsWebApiClient.Model;
 using System;
+using System.Linq;
 
 namespace FranchiseePortal.ToursEditor.Dtos
 {
@@ -25,5 +26,37 @@ namespace FranchiseePortal.ToursEditor.Dtos
         public string EmailAddress { get; set; }
 
         public string TourQuestions { get; set; }
+        public string FirstChildName => SchoolChildLeads is null || SchoolChildLeads.Length == 0
+            ? null
+            : SchoolChildLeads.First().FirstName;
+
+        public int? FirstChildAgeMonths
+        {
+            get
+            {
+                if (SchoolChildLeads is null || SchoolChildLeads.Length == 0)
+                {
+                    return null;
+                }
+
+                var now = DateTime.Now;
+
+                var firstChildBornDate = SchoolChildLeads.First().DateOfBirth;
+                if (firstChildBornDate.Equals(default(DateTime)))
+                {
+                    return null;
+                }
+
+                int months = ((now.Year - firstChildBornDate.Year) * 12) + now.Month - firstChildBornDate.Month;
+
+                // Subtracting one month if the month is the same, but the day isn't.
+                if (firstChildBornDate.Day > now.Day)
+                {
+                    months--;
+                }
+
+                return Math.Max(0, months);
+            }
+        }
     }
 }

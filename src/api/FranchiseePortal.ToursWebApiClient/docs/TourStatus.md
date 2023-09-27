@@ -1,4 +1,5 @@
 # FranchiseePortal.ToursWebApiClient.Model.TourStatus
+These values are mapped from TDB.TourStatus table
 
 ## Properties
 

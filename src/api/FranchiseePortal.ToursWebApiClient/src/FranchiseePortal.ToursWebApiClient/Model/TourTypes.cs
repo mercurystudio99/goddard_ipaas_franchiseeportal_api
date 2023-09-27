@@ -26,28 +26,29 @@ using OpenAPIDateConverter = FranchiseePortal.ToursWebApiClient.Client.OpenAPIDa
 namespace FranchiseePortal.ToursWebApiClient.Model
 {
     /// <summary>
-    /// Defines TourTypes
+    /// Tour types
     /// </summary>
+    /// <value>Tour types</value>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum TourTypes
     {
         /// <summary>
+        /// Enum None for value: None
+        /// </summary>
+        [EnumMember(Value = "None")]
+        None = 1,
+
+        /// <summary>
         /// Enum InPerson for value: InPerson
         /// </summary>
         [EnumMember(Value = "InPerson")]
-        InPerson = 1,
+        InPerson = 2,
 
         /// <summary>
         /// Enum Online for value: Online
         /// </summary>
         [EnumMember(Value = "Online")]
-        Online = 2,
-
-        /// <summary>
-        /// Enum Virtual for value: Virtual
-        /// </summary>
-        [EnumMember(Value = "Virtual")]
-        Virtual = 3
+        Online = 3
 
     }
 

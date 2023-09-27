@@ -1,15 +1,14 @@
-﻿using FranchiseePortal.ToursWebApiClient.Model;
-using FranchiseePortal.LeadsWebApiClient.Model;
-using System;
+﻿using FranchiseePortal.LeadsEditor.Dtos;
+using FranchiseePortal.ToursWebApiClient.Model;
+using FranchiseePortal.Validation;
 using System.ComponentModel.DataAnnotations;
-using FranchiseePortal.LeadsEditor.Dtos;
 
 namespace FranchiseePortal.ToursEditor.Dtos
 {
     public class CreateTourInput : BaseTourInput
     {
-        [Required]
-        public TourTypes Type { get; set; } = TourTypes.InPerson;
+        [RequiredIf(nameof(Type), TourTypes.InPerson, ErrorMessage = "Tour Guide is required for In-Person Tour")]
+        public override string GuideId { get; set; }
 
         public FollowUpTimeFrame FollowUpTimeFrame { get; set; } = FollowUpTimeFrame.ASAP;
 
@@ -17,24 +16,20 @@ namespace FranchiseePortal.ToursEditor.Dtos
         [Required]
         public CreateLeadInput Lead { get; set; }
 
-        public static TourDto CreateTourDto(CreateTourInput input)
+        public static TourInputDto CreateApiTourInputDto(CreateTourInput input)
         {
-            return new TourDto(
-                Guid.NewGuid().ToString(),
-                input.Lead.SchoolParentLeadId.ToString(),
-                input.Notes,
-                input.TourStartDate,
-                input.TourEndDate,
-                DateTime.UtcNow,
-                input.Type,
-                input.SchoolId,
-                input.Status,
-                input.GuideId,
-                null,
-                input.ClassRoom,
-                input.FollowUpTimeFrame,
-                null,
-                input.SchoolTimeZone);
+            return new TourInputDto(
+                leadId: input.Lead.SchoolParentLeadId.ToString(),
+                notes: input.Notes,
+                startDateTime: input.StartDateTime,
+                endDateTime: input.EndDateTime,
+                type: input.Type,
+                status: input.Status,
+                guideId: input.GuideId,
+                classRoom: input.ClassRoom,
+                followUpTimeFrame: input.FollowUpTimeFrame,
+                cancellationReasonId: null,
+                viewed: null);
         }
     }
 }

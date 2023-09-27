@@ -27,16 +27,16 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// 
+        /// Allow search SchoolParentLead by first name, last name, email or phone
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="schoolId"></param>
+        /// <param name="schoolId">ID of school to query leads for</param>
         /// <param name="q"> (optional)</param>
-        /// <param name="name"> (optional)</param>
-        /// <param name="childAge"> (optional)</param>
-        /// <param name="startDate"> (optional)</param>
-        /// <param name="endDate"> (optional)</param>
-        /// <param name="programsOfInterest"> (optional)</param>
+        /// <param name="name">for searching parent or children first/last name (optional)</param>
+        /// <param name="childAge">for searching all childrens ages (optional)</param>
+        /// <param name="startDate">Filter Preferred Start Date (optional)</param>
+        /// <param name="endDate">Filter Preferred End Date (optional)</param>
+        /// <param name="programsOfInterest">List of searched programs that the School Parent Leads may be interested in (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="pageSize"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -44,27 +44,30 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         LeadDtoPaginationDto ApiV1SchoolLeadsGet(long schoolId, string q = default(string), string name = default(string), int? childAge = default(int?), DateTime? startDate = default(DateTime?), DateTime? endDate = default(DateTime?), List<string> programsOfInterest = default(List<string>), int? page = default(int?), int? pageSize = default(int?), int operationIndex = 0);
 
         /// <summary>
-        /// 
+        /// Allow search SchoolParentLead by first name, last name, email or phone
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="schoolId"></param>
+        /// <param name="schoolId">ID of school to query leads for</param>
         /// <param name="q"> (optional)</param>
-        /// <param name="name"> (optional)</param>
-        /// <param name="childAge"> (optional)</param>
-        /// <param name="startDate"> (optional)</param>
-        /// <param name="endDate"> (optional)</param>
-        /// <param name="programsOfInterest"> (optional)</param>
+        /// <param name="name">for searching parent or children first/last name (optional)</param>
+        /// <param name="childAge">for searching all childrens ages (optional)</param>
+        /// <param name="startDate">Filter Preferred Start Date (optional)</param>
+        /// <param name="endDate">Filter Preferred End Date (optional)</param>
+        /// <param name="programsOfInterest">List of searched programs that the School Parent Leads may be interested in (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="pageSize"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LeadDtoPaginationDto</returns>
         ApiResponse<LeadDtoPaginationDto> ApiV1SchoolLeadsGetWithHttpInfo(long schoolId, string q = default(string), string name = default(string), int? childAge = default(int?), DateTime? startDate = default(DateTime?), DateTime? endDate = default(DateTime?), List<string> programsOfInterest = default(List<string>), int? page = default(int?), int? pageSize = default(int?), int operationIndex = 0);
         /// <summary>
-        /// 
+        /// GET api/v1/school-leads/guid-id/:guid-id    Returns leads for specified guid id
         /// </summary>
+        /// <remarks>
+        /// We have this endpoint because it should be available to public clients  whereas M:Goddard.LeadsApi.Controllers.SchoolParentLeadsController.GetById(System.String)   should only be available for server to server API calls that are authorized
+        /// </remarks>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="guidId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -72,10 +75,10 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         LeadDto ApiV1SchoolLeadsGuidIdGuidIdGet(Guid guidId, int operationIndex = 0);
 
         /// <summary>
-        /// 
+        /// GET api/v1/school-leads/guid-id/:guid-id    Returns leads for specified guid id
         /// </summary>
         /// <remarks>
-        /// 
+        /// We have this endpoint because it should be available to public clients  whereas M:Goddard.LeadsApi.Controllers.SchoolParentLeadsController.GetById(System.String)   should only be available for server to server API calls that are authorized
         /// </remarks>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="guidId"></param>
@@ -83,7 +86,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         /// <returns>ApiResponse of LeadDto</returns>
         ApiResponse<LeadDto> ApiV1SchoolLeadsGuidIdGuidIdGetWithHttpInfo(Guid guidId, int operationIndex = 0);
         /// <summary>
-        /// 
+        /// GET api/v1/school-leads/:id    Returns leads for specified id
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -92,7 +95,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         LeadDto ApiV1SchoolLeadsIdGet(string id, int operationIndex = 0);
 
         /// <summary>
-        /// 
+        /// GET api/v1/school-leads/:id    Returns leads for specified id
         /// </summary>
         /// <remarks>
         /// 
@@ -125,10 +128,10 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> ApiV1SchoolLeadsIdTourPutWithHttpInfo(Guid id, ApiV1SchoolLeadsIdTourPutRequest apiV1SchoolLeadsIdTourPutRequest = default(ApiV1SchoolLeadsIdTourPutRequest), int operationIndex = 0);
         /// <summary>
-        /// 
+        /// this endpoint is allow saving new leads without validating captcha
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="async"> (optional, default to true)</param>
+        /// <param name="async">Specify false if operations should be synchronous.  Defaults to true. (optional, default to true)</param>
         /// <param name="appName"> (optional)</param>
         /// <param name="apiV1SchoolLeadsInternalPostRequest"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -136,13 +139,13 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         LeadDto ApiV1SchoolLeadsInternalPost(bool? async = default(bool?), string appName = default(string), ApiV1SchoolLeadsInternalPostRequest apiV1SchoolLeadsInternalPostRequest = default(ApiV1SchoolLeadsInternalPostRequest), int operationIndex = 0);
 
         /// <summary>
-        /// 
+        /// this endpoint is allow saving new leads without validating captcha
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="async"> (optional, default to true)</param>
+        /// <param name="async">Specify false if operations should be synchronous.  Defaults to true. (optional, default to true)</param>
         /// <param name="appName"> (optional)</param>
         /// <param name="apiV1SchoolLeadsInternalPostRequest"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -152,7 +155,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         /// 
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="async"> (optional, default to true)</param>
+        /// <param name="async">Specify false if operations should be synchronous.  Defaults to true. (optional, default to true)</param>
         /// <param name="appName"> (optional)</param>
         /// <param name="apiV1SchoolLeadsGetRequest"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -166,14 +169,14 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         /// 
         /// </remarks>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="async"> (optional, default to true)</param>
+        /// <param name="async">Specify false if operations should be synchronous.  Defaults to true. (optional, default to true)</param>
         /// <param name="appName"> (optional)</param>
         /// <param name="apiV1SchoolLeadsGetRequest"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LeadDto</returns>
         ApiResponse<LeadDto> ApiV1SchoolLeadsPostWithHttpInfo(bool? async = default(bool?), string appName = default(string), ApiV1SchoolLeadsGetRequest apiV1SchoolLeadsGetRequest = default(ApiV1SchoolLeadsGetRequest), int operationIndex = 0);
         /// <summary>
-        /// 
+        /// POST api/v1/school-leads/query-by-ids    Returns leads for query by IDs
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"> (optional)</param>
@@ -182,7 +185,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         List<LeadDto> ApiV1SchoolLeadsQueryByIdsPost(List<string> requestBody = default(List<string>), int operationIndex = 0);
 
         /// <summary>
-        /// 
+        /// POST api/v1/school-leads/query-by-ids    Returns leads for query by IDs
         /// </summary>
         /// <remarks>
         /// 
@@ -202,19 +205,19 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// 
+        /// Allow search SchoolParentLead by first name, last name, email or phone
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="schoolId"></param>
+        /// <param name="schoolId">ID of school to query leads for</param>
         /// <param name="q"> (optional)</param>
-        /// <param name="name"> (optional)</param>
-        /// <param name="childAge"> (optional)</param>
-        /// <param name="startDate"> (optional)</param>
-        /// <param name="endDate"> (optional)</param>
-        /// <param name="programsOfInterest"> (optional)</param>
+        /// <param name="name">for searching parent or children first/last name (optional)</param>
+        /// <param name="childAge">for searching all childrens ages (optional)</param>
+        /// <param name="startDate">Filter Preferred Start Date (optional)</param>
+        /// <param name="endDate">Filter Preferred End Date (optional)</param>
+        /// <param name="programsOfInterest">List of searched programs that the School Parent Leads may be interested in (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="pageSize"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -223,19 +226,19 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         System.Threading.Tasks.Task<LeadDtoPaginationDto> ApiV1SchoolLeadsGetAsync(long schoolId, string q = default(string), string name = default(string), int? childAge = default(int?), DateTime? startDate = default(DateTime?), DateTime? endDate = default(DateTime?), List<string> programsOfInterest = default(List<string>), int? page = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// 
+        /// Allow search SchoolParentLead by first name, last name, email or phone
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="schoolId"></param>
+        /// <param name="schoolId">ID of school to query leads for</param>
         /// <param name="q"> (optional)</param>
-        /// <param name="name"> (optional)</param>
-        /// <param name="childAge"> (optional)</param>
-        /// <param name="startDate"> (optional)</param>
-        /// <param name="endDate"> (optional)</param>
-        /// <param name="programsOfInterest"> (optional)</param>
+        /// <param name="name">for searching parent or children first/last name (optional)</param>
+        /// <param name="childAge">for searching all childrens ages (optional)</param>
+        /// <param name="startDate">Filter Preferred Start Date (optional)</param>
+        /// <param name="endDate">Filter Preferred End Date (optional)</param>
+        /// <param name="programsOfInterest">List of searched programs that the School Parent Leads may be interested in (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="pageSize"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -243,10 +246,10 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         /// <returns>Task of ApiResponse (LeadDtoPaginationDto)</returns>
         System.Threading.Tasks.Task<ApiResponse<LeadDtoPaginationDto>> ApiV1SchoolLeadsGetWithHttpInfoAsync(long schoolId, string q = default(string), string name = default(string), int? childAge = default(int?), DateTime? startDate = default(DateTime?), DateTime? endDate = default(DateTime?), List<string> programsOfInterest = default(List<string>), int? page = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// 
+        /// GET api/v1/school-leads/guid-id/:guid-id    Returns leads for specified guid id
         /// </summary>
         /// <remarks>
-        /// 
+        /// We have this endpoint because it should be available to public clients  whereas M:Goddard.LeadsApi.Controllers.SchoolParentLeadsController.GetById(System.String)   should only be available for server to server API calls that are authorized
         /// </remarks>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="guidId"></param>
@@ -256,10 +259,10 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         System.Threading.Tasks.Task<LeadDto> ApiV1SchoolLeadsGuidIdGuidIdGetAsync(Guid guidId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// 
+        /// GET api/v1/school-leads/guid-id/:guid-id    Returns leads for specified guid id
         /// </summary>
         /// <remarks>
-        /// 
+        /// We have this endpoint because it should be available to public clients  whereas M:Goddard.LeadsApi.Controllers.SchoolParentLeadsController.GetById(System.String)   should only be available for server to server API calls that are authorized
         /// </remarks>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="guidId"></param>
@@ -268,7 +271,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         /// <returns>Task of ApiResponse (LeadDto)</returns>
         System.Threading.Tasks.Task<ApiResponse<LeadDto>> ApiV1SchoolLeadsGuidIdGuidIdGetWithHttpInfoAsync(Guid guidId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// 
+        /// GET api/v1/school-leads/:id    Returns leads for specified id
         /// </summary>
         /// <remarks>
         /// 
@@ -281,7 +284,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         System.Threading.Tasks.Task<LeadDto> ApiV1SchoolLeadsIdGetAsync(string id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// 
+        /// GET api/v1/school-leads/:id    Returns leads for specified id
         /// </summary>
         /// <remarks>
         /// 
@@ -320,13 +323,13 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> ApiV1SchoolLeadsIdTourPutWithHttpInfoAsync(Guid id, ApiV1SchoolLeadsIdTourPutRequest apiV1SchoolLeadsIdTourPutRequest = default(ApiV1SchoolLeadsIdTourPutRequest), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// 
+        /// this endpoint is allow saving new leads without validating captcha
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="async"> (optional, default to true)</param>
+        /// <param name="async">Specify false if operations should be synchronous.  Defaults to true. (optional, default to true)</param>
         /// <param name="appName"> (optional)</param>
         /// <param name="apiV1SchoolLeadsInternalPostRequest"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -335,13 +338,13 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         System.Threading.Tasks.Task<LeadDto> ApiV1SchoolLeadsInternalPostAsync(bool? async = default(bool?), string appName = default(string), ApiV1SchoolLeadsInternalPostRequest apiV1SchoolLeadsInternalPostRequest = default(ApiV1SchoolLeadsInternalPostRequest), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// 
+        /// this endpoint is allow saving new leads without validating captcha
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="async"> (optional, default to true)</param>
+        /// <param name="async">Specify false if operations should be synchronous.  Defaults to true. (optional, default to true)</param>
         /// <param name="appName"> (optional)</param>
         /// <param name="apiV1SchoolLeadsInternalPostRequest"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -355,7 +358,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         /// 
         /// </remarks>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="async"> (optional, default to true)</param>
+        /// <param name="async">Specify false if operations should be synchronous.  Defaults to true. (optional, default to true)</param>
         /// <param name="appName"> (optional)</param>
         /// <param name="apiV1SchoolLeadsGetRequest"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -370,7 +373,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         /// 
         /// </remarks>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="async"> (optional, default to true)</param>
+        /// <param name="async">Specify false if operations should be synchronous.  Defaults to true. (optional, default to true)</param>
         /// <param name="appName"> (optional)</param>
         /// <param name="apiV1SchoolLeadsGetRequest"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -378,7 +381,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         /// <returns>Task of ApiResponse (LeadDto)</returns>
         System.Threading.Tasks.Task<ApiResponse<LeadDto>> ApiV1SchoolLeadsPostWithHttpInfoAsync(bool? async = default(bool?), string appName = default(string), ApiV1SchoolLeadsGetRequest apiV1SchoolLeadsGetRequest = default(ApiV1SchoolLeadsGetRequest), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// 
+        /// POST api/v1/school-leads/query-by-ids    Returns leads for query by IDs
         /// </summary>
         /// <remarks>
         /// 
@@ -391,7 +394,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         System.Threading.Tasks.Task<List<LeadDto>> ApiV1SchoolLeadsQueryByIdsPostAsync(List<string> requestBody = default(List<string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// 
+        /// POST api/v1/school-leads/query-by-ids    Returns leads for query by IDs
         /// </summary>
         /// <remarks>
         /// 
@@ -523,16 +526,16 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// Allow search SchoolParentLead by first name, last name, email or phone 
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="schoolId"></param>
+        /// <param name="schoolId">ID of school to query leads for</param>
         /// <param name="q"> (optional)</param>
-        /// <param name="name"> (optional)</param>
-        /// <param name="childAge"> (optional)</param>
-        /// <param name="startDate"> (optional)</param>
-        /// <param name="endDate"> (optional)</param>
-        /// <param name="programsOfInterest"> (optional)</param>
+        /// <param name="name">for searching parent or children first/last name (optional)</param>
+        /// <param name="childAge">for searching all childrens ages (optional)</param>
+        /// <param name="startDate">Filter Preferred Start Date (optional)</param>
+        /// <param name="endDate">Filter Preferred End Date (optional)</param>
+        /// <param name="programsOfInterest">List of searched programs that the School Parent Leads may be interested in (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="pageSize"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -544,16 +547,16 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// Allow search SchoolParentLead by first name, last name, email or phone 
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="schoolId"></param>
+        /// <param name="schoolId">ID of school to query leads for</param>
         /// <param name="q"> (optional)</param>
-        /// <param name="name"> (optional)</param>
-        /// <param name="childAge"> (optional)</param>
-        /// <param name="startDate"> (optional)</param>
-        /// <param name="endDate"> (optional)</param>
-        /// <param name="programsOfInterest"> (optional)</param>
+        /// <param name="name">for searching parent or children first/last name (optional)</param>
+        /// <param name="childAge">for searching all childrens ages (optional)</param>
+        /// <param name="startDate">Filter Preferred Start Date (optional)</param>
+        /// <param name="endDate">Filter Preferred End Date (optional)</param>
+        /// <param name="programsOfInterest">List of searched programs that the School Parent Leads may be interested in (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="pageSize"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -642,16 +645,16 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// Allow search SchoolParentLead by first name, last name, email or phone 
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="schoolId"></param>
+        /// <param name="schoolId">ID of school to query leads for</param>
         /// <param name="q"> (optional)</param>
-        /// <param name="name"> (optional)</param>
-        /// <param name="childAge"> (optional)</param>
-        /// <param name="startDate"> (optional)</param>
-        /// <param name="endDate"> (optional)</param>
-        /// <param name="programsOfInterest"> (optional)</param>
+        /// <param name="name">for searching parent or children first/last name (optional)</param>
+        /// <param name="childAge">for searching all childrens ages (optional)</param>
+        /// <param name="startDate">Filter Preferred Start Date (optional)</param>
+        /// <param name="endDate">Filter Preferred End Date (optional)</param>
+        /// <param name="programsOfInterest">List of searched programs that the School Parent Leads may be interested in (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="pageSize"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -664,16 +667,16 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// Allow search SchoolParentLead by first name, last name, email or phone 
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="schoolId"></param>
+        /// <param name="schoolId">ID of school to query leads for</param>
         /// <param name="q"> (optional)</param>
-        /// <param name="name"> (optional)</param>
-        /// <param name="childAge"> (optional)</param>
-        /// <param name="startDate"> (optional)</param>
-        /// <param name="endDate"> (optional)</param>
-        /// <param name="programsOfInterest"> (optional)</param>
+        /// <param name="name">for searching parent or children first/last name (optional)</param>
+        /// <param name="childAge">for searching all childrens ages (optional)</param>
+        /// <param name="startDate">Filter Preferred Start Date (optional)</param>
+        /// <param name="endDate">Filter Preferred End Date (optional)</param>
+        /// <param name="programsOfInterest">List of searched programs that the School Parent Leads may be interested in (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="pageSize"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -765,7 +768,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// GET api/v1/school-leads/guid-id/:guid-id    Returns leads for specified guid id We have this endpoint because it should be available to public clients  whereas M:Goddard.LeadsApi.Controllers.SchoolParentLeadsController.GetById(System.String)   should only be available for server to server API calls that are authorized
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="guidId"></param>
@@ -778,7 +781,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// GET api/v1/school-leads/guid-id/:guid-id    Returns leads for specified guid id We have this endpoint because it should be available to public clients  whereas M:Goddard.LeadsApi.Controllers.SchoolParentLeadsController.GetById(System.String)   should only be available for server to server API calls that are authorized
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="guidId"></param>
@@ -836,7 +839,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// GET api/v1/school-leads/guid-id/:guid-id    Returns leads for specified guid id We have this endpoint because it should be available to public clients  whereas M:Goddard.LeadsApi.Controllers.SchoolParentLeadsController.GetById(System.String)   should only be available for server to server API calls that are authorized
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="guidId"></param>
@@ -850,7 +853,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// GET api/v1/school-leads/guid-id/:guid-id    Returns leads for specified guid id We have this endpoint because it should be available to public clients  whereas M:Goddard.LeadsApi.Controllers.SchoolParentLeadsController.GetById(System.String)   should only be available for server to server API calls that are authorized
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="guidId"></param>
@@ -911,7 +914,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// GET api/v1/school-leads/:id    Returns leads for specified id 
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -924,7 +927,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// GET api/v1/school-leads/:id    Returns leads for specified id 
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -988,7 +991,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// GET api/v1/school-leads/:id    Returns leads for specified id 
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -1002,7 +1005,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// GET api/v1/school-leads/:id    Returns leads for specified id 
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -1225,10 +1228,10 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// this endpoint is allow saving new leads without validating captcha 
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="async"> (optional, default to true)</param>
+        /// <param name="async">Specify false if operations should be synchronous.  Defaults to true. (optional, default to true)</param>
         /// <param name="appName"> (optional)</param>
         /// <param name="apiV1SchoolLeadsInternalPostRequest"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -1240,10 +1243,10 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// this endpoint is allow saving new leads without validating captcha 
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="async"> (optional, default to true)</param>
+        /// <param name="async">Specify false if operations should be synchronous.  Defaults to true. (optional, default to true)</param>
         /// <param name="appName"> (optional)</param>
         /// <param name="apiV1SchoolLeadsInternalPostRequest"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -1311,10 +1314,10 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// this endpoint is allow saving new leads without validating captcha 
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="async"> (optional, default to true)</param>
+        /// <param name="async">Specify false if operations should be synchronous.  Defaults to true. (optional, default to true)</param>
         /// <param name="appName"> (optional)</param>
         /// <param name="apiV1SchoolLeadsInternalPostRequest"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -1327,10 +1330,10 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// this endpoint is allow saving new leads without validating captcha 
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="async"> (optional, default to true)</param>
+        /// <param name="async">Specify false if operations should be synchronous.  Defaults to true. (optional, default to true)</param>
         /// <param name="appName"> (optional)</param>
         /// <param name="apiV1SchoolLeadsInternalPostRequest"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -1404,7 +1407,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         ///  
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="async"> (optional, default to true)</param>
+        /// <param name="async">Specify false if operations should be synchronous.  Defaults to true. (optional, default to true)</param>
         /// <param name="appName"> (optional)</param>
         /// <param name="apiV1SchoolLeadsGetRequest"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -1419,7 +1422,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         ///  
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="async"> (optional, default to true)</param>
+        /// <param name="async">Specify false if operations should be synchronous.  Defaults to true. (optional, default to true)</param>
         /// <param name="appName"> (optional)</param>
         /// <param name="apiV1SchoolLeadsGetRequest"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -1490,7 +1493,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         ///  
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="async"> (optional, default to true)</param>
+        /// <param name="async">Specify false if operations should be synchronous.  Defaults to true. (optional, default to true)</param>
         /// <param name="appName"> (optional)</param>
         /// <param name="apiV1SchoolLeadsGetRequest"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -1506,7 +1509,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         ///  
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="async"> (optional, default to true)</param>
+        /// <param name="async">Specify false if operations should be synchronous.  Defaults to true. (optional, default to true)</param>
         /// <param name="appName"> (optional)</param>
         /// <param name="apiV1SchoolLeadsGetRequest"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -1577,7 +1580,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// POST api/v1/school-leads/query-by-ids    Returns leads for query by IDs 
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"> (optional)</param>
@@ -1590,7 +1593,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// POST api/v1/school-leads/query-by-ids    Returns leads for query by IDs 
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"> (optional)</param>
@@ -1651,7 +1654,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// POST api/v1/school-leads/query-by-ids    Returns leads for query by IDs 
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"> (optional)</param>
@@ -1665,7 +1668,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// POST api/v1/school-leads/query-by-ids    Returns leads for query by IDs 
         /// </summary>
         /// <exception cref="FranchiseePortal.LeadsWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"> (optional)</param>

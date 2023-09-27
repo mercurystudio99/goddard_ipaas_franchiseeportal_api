@@ -1,4 +1,5 @@
 # FranchiseePortal.LeadsWebApiClient.Model.Lead
+Lead input DTO which extends validation
 
 ## Properties
 
@@ -7,7 +8,7 @@ Name | Type | Description | Notes
 **HomePhone** | **string** |  | [optional] 
 **WorkPhone** | **string** |  | [optional] 
 **PrimaryPhone** | **string** |  | [optional] [readonly] 
-**SchoolParentLeadId** | **long?** |  | [optional] 
+**SchoolParentLeadId** | **long?** | Id of the School Parent Lead | [optional] 
 **SchoolId** | **long** |  | 
 **FirstName** | **string** |  | 
 **LastName** | **string** |  | 

@@ -1,25 +1,25 @@
 # FranchiseePortal.ToursWebApiClient.Model.TourDto
+Output DTO for /tours endpoints
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | [optional] 
 **LeadId** | **string** |  | 
-**Notes** | **string** |  | [optional] 
-**TourStartDate** | **DateTime** |  | 
-**TourEndDate** | **DateTime** |  | 
-**CreatedOn** | **DateTime** |  | [optional] 
-**Type** | **TourTypes** |  | [optional] 
-**SchoolId** | **string** |  | 
+**Notes** | **string** | Notes | [optional] 
+**StartDateTime** | **DateTime** | Tour start UTC date and time | 
+**EndDateTime** | **DateTime** | Tour end UTC date and time | 
+**Type** | **TourType** |  | [optional] 
 **Status** | **TourStatus** |  | [optional] 
-**GuideId** | **string** |  | [optional] 
-**Guide** | [**TourGuideDto**](TourGuideDto.md) |  | [optional] 
-**ClassRoom** | **string** |  | [optional] 
+**GuideId** | **string** | Faculty ID of guide assigned to this tour | [optional] 
+**ClassRoom** | **string** | Tour class room | [optional] 
 **FollowUpTimeFrame** | **FollowUpTimeFrame** |  | [optional] 
-**CancellationReasonId** | **string** |  | [optional] 
-**SchoolTimeZone** | **string** |  | [optional] 
-**Viewed** | **DateTime?** |  | [optional] 
+**CancellationReasonId** | **string** | Cancellation reason ID of this tour | [optional] 
+**Viewed** | **DateTime?** | Date in UTC when the user viewed tour&#39;s details in FBP | [optional] 
+**Id** | **string** |  | [optional] 
+**CreatedOn** | **DateTime** | Tour creation date in UTC | [optional] 
+**SchoolId** | **string** |  | 
+**Guide** | [**TourGuideDto**](TourGuideDto.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

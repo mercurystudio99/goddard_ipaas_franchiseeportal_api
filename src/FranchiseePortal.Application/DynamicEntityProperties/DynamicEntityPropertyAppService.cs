@@ -7,7 +7,6 @@ using Abp.DynamicEntityProperties;
 using Microsoft.AspNetCore.Authorization;
 using FranchiseePortal.Authorization;
 using FranchiseePortal.DynamicEntityProperties.Dto;
-using NUglify.Helpers;
 
 namespace FranchiseePortal.DynamicEntityProperties
 {

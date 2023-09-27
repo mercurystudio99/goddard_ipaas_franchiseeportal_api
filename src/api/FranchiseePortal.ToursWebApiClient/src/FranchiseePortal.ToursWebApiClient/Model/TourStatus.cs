@@ -26,34 +26,41 @@ using OpenAPIDateConverter = FranchiseePortal.ToursWebApiClient.Client.OpenAPIDa
 namespace FranchiseePortal.ToursWebApiClient.Model
 {
     /// <summary>
-    /// Defines TourStatus
+    /// These values are mapped from TDB.TourStatus table
     /// </summary>
+    /// <value>These values are mapped from TDB.TourStatus table</value>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum TourStatus
     {
         /// <summary>
+        /// Enum Unconfirmed for value: Unconfirmed
+        /// </summary>
+        [EnumMember(Value = "Unconfirmed")]
+        Unconfirmed = 1,
+
+        /// <summary>
         /// Enum Scheduled for value: Scheduled
         /// </summary>
         [EnumMember(Value = "Scheduled")]
-        Scheduled = 1,
+        Scheduled = 2,
 
         /// <summary>
         /// Enum Completed for value: Completed
         /// </summary>
         [EnumMember(Value = "Completed")]
-        Completed = 2,
+        Completed = 3,
 
         /// <summary>
         /// Enum NoShow for value: NoShow
         /// </summary>
         [EnumMember(Value = "NoShow")]
-        NoShow = 3,
+        NoShow = 4,
 
         /// <summary>
         /// Enum Cancelled for value: Cancelled
         /// </summary>
         [EnumMember(Value = "Cancelled")]
-        Cancelled = 4
+        Cancelled = 5
 
     }
 

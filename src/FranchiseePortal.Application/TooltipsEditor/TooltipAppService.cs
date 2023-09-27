@@ -23,7 +23,8 @@ namespace FranchiseePortal.TooltipsEditor
             }
             catch (Exception ex)
             {
-                //swallow error
+                // Swallow error
+                Logger.Error(ex.Message, ex);
                 return null;
             }
         }

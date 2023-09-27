@@ -26,8 +26,9 @@ using OpenAPIDateConverter = FranchiseePortal.LeadsWebApiClient.Client.OpenAPIDa
 namespace FranchiseePortal.LeadsWebApiClient.Model
 {
     /// <summary>
-    /// Defines ReferredBy
+    /// Referred by types
     /// </summary>
+    /// <value>Referred by types</value>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum ReferredBy
     {

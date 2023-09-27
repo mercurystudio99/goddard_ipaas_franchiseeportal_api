@@ -26,7 +26,7 @@ using OpenAPIDateConverter = FranchiseePortal.ToursWebApiClient.Client.OpenAPIDa
 namespace FranchiseePortal.ToursWebApiClient.Model
 {
     /// <summary>
-    /// TourDto
+    /// Output DTO for /tours endpoints
     /// </summary>
     [DataContract(Name = "TourDto")]
     public partial class TourDto : IEquatable<TourDto>, IValidatableObject
@@ -36,7 +36,7 @@ namespace FranchiseePortal.ToursWebApiClient.Model
         /// Gets or Sets Type
         /// </summary>
         [DataMember(Name = "type", EmitDefaultValue = false)]
-        public TourTypes? Type { get; set; }
+        public TourType? Type { get; set; }
 
         /// <summary>
         /// Gets or Sets Status
@@ -57,23 +57,22 @@ namespace FranchiseePortal.ToursWebApiClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TourDto" /> class.
         /// </summary>
-        /// <param name="id">id.</param>
         /// <param name="leadId">leadId (required).</param>
-        /// <param name="notes">notes.</param>
-        /// <param name="tourStartDate">tourStartDate (required).</param>
-        /// <param name="tourEndDate">tourEndDate (required).</param>
-        /// <param name="createdOn">createdOn.</param>
+        /// <param name="notes">Notes.</param>
+        /// <param name="startDateTime">Tour start UTC date and time (required).</param>
+        /// <param name="endDateTime">Tour end UTC date and time (required).</param>
         /// <param name="type">type.</param>
-        /// <param name="schoolId">schoolId (required).</param>
         /// <param name="status">status.</param>
-        /// <param name="guideId">guideId.</param>
-        /// <param name="guide">guide.</param>
-        /// <param name="classRoom">classRoom.</param>
+        /// <param name="guideId">Faculty ID of guide assigned to this tour.</param>
+        /// <param name="classRoom">Tour class room.</param>
         /// <param name="followUpTimeFrame">followUpTimeFrame.</param>
-        /// <param name="cancellationReasonId">cancellationReasonId.</param>
-        /// <param name="schoolTimeZone">schoolTimeZone.</param>
-        /// <param name="viewed">viewed.</param>
-        public TourDto(string id = default(string), string leadId = default(string), string notes = default(string), DateTime tourStartDate = default(DateTime), DateTime tourEndDate = default(DateTime), DateTime createdOn = default(DateTime), TourTypes? type = default(TourTypes?), string schoolId = default(string), TourStatus? status = default(TourStatus?), string guideId = default(string), TourGuideDto guide = default(TourGuideDto), string classRoom = default(string), FollowUpTimeFrame? followUpTimeFrame = default(FollowUpTimeFrame?), string cancellationReasonId = default(string), string schoolTimeZone = default(string), DateTime? viewed = default(DateTime?))
+        /// <param name="cancellationReasonId">Cancellation reason ID of this tour.</param>
+        /// <param name="viewed">Date in UTC when the user viewed tour&#39;s details in FBP.</param>
+        /// <param name="id">id.</param>
+        /// <param name="createdOn">Tour creation date in UTC.</param>
+        /// <param name="schoolId">schoolId (required).</param>
+        /// <param name="guide">guide.</param>
+        public TourDto(string leadId = default(string), string notes = default(string), DateTime startDateTime = default(DateTime), DateTime endDateTime = default(DateTime), TourType? type = default(TourType?), TourStatus? status = default(TourStatus?), string guideId = default(string), string classRoom = default(string), FollowUpTimeFrame? followUpTimeFrame = default(FollowUpTimeFrame?), string cancellationReasonId = default(string), DateTime? viewed = default(DateTime?), string id = default(string), DateTime createdOn = default(DateTime), string schoolId = default(string), TourGuideDto guide = default(TourGuideDto))
         {
             // to ensure "leadId" is required (not null)
             if (leadId == null)
@@ -81,33 +80,26 @@ namespace FranchiseePortal.ToursWebApiClient.Model
                 throw new ArgumentNullException("leadId is a required property for TourDto and cannot be null");
             }
             this.LeadId = leadId;
-            this.TourStartDate = tourStartDate;
-            this.TourEndDate = tourEndDate;
+            this.StartDateTime = startDateTime;
+            this.EndDateTime = endDateTime;
             // to ensure "schoolId" is required (not null)
             if (schoolId == null)
             {
                 throw new ArgumentNullException("schoolId is a required property for TourDto and cannot be null");
             }
             this.SchoolId = schoolId;
-            this.Id = id;
             this.Notes = notes;
-            this.CreatedOn = createdOn;
             this.Type = type;
             this.Status = status;
             this.GuideId = guideId;
-            this.Guide = guide;
             this.ClassRoom = classRoom;
             this.FollowUpTimeFrame = followUpTimeFrame;
             this.CancellationReasonId = cancellationReasonId;
-            this.SchoolTimeZone = schoolTimeZone;
             this.Viewed = viewed;
+            this.Id = id;
+            this.CreatedOn = createdOn;
+            this.Guide = guide;
         }
-
-        /// <summary>
-        /// Gets or Sets Id
-        /// </summary>
-        [DataMember(Name = "id", EmitDefaultValue = true)]
-        public string Id { get; set; }
 
         /// <summary>
         /// Gets or Sets LeadId
@@ -116,26 +108,64 @@ namespace FranchiseePortal.ToursWebApiClient.Model
         public string LeadId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Notes
+        /// Notes
         /// </summary>
+        /// <value>Notes</value>
         [DataMember(Name = "notes", EmitDefaultValue = true)]
         public string Notes { get; set; }
 
         /// <summary>
-        /// Gets or Sets TourStartDate
+        /// Tour start UTC date and time
         /// </summary>
-        [DataMember(Name = "tourStartDate", IsRequired = true, EmitDefaultValue = false)]
-        public DateTime TourStartDate { get; set; }
+        /// <value>Tour start UTC date and time</value>
+        [DataMember(Name = "startDateTime", IsRequired = true, EmitDefaultValue = false)]
+        public DateTime StartDateTime { get; set; }
 
         /// <summary>
-        /// Gets or Sets TourEndDate
+        /// Tour end UTC date and time
         /// </summary>
-        [DataMember(Name = "tourEndDate", IsRequired = true, EmitDefaultValue = false)]
-        public DateTime TourEndDate { get; set; }
+        /// <value>Tour end UTC date and time</value>
+        [DataMember(Name = "endDateTime", IsRequired = true, EmitDefaultValue = false)]
+        public DateTime EndDateTime { get; set; }
 
         /// <summary>
-        /// Gets or Sets CreatedOn
+        /// Faculty ID of guide assigned to this tour
         /// </summary>
+        /// <value>Faculty ID of guide assigned to this tour</value>
+        [DataMember(Name = "guideId", EmitDefaultValue = true)]
+        public string GuideId { get; set; }
+
+        /// <summary>
+        /// Tour class room
+        /// </summary>
+        /// <value>Tour class room</value>
+        [DataMember(Name = "classRoom", EmitDefaultValue = true)]
+        public string ClassRoom { get; set; }
+
+        /// <summary>
+        /// Cancellation reason ID of this tour
+        /// </summary>
+        /// <value>Cancellation reason ID of this tour</value>
+        [DataMember(Name = "cancellationReasonId", EmitDefaultValue = true)]
+        public string CancellationReasonId { get; set; }
+
+        /// <summary>
+        /// Date in UTC when the user viewed tour&#39;s details in FBP
+        /// </summary>
+        /// <value>Date in UTC when the user viewed tour&#39;s details in FBP</value>
+        [DataMember(Name = "viewed", EmitDefaultValue = true)]
+        public DateTime? Viewed { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Id
+        /// </summary>
+        [DataMember(Name = "id", EmitDefaultValue = true)]
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Tour creation date in UTC
+        /// </summary>
+        /// <value>Tour creation date in UTC</value>
         [DataMember(Name = "createdOn", EmitDefaultValue = false)]
         public DateTime CreatedOn { get; set; }
 
@@ -146,40 +176,10 @@ namespace FranchiseePortal.ToursWebApiClient.Model
         public string SchoolId { get; set; }
 
         /// <summary>
-        /// Gets or Sets GuideId
-        /// </summary>
-        [DataMember(Name = "guideId", EmitDefaultValue = true)]
-        public string GuideId { get; set; }
-
-        /// <summary>
         /// Gets or Sets Guide
         /// </summary>
         [DataMember(Name = "guide", EmitDefaultValue = false)]
         public TourGuideDto Guide { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ClassRoom
-        /// </summary>
-        [DataMember(Name = "classRoom", EmitDefaultValue = true)]
-        public string ClassRoom { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CancellationReasonId
-        /// </summary>
-        [DataMember(Name = "cancellationReasonId", EmitDefaultValue = true)]
-        public string CancellationReasonId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SchoolTimeZone
-        /// </summary>
-        [DataMember(Name = "schoolTimeZone", EmitDefaultValue = true)]
-        public string SchoolTimeZone { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Viewed
-        /// </summary>
-        [DataMember(Name = "viewed", EmitDefaultValue = true)]
-        public DateTime? Viewed { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -189,22 +189,21 @@ namespace FranchiseePortal.ToursWebApiClient.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class TourDto {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  LeadId: ").Append(LeadId).Append("\n");
             sb.Append("  Notes: ").Append(Notes).Append("\n");
-            sb.Append("  TourStartDate: ").Append(TourStartDate).Append("\n");
-            sb.Append("  TourEndDate: ").Append(TourEndDate).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
+            sb.Append("  StartDateTime: ").Append(StartDateTime).Append("\n");
+            sb.Append("  EndDateTime: ").Append(EndDateTime).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  SchoolId: ").Append(SchoolId).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  GuideId: ").Append(GuideId).Append("\n");
-            sb.Append("  Guide: ").Append(Guide).Append("\n");
             sb.Append("  ClassRoom: ").Append(ClassRoom).Append("\n");
             sb.Append("  FollowUpTimeFrame: ").Append(FollowUpTimeFrame).Append("\n");
             sb.Append("  CancellationReasonId: ").Append(CancellationReasonId).Append("\n");
-            sb.Append("  SchoolTimeZone: ").Append(SchoolTimeZone).Append("\n");
             sb.Append("  Viewed: ").Append(Viewed).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
+            sb.Append("  SchoolId: ").Append(SchoolId).Append("\n");
+            sb.Append("  Guide: ").Append(Guide).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -241,11 +240,6 @@ namespace FranchiseePortal.ToursWebApiClient.Model
             }
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
                     this.LeadId == input.LeadId ||
                     (this.LeadId != null &&
                     this.LeadId.Equals(input.LeadId))
@@ -256,28 +250,18 @@ namespace FranchiseePortal.ToursWebApiClient.Model
                     this.Notes.Equals(input.Notes))
                 ) && 
                 (
-                    this.TourStartDate == input.TourStartDate ||
-                    (this.TourStartDate != null &&
-                    this.TourStartDate.Equals(input.TourStartDate))
+                    this.StartDateTime == input.StartDateTime ||
+                    (this.StartDateTime != null &&
+                    this.StartDateTime.Equals(input.StartDateTime))
                 ) && 
                 (
-                    this.TourEndDate == input.TourEndDate ||
-                    (this.TourEndDate != null &&
-                    this.TourEndDate.Equals(input.TourEndDate))
-                ) && 
-                (
-                    this.CreatedOn == input.CreatedOn ||
-                    (this.CreatedOn != null &&
-                    this.CreatedOn.Equals(input.CreatedOn))
+                    this.EndDateTime == input.EndDateTime ||
+                    (this.EndDateTime != null &&
+                    this.EndDateTime.Equals(input.EndDateTime))
                 ) && 
                 (
                     this.Type == input.Type ||
                     this.Type.Equals(input.Type)
-                ) && 
-                (
-                    this.SchoolId == input.SchoolId ||
-                    (this.SchoolId != null &&
-                    this.SchoolId.Equals(input.SchoolId))
                 ) && 
                 (
                     this.Status == input.Status ||
@@ -287,11 +271,6 @@ namespace FranchiseePortal.ToursWebApiClient.Model
                     this.GuideId == input.GuideId ||
                     (this.GuideId != null &&
                     this.GuideId.Equals(input.GuideId))
-                ) && 
-                (
-                    this.Guide == input.Guide ||
-                    (this.Guide != null &&
-                    this.Guide.Equals(input.Guide))
                 ) && 
                 (
                     this.ClassRoom == input.ClassRoom ||
@@ -308,14 +287,29 @@ namespace FranchiseePortal.ToursWebApiClient.Model
                     this.CancellationReasonId.Equals(input.CancellationReasonId))
                 ) && 
                 (
-                    this.SchoolTimeZone == input.SchoolTimeZone ||
-                    (this.SchoolTimeZone != null &&
-                    this.SchoolTimeZone.Equals(input.SchoolTimeZone))
-                ) && 
-                (
                     this.Viewed == input.Viewed ||
                     (this.Viewed != null &&
                     this.Viewed.Equals(input.Viewed))
+                ) && 
+                (
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
+                ) && 
+                (
+                    this.CreatedOn == input.CreatedOn ||
+                    (this.CreatedOn != null &&
+                    this.CreatedOn.Equals(input.CreatedOn))
+                ) && 
+                (
+                    this.SchoolId == input.SchoolId ||
+                    (this.SchoolId != null &&
+                    this.SchoolId.Equals(input.SchoolId))
+                ) && 
+                (
+                    this.Guide == input.Guide ||
+                    (this.Guide != null &&
+                    this.Guide.Equals(input.Guide))
                 );
         }
 
@@ -328,10 +322,6 @@ namespace FranchiseePortal.ToursWebApiClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
-                {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
-                }
                 if (this.LeadId != null)
                 {
                     hashCode = (hashCode * 59) + this.LeadId.GetHashCode();
@@ -340,31 +330,19 @@ namespace FranchiseePortal.ToursWebApiClient.Model
                 {
                     hashCode = (hashCode * 59) + this.Notes.GetHashCode();
                 }
-                if (this.TourStartDate != null)
+                if (this.StartDateTime != null)
                 {
-                    hashCode = (hashCode * 59) + this.TourStartDate.GetHashCode();
+                    hashCode = (hashCode * 59) + this.StartDateTime.GetHashCode();
                 }
-                if (this.TourEndDate != null)
+                if (this.EndDateTime != null)
                 {
-                    hashCode = (hashCode * 59) + this.TourEndDate.GetHashCode();
-                }
-                if (this.CreatedOn != null)
-                {
-                    hashCode = (hashCode * 59) + this.CreatedOn.GetHashCode();
+                    hashCode = (hashCode * 59) + this.EndDateTime.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Type.GetHashCode();
-                if (this.SchoolId != null)
-                {
-                    hashCode = (hashCode * 59) + this.SchoolId.GetHashCode();
-                }
                 hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 if (this.GuideId != null)
                 {
                     hashCode = (hashCode * 59) + this.GuideId.GetHashCode();
-                }
-                if (this.Guide != null)
-                {
-                    hashCode = (hashCode * 59) + this.Guide.GetHashCode();
                 }
                 if (this.ClassRoom != null)
                 {
@@ -375,13 +353,25 @@ namespace FranchiseePortal.ToursWebApiClient.Model
                 {
                     hashCode = (hashCode * 59) + this.CancellationReasonId.GetHashCode();
                 }
-                if (this.SchoolTimeZone != null)
-                {
-                    hashCode = (hashCode * 59) + this.SchoolTimeZone.GetHashCode();
-                }
                 if (this.Viewed != null)
                 {
                     hashCode = (hashCode * 59) + this.Viewed.GetHashCode();
+                }
+                if (this.Id != null)
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
+                if (this.CreatedOn != null)
+                {
+                    hashCode = (hashCode * 59) + this.CreatedOn.GetHashCode();
+                }
+                if (this.SchoolId != null)
+                {
+                    hashCode = (hashCode * 59) + this.SchoolId.GetHashCode();
+                }
+                if (this.Guide != null)
+                {
+                    hashCode = (hashCode * 59) + this.Guide.GetHashCode();
                 }
                 return hashCode;
             }
@@ -394,6 +384,18 @@ namespace FranchiseePortal.ToursWebApiClient.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
+            // LeadId (string) minLength
+            if (this.LeadId != null && this.LeadId.Length < 1)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LeadId, length must be greater than 1.", new [] { "LeadId" });
+            }
+
+            // SchoolId (string) minLength
+            if (this.SchoolId != null && this.SchoolId.Length < 1)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SchoolId, length must be greater than 1.", new [] { "SchoolId" });
+            }
+
             yield break;
         }
     }

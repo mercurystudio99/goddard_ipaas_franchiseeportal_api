@@ -49,6 +49,7 @@ using System.Linq;
 using System.Reflection;
 using Goddard.AspNetCore.Builder;
 using HealthChecksUISettings = HealthChecks.UI.Configuration.Settings;
+using FranchiseePortal.Web.Extensions;
 
 namespace FranchiseePortal.Web.Startup
 {
@@ -384,6 +385,14 @@ namespace FranchiseePortal.Web.Startup
                     var webCoreXmlPath = Path.Combine(AppContext.BaseDirectory, webCoreXmlFile);
                     options.IncludeXmlComments(webCoreXmlPath);
                 }
+
+                // 20230714RBP - FIX: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate Operation for action - FranchiseePortal.ToursSettingsEditor.ToursSettingsEditorService.GetDateAvailability (FranchiseePortal.Application). See inner exception
+                // --->Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate schema for type - FranchiseePortal.ToursWebApiClient.Model.DateAvailabilityDto.See inner exception
+                // --->System.InvalidOperationException: Can't use schemaId "$TourTypesEnum" for type "$FranchiseePortal.ToursWebApiClient.Model.DateAvailabilityBlockDto+TourTypesEnum". The same schemaId is already used for type "$FranchiseePortal.ToursWebApiClient.Model.AvailabilityBlockDto+TourTypesEnum"
+                // credit: https://stackoverflow.com/a/63331752
+                var schemaHelper = new SwashbuckleSchemaHelper();
+                options.CustomSchemaIds(type => schemaHelper.GetSchemaId(type));
+
             }).AddSwaggerGenNewtonsoftSupport();
 
             // 20220105RBP - FIX: Conventional MVC routes (ex. /AbpUserConfiguration/GetAll) are not automatically available in swagger

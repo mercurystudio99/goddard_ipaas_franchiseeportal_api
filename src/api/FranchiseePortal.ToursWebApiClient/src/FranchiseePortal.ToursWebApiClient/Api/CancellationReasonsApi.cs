@@ -27,7 +27,7 @@ namespace FranchiseePortal.ToursWebApiClient.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// 
+        /// Gets cancellation reasons
         /// </summary>
         /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -35,7 +35,7 @@ namespace FranchiseePortal.ToursWebApiClient.Api
         List<TourCancellationReasonDto> ApiV1CancellationReasonsGet(int operationIndex = 0);
 
         /// <summary>
-        /// 
+        /// Gets cancellation reasons
         /// </summary>
         /// <remarks>
         /// 
@@ -54,7 +54,7 @@ namespace FranchiseePortal.ToursWebApiClient.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// 
+        /// Gets cancellation reasons
         /// </summary>
         /// <remarks>
         /// 
@@ -66,7 +66,7 @@ namespace FranchiseePortal.ToursWebApiClient.Api
         System.Threading.Tasks.Task<List<TourCancellationReasonDto>> ApiV1CancellationReasonsGetAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// 
+        /// Gets cancellation reasons
         /// </summary>
         /// <remarks>
         /// 
@@ -197,7 +197,7 @@ namespace FranchiseePortal.ToursWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// Gets cancellation reasons 
         /// </summary>
         /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -209,7 +209,7 @@ namespace FranchiseePortal.ToursWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// Gets cancellation reasons 
         /// </summary>
         /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -265,7 +265,7 @@ namespace FranchiseePortal.ToursWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// Gets cancellation reasons 
         /// </summary>
         /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -278,7 +278,7 @@ namespace FranchiseePortal.ToursWebApiClient.Api
         }
 
         /// <summary>
-        ///  
+        /// Gets cancellation reasons 
         /// </summary>
         /// <exception cref="FranchiseePortal.ToursWebApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>

@@ -842,6 +842,7 @@
     <text name="TwoFactorLoginIsNotSupported">Two factor login is not currently supported!</text>
     <text name="LinkToCurrentPage">Link to current page</text>
     <text name="ThisFieldIsRequired">This field is required.</text>
+    <text name="NumberShouldBeLessThanN">Please enter {0} or less.</text>
     <text name="PleaseEnterAtLeastNCharacter">Please enter at least {0} characters.</text>
     <text name="PleaseEnterNoMoreThanNCharacter">Please enter no more than {0} characters.</text>
     <text name="PleaseEnterNoMoreThanNCharacterOnDescription">Please enter no more than {0} characters for description.</text>
@@ -1283,22 +1284,25 @@
     <text name="PleaseSelectContactPreference">Portal Pre-Recorded Tour Request</text>
 
     <text name="ActivePreRecordedToursMailLinkText">
-      Need to update or have a different recorded video or virtual school tour to share with future Goddard families? {0} to send a link for review. Once approved, the pre-recorded tour page will display on your school site and the associated homepage icon card will display in the available icon card carousel.
+      Need to update or have a different recorded video or virtual school tour to share with future Goddard families? {0} to send a link for review. Once approved, a "Virtual Tour" icon card will become available for your selection in the home page icon card carousel.
     </text>
     <text name="InactivePreRecordedToursMailLinkText">
-      Have a recorded video or virtual school tour to share with future Goddard families? {0} to send a link for review. Once approved, the pre-recorded tour page will display on your school site and the associated homepage icon card will display in the available icon card carousel.
+      Have a recorded video or virtual school tour to share with future Goddard families? {0} to send a link for review. Once approved, a "Virtual Tour" icon card will become available for your selection in the home page icon card carousel.
     </text>
     <text name="PreRecordedToursMailSubject">Portal Pre-Recorded Tour Request</text>
-    <text name="PreRecordedToursMailBody">Please paste and send a link to your recorded video or virtual school tour for review. Once approved, the pre-recorded tour page will display on your school site and the associated homepage icon card will display in the available icon card carousel.</text>
-
-    <text name="TourConflictWarning">You are attempting to schedule over an existing tour. Cancel to select another time or Save to continue and accept the overlapping tours.</text>
+    <text name="PreRecordedToursMailBody">Please paste and send a link to your recorded video or virtual school tour for review. Once approved, a "Virtual Tour" icon card will become available for your selection in the home page icon card carousel.</text>
+    				    
+    <text name="TourConflictWarning">You are attempting to schedule over an existing tour. Cancel to select another time or Save to continue and accept the overlapping tours.</text>  
     <text name="TourDiscardChangesWarning">You have made changes to this tour that will be lost if you leave. Select an option below to return to the tour details or to continue without saving your updates.</text>
     <text name="ChangeAvailabilityTourTypesWarning">Removing a tour type option only impacts future tours and not those already scheduled. Click continue to confirm and remove the tour type or cancel to keep the selection active. You can also visit your tours dashboard to update scheduled tours as needed.</text>
     <text name="ChangeDefaultTourDurationWarning">Changing your default tour duration only impacts future tours and not those already scheduled. Click continue to confirm or cancel to keep the original default tour duration. You can also visit your tours dashboard to update scheduled tours as needed.</text>
     
     <text name="MismatchTourDurationWarning">All available tour blocks must be even multiples of the default tour duration.</text>
     <text name="RequiredTourTypeWarning">At least one tour type is required.</text>
-    <text name="ResetTourAvailabilityWarning">Are you sure you want to delete all custom availabilities and reset to defaults?</text>
+    <text name="MinimumRequiredWarning">Removing this time will place you below the required minimum tour offerings of 2 slots each weekday. You can keep this tour slot or choose an alternate tour slot for this day. If you have any questions, please contact your Franchisee Consultant.</text>
+    <text name="ResetTourAvailabilityWarning">
+      This will reset the displayed availability schedule to system defaults for your selected Default Tour Duration.  
+      Make sure to click Save Schedule if you wish to save this schedule.</text>
     
   </texts>
 </localizationDictionary>

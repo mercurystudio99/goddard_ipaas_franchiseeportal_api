@@ -53,7 +53,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Model
         /// <param name="confidenceLevel">confidenceLevel.</param>
         /// <param name="status">status.</param>
         /// <param name="verboseOutput">verboseOutput.</param>
-        /// <param name="succeeded">succeeded.</param>
+        /// <param name="succeeded">True if the operation was successful.</param>
         public EmailValidationResult(long? integrationAuditLogId = default(long?), ValidationRejection? rejection = default(ValidationRejection?), string providerResult = default(string), List<string> didYouMean = default(List<string>), string confidenceLevel = default(string), ValidationStatus? status = default(ValidationStatus?), string verboseOutput = default(string), bool succeeded = default(bool))
         {
             this.IntegrationAuditLogId = integrationAuditLogId;
@@ -97,8 +97,9 @@ namespace FranchiseePortal.LeadsWebApiClient.Model
         public string VerboseOutput { get; set; }
 
         /// <summary>
-        /// Gets or Sets Succeeded
+        /// True if the operation was successful
         /// </summary>
+        /// <value>True if the operation was successful</value>
         [DataMember(Name = "succeeded", EmitDefaultValue = true)]
         public bool Succeeded { get; set; }
 

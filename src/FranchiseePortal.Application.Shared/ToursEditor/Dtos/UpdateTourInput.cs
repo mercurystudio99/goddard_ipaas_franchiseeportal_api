@@ -12,16 +12,16 @@ namespace FranchiseePortal.ToursEditor.Dtos
         [Required]
         public UpdateLeadInput Lead { get; set; }
 
-        public static void UpdateTourFields(UpdateTourInput input, TourDto tour)
+        public static void UpdateTourFields(UpdateTourInput input, TourInputDto tour)
         {
             tour.GuideId = input.GuideId;
             tour.ClassRoom = input.ClassRoom;
             tour.Status = input.Status;
             tour.Notes = input.Notes;
-            tour.TourStartDate = input.TourStartDate;
-            tour.TourEndDate = input.TourEndDate;
-            tour.SchoolTimeZone= input.SchoolTimeZone;
+            tour.StartDateTime = input.StartDateTime;
+            tour.EndDateTime = input.EndDateTime;
             tour.Viewed = input.Viewed;
+            tour.Type = input.Type;
         }
     }
 }

@@ -4,11 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | [optional] 
-**SchoolId** | **string** |  | 
-**MaxOpenHouseParticipants** | **int** |  | 
 **DefaultTourDuration** | **int** |  | [optional] 
-**DefaultTourGuide** | **string** |  | 
+**DefaultTourGuideId** | **string** | Gets or sets default tour guide ID | [optional] 
+**MaxOpenHouseParticipants** | **int** |  | [optional] 
+**SchoolId** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -98,9 +98,12 @@ namespace FranchiseePortal
                 ApiClientConfiguration.TOURS_SECTION,
                 ApiClientRegistration.Create<IToursApi, ToursApi>(),
                 ApiClientRegistration.Create<IGuidesApi, GuidesApi>(),
-                ApiClientRegistration.Create<IScheduleApi, ScheduleApi>(),
+                ApiClientRegistration.Create<ISchedulesApi, SchedulesApi>(),
                 ApiClientRegistration.Create<ISettingsApi, SettingsApi>(),
-                ApiClientRegistration.Create<ISchoolTourAvailabilityApi, SchoolTourAvailabilityApi>());
+                ApiClientRegistration.Create<IAvailabilityApi, AvailabilityApi>(),
+                ApiClientRegistration.Create<IDateAvailabilitiesApi, DateAvailabilitiesApi>(),
+                ApiClientRegistration.Create<ITestsApi, TestsApi>(),
+                ApiClientRegistration.Create<IDefaultAvailabilityApi, DefaultAvailabilityApi>());
 
             RegisterApiClient<ISchoolParentLeadsApi, SchoolParentLeadsApi, LeadsWebApiClient.Client.Configuration>(
                 ApiClientConfiguration.LEADS_SECTION);

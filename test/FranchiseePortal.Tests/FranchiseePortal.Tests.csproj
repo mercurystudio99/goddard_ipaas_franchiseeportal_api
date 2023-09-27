@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\common.props"></Import>
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <AssemblyName>FranchiseePortal.Tests</AssemblyName>
     <PackageId>FranchiseePortal.Tests</PackageId>
@@ -25,6 +25,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\FranchiseePortal.Application.Shared\FranchiseePortal.Application.Shared.csproj" />
     <ProjectReference Include="..\..\src\FranchiseePortal.Application\FranchiseePortal.Application.csproj" />
+    <ProjectReference Include="..\..\src\FranchiseePortal.Web.Core\FranchiseePortal.Web.Core.csproj" />
     <ProjectReference Include="..\FranchiseePortal.Test.Base\FranchiseePortal.Test.Base.csproj" />
   </ItemGroup>
   <ItemGroup>
@@ -34,5 +35,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="LeadsEditor\" />
   </ItemGroup>
 </Project>

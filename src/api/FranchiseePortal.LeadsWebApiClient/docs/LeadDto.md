@@ -1,10 +1,11 @@
 # FranchiseePortal.LeadsWebApiClient.Model.LeadDto
+Lead output DTO for sending lead summary info in responses
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SchoolId** | **long** |  | [optional] 
+**SchoolId** | **long** | ID of school associated to lead | [optional] 
 **FirstName** | **string** |  | [optional] 
 **LastName** | **string** |  | [optional] 
 **AdditionalRemarks** | **string** |  | [optional] 
@@ -23,9 +24,9 @@ Name | Type | Description | Notes
 **ProgramsOfInterest** | **List&lt;string&gt;** |  | [optional] 
 **DaysOfInterest** | [**List&lt;DaysOfInterest&gt;**](DaysOfInterest.md) |  | [optional] 
 **SchoolParentLeadId** | **string** |  | [optional] 
-**CreatedOn** | **DateTime** |  | [optional] 
+**CreatedOn** | **DateTime?** |  | [optional] 
 **GuidId** | **Guid** |  | [optional] 
-**TourQuestions** | **string** |  | [optional] 
+**TourQuestions** | **string** | Additional questions when scheduling tour | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

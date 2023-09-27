@@ -1,4 +1,5 @@
 # FranchiseePortal.LeadsWebApiClient.Model.TourLeadChildInput
+Input DTO for childrens info captured during tour scheduling
 
 ## Properties
 

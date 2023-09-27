@@ -26,7 +26,7 @@ using OpenAPIDateConverter = FranchiseePortal.LeadsWebApiClient.Client.OpenAPIDa
 namespace FranchiseePortal.LeadsWebApiClient.Model
 {
     /// <summary>
-    /// LeadDto
+    /// Lead output DTO for sending lead summary info in responses
     /// </summary>
     [DataContract(Name = "LeadDto")]
     public partial class LeadDto : IEquatable<LeadDto>, IValidatableObject
@@ -40,7 +40,7 @@ namespace FranchiseePortal.LeadsWebApiClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="LeadDto" /> class.
         /// </summary>
-        /// <param name="schoolId">schoolId.</param>
+        /// <param name="schoolId">ID of school associated to lead.</param>
         /// <param name="firstName">firstName.</param>
         /// <param name="lastName">lastName.</param>
         /// <param name="additionalRemarks">additionalRemarks.</param>
@@ -60,8 +60,8 @@ namespace FranchiseePortal.LeadsWebApiClient.Model
         /// <param name="schoolParentLeadId">schoolParentLeadId.</param>
         /// <param name="createdOn">createdOn.</param>
         /// <param name="guidId">guidId.</param>
-        /// <param name="tourQuestions">tourQuestions.</param>
-        public LeadDto(long schoolId = default(long), string firstName = default(string), string lastName = default(string), string additionalRemarks = default(string), string streetLine1 = default(string), string city = default(string), string zipCode = default(string), string mobilePhone = default(string), string homePhone = default(string), string workPhone = default(string), string emailAddress = default(string), ReferredBy? referredBy = default(ReferredBy?), DateTime startDate = default(DateTime), int? contactPreference = default(int?), List<ChildLead> schoolChildLeads = default(List<ChildLead>), List<string> programsOfInterest = default(List<string>), List<DaysOfInterest> daysOfInterest = default(List<DaysOfInterest>), string schoolParentLeadId = default(string), DateTime createdOn = default(DateTime), Guid guidId = default(Guid), string tourQuestions = default(string))
+        /// <param name="tourQuestions">Additional questions when scheduling tour.</param>
+        public LeadDto(long schoolId = default(long), string firstName = default(string), string lastName = default(string), string additionalRemarks = default(string), string streetLine1 = default(string), string city = default(string), string zipCode = default(string), string mobilePhone = default(string), string homePhone = default(string), string workPhone = default(string), string emailAddress = default(string), ReferredBy? referredBy = default(ReferredBy?), DateTime startDate = default(DateTime), int? contactPreference = default(int?), List<ChildLead> schoolChildLeads = default(List<ChildLead>), List<string> programsOfInterest = default(List<string>), List<DaysOfInterest> daysOfInterest = default(List<DaysOfInterest>), string schoolParentLeadId = default(string), DateTime? createdOn = default(DateTime?), Guid guidId = default(Guid), string tourQuestions = default(string))
         {
             this.SchoolId = schoolId;
             this.FirstName = firstName;
@@ -87,8 +87,9 @@ namespace FranchiseePortal.LeadsWebApiClient.Model
         }
 
         /// <summary>
-        /// Gets or Sets SchoolId
+        /// ID of school associated to lead
         /// </summary>
+        /// <value>ID of school associated to lead</value>
         [DataMember(Name = "schoolId", EmitDefaultValue = false)]
         public long SchoolId { get; set; }
 
@@ -205,8 +206,8 @@ namespace FranchiseePortal.LeadsWebApiClient.Model
         /// <summary>
         /// Gets or Sets CreatedOn
         /// </summary>
-        [DataMember(Name = "createdOn", EmitDefaultValue = false)]
-        public DateTime CreatedOn { get; set; }
+        [DataMember(Name = "createdOn", EmitDefaultValue = true)]
+        public DateTime? CreatedOn { get; set; }
 
         /// <summary>
         /// Gets or Sets GuidId
@@ -215,8 +216,9 @@ namespace FranchiseePortal.LeadsWebApiClient.Model
         public Guid GuidId { get; set; }
 
         /// <summary>
-        /// Gets or Sets TourQuestions
+        /// Additional questions when scheduling tour
         /// </summary>
+        /// <value>Additional questions when scheduling tour</value>
         [DataMember(Name = "tourQuestions", EmitDefaultValue = true)]
         public string TourQuestions { get; set; }
 

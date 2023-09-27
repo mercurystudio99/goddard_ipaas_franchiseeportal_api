@@ -10,7 +10,7 @@ namespace FranchiseePortal.LeadsEditor
 {
     public interface ILeadsEditorService
     {
-        Task<List<LeadDto>> Find(FindLeadsInput input, PagingParametersDto paging);
+        Task<IEnumerable<LeadFindDto>> Find(FindLeadsInput input, PagingParametersDto paging);
 
         Task<LeadDto> FindLeadById(string crmId, string id);
 

@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ApiV1CancellationReasonsGet**](CancellationReasonsApi.md#apiv1cancellationreasonsget) | **GET** /api/v1/cancellation-reasons | 
+[**ApiV1CancellationReasonsGet**](CancellationReasonsApi.md#apiv1cancellationreasonsget) | **GET** /api/v1/cancellation-reasons | Gets cancellation reasons
 
 
 <a name="apiv1cancellationreasonsget"></a>
 # **ApiV1CancellationReasonsGet**
 > List&lt;TourCancellationReasonDto&gt; ApiV1CancellationReasonsGet ()
 
-
+Gets cancellation reasons
 
 ### Example
 ```csharp
@@ -38,6 +38,7 @@ namespace Example
 
             try
             {
+                // Gets cancellation reasons
                 List<TourCancellationReasonDto> result = apiInstance.ApiV1CancellationReasonsGet();
                 Debug.WriteLine(result);
             }

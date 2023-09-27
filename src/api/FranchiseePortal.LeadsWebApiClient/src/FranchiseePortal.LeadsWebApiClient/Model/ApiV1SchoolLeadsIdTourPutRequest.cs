@@ -26,7 +26,7 @@ using OpenAPIDateConverter = FranchiseePortal.LeadsWebApiClient.Client.OpenAPIDa
 namespace FranchiseePortal.LeadsWebApiClient.Model
 {
     /// <summary>
-    /// ApiV1SchoolLeadsIdTourPutRequest
+    /// Input DTO for additional lead info captured during tour scheduling
     /// </summary>
     [DataContract(Name = "_api_v1_school_leads__id__tour_put_request")]
     public partial class ApiV1SchoolLeadsIdTourPutRequest : IEquatable<ApiV1SchoolLeadsIdTourPutRequest>, IValidatableObject
@@ -35,9 +35,9 @@ namespace FranchiseePortal.LeadsWebApiClient.Model
         /// Initializes a new instance of the <see cref="ApiV1SchoolLeadsIdTourPutRequest" /> class.
         /// </summary>
         /// <param name="schoolChildLeads">schoolChildLeads.</param>
-        /// <param name="daysOfInterest">daysOfInterest.</param>
+        /// <param name="daysOfInterest">Days of interest selected.</param>
         /// <param name="programsOfInterest">programsOfInterest.</param>
-        /// <param name="tourQuestions">tourQuestions.</param>
+        /// <param name="tourQuestions">Additional questions when scheduling tour.</param>
         public ApiV1SchoolLeadsIdTourPutRequest(List<TourLeadChildInput> schoolChildLeads = default(List<TourLeadChildInput>), List<DaysOfInterest> daysOfInterest = default(List<DaysOfInterest>), List<string> programsOfInterest = default(List<string>), string tourQuestions = default(string))
         {
             this.SchoolChildLeads = schoolChildLeads;
@@ -53,8 +53,9 @@ namespace FranchiseePortal.LeadsWebApiClient.Model
         public List<TourLeadChildInput> SchoolChildLeads { get; set; }
 
         /// <summary>
-        /// Gets or Sets DaysOfInterest
+        /// Days of interest selected
         /// </summary>
+        /// <value>Days of interest selected</value>
         [DataMember(Name = "daysOfInterest", EmitDefaultValue = true)]
         public List<DaysOfInterest> DaysOfInterest { get; set; }
 
@@ -65,8 +66,9 @@ namespace FranchiseePortal.LeadsWebApiClient.Model
         public List<string> ProgramsOfInterest { get; set; }
 
         /// <summary>
-        /// Gets or Sets TourQuestions
+        /// Additional questions when scheduling tour
         /// </summary>
+        /// <value>Additional questions when scheduling tour</value>
         [DataMember(Name = "tourQuestions", EmitDefaultValue = true)]
         public string TourQuestions { get; set; }
 

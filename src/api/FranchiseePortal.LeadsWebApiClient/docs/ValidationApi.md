@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ApiV1ValidationEmailPost**](ValidationApi.md#apiv1validationemailpost) | **POST** /api/v1/validation/email | 
-[**ApiV1ValidationPhonePost**](ValidationApi.md#apiv1validationphonepost) | **POST** /api/v1/validation/phone | 
+[**ApiV1ValidationEmailPost**](ValidationApi.md#apiv1validationemailpost) | **POST** /api/v1/validation/email | Returns the ValidationResult based on a given emailAddress
+[**ApiV1ValidationPhonePost**](ValidationApi.md#apiv1validationphonepost) | **POST** /api/v1/validation/phone | Returns the ValidationResult based on a given phoneNumber
 
 
 <a name="apiv1validationemailpost"></a>
 # **ApiV1ValidationEmailPost**
 > EmailValidationResult ApiV1ValidationEmailPost (string appName = null, ApiV1ValidationEmailPostRequest apiV1ValidationEmailPostRequest = null)
 
-
+Returns the ValidationResult based on a given emailAddress
 
 ### Example
 ```csharp
@@ -41,6 +41,7 @@ namespace Example
 
             try
             {
+                // Returns the ValidationResult based on a given emailAddress
                 EmailValidationResult result = apiInstance.ApiV1ValidationEmailPost(appName, apiV1ValidationEmailPostRequest);
                 Debug.WriteLine(result);
             }
@@ -88,7 +89,7 @@ Name | Type | Description  | Notes
 # **ApiV1ValidationPhonePost**
 > PhoneValidationResult ApiV1ValidationPhonePost (string appName = null, ApiV1ValidationPhonePostRequest apiV1ValidationPhonePostRequest = null)
 
-
+Returns the ValidationResult based on a given phoneNumber
 
 ### Example
 ```csharp
@@ -117,6 +118,7 @@ namespace Example
 
             try
             {
+                // Returns the ValidationResult based on a given phoneNumber
                 PhoneValidationResult result = apiInstance.ApiV1ValidationPhonePost(appName, apiV1ValidationPhonePostRequest);
                 Debug.WriteLine(result);
             }
